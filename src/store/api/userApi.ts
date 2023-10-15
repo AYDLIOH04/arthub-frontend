@@ -1,4 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { IUser } from '../models/IUser';
+import { IBrushes } from '../models/IBrushes';
 
 const baseUrl = 'https://example.com/api';
 

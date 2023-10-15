@@ -1,9 +1,7 @@
 import Header from "@/components/header/Header";
 import "./globals.css";
 import type { Metadata } from "next";
-import Head from "next/head";
-import { Provider } from "react-redux";
-import store from "@/store";
+import { ReduxProvider } from "@/store/provider";
 
 export const metadata: Metadata = {
   title: "ArtHub",
@@ -17,14 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
       <body>
-        <Provider store={store}>
+        <ReduxProvider>
           <Header />
           <main className="main-layout">{children}</main>
-        </Provider>
+        </ReduxProvider>
       </body>
     </html>
   );

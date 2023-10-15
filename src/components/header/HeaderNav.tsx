@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Authorization } from "./Authorization";
 import { usePathname } from "next/navigation";
 import { activeNavLinkStyles, navLinkStyles, links } from "./header-links";
+import BurgerMenu from "./burger-menu/BurgerMenu";
 
 export default function HeaderNav() {
   const pathname = usePathname();
@@ -24,6 +25,7 @@ export default function HeaderNav() {
         ))}
         <Authorization />
       </nav>
+      <BurgerMenu/>
     </div>
   );
 }
