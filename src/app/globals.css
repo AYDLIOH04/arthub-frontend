@@ -28,5 +28,5 @@ body {
 
 
 .main-layout {
-  @apply max-w-[1200px] mx-auto mt-[40px];
+  @apply max-w-[1200px] mx-auto mt-[100px];
 }

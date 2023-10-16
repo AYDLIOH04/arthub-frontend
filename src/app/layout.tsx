@@ -1,4 +1,6 @@
 import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
+
 import "./globals.css";
 import type { Metadata } from "next";
 import { ReduxProvider } from "@/store/provider";
@@ -18,7 +20,8 @@ export default function RootLayout({
       <body>
         <ReduxProvider>
           <Header />
-          <main className="main-layout">{children}</main>
+          <main className="main-layout h-[1000px]">{children}</main>
+          <Footer/>
         </ReduxProvider>
       </body>
     </html>

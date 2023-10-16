@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IUser } from '../models/IUser';
-import { IBrushes } from '../models/IBrushes';
+import { IUser } from '@/models/IUser';
+import { IBrush } from '@/models/IBrush';
 
 const baseUrl = 'https://example.com/api';
 
@@ -36,7 +36,7 @@ export const userApi = createApi({
       }),
     }),
 
-    getFavoriteBrushes: builder.query<IBrushes[], number>({
+    getFavoriteBrushes: builder.query<IBrush[], number>({
       query: (userId) => `user/${userId}/favorites`,
     }),
   }),

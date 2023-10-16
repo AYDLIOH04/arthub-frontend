@@ -5,10 +5,6 @@ import { brushesApi } from './api/brushesApi';
 import { authApi } from './features/auth/authApi';
 import authReducer, { AuthState } from './features/auth/authSlice'; // Импортируйте редюсер
 
-export interface RootState {
-  auth: AuthState;
-}
-
 export const store = configureStore({
   reducer: {
     [userApi.reducerPath]: userApi.reducer,
@@ -20,5 +16,6 @@ export const store = configureStore({
     getDefaultMiddleware().concat(userApi.middleware, brushesApi.middleware, authApi.middleware),
 });
 
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 setupListeners(store.dispatch);

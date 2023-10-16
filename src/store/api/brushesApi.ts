@@ -1,19 +1,25 @@
-import { IBrushes } from '@/store/models/IBrushes';
+import { IBrush } from '@/models/IBrush';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = 'https://example.com/api';
+const baseUrl = 'http://localhost:5000/';
 
 export const brushesApi = createApi({
   reducerPath: 'brushesApi',
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Brushes'],
   endpoints: (builder) => ({
-    getAllBrushes: builder.query<IBrushes[], void>({
-      query: () => 'brushes', 
-      providesTags: result => ['Brushes']
-    }),
+    // getAllBrushes: builder.query<IBrush[], void>({
+    //   query: () => 'brushes',
+    //   providesTags: result => ['Brushes']
+    // }),
 
-    createBrush: builder.mutation<IBrushes, Partial<IBrushes>>({
+    // getBrush: builder.query<IBrush, {id: number}>({
+    //   query: ({id}) => ({
+    //     url: `brushes/${id}`,
+    //   })
+    // }),
+
+    createBrush: builder.mutation<IBrush, Partial<IBrush>>({
       query: (brushData) => ({
         url: 'brushes',
         method: 'POST',
@@ -22,7 +28,7 @@ export const brushesApi = createApi({
       invalidatesTags: ['Brushes']
     }),
 
-    updateBrush: builder.mutation<IBrushes, { id: number; brushData: Partial<IBrushes> }>({
+    updateBrush: builder.mutation<IBrush, { id: number; brushData: Partial<IBrush> }>({
       query: ({ id, brushData }) => ({
         url: `brushes/${id}`,
         method: 'PUT',
@@ -39,7 +45,7 @@ export const brushesApi = createApi({
       invalidatesTags: ['Brushes']
     }),
 
-    addToFavourites: builder.mutation<IBrushes, { userId: number; brush: IBrushes }>({
+    addToFavourites: builder.mutation<IBrush, { userId: number; brush: IBrush }>({
       query: ({ userId, brush }) => ({
         url: `user/${userId}/favourites`,
         method: 'POST',
@@ -50,7 +56,8 @@ export const brushesApi = createApi({
 });
 
 export const {
-  useGetAllBrushesQuery,
+  // useGetAllBrushesQuery,
+  // useGetBrushQuery,
   useCreateBrushMutation,
   useUpdateBrushMutation,
   useDeleteBrushMutation,

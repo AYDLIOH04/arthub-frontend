@@ -7,39 +7,44 @@ import {
   navLinkStyles,
 } from "./header-links";
 import { usePathname } from "next/navigation";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store";
 import { setIsAuth } from "@/store/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 export const Authorization = () => {
   const pathname = usePathname();
-  const isAuth = useSelector((state: RootState) => state.auth.isAuth);
-  const dispatch = useDispatch();
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const dispatch = useAppDispatch();
 
   return (
     <>
       {isAuth ? (
         <>
-          <Link
-            href="/profile"
-            className={
-              navLinkStyles +
-              (pathname === "/profile" ? activeNavLinkStyles : "")
-            }
-          >
-            Профиль
-          </Link>
-          <a
-            onClick={() => dispatch(setIsAuth(false))}
-            className={authLinkStyles}
-          >
-            Sign Out
-          </a>
+          <li className="inline">
+            <Link
+              href="/profile"
+              className={
+                navLinkStyles +
+                (pathname === "/profile" ? activeNavLinkStyles : "")
+              }
+            >
+              Профиль
+            </Link>
+          </li>
+          <li className="inline">
+            <button
+              onClick={() => dispatch(setIsAuth(false))}
+              className={authLinkStyles}
+            >
+              Sign Out
+            </button>
+          </li>
         </>
       ) : (
-        <Link href="/auth" className={authLinkStyles}>
-          Sign In
-        </Link>
+        <li className="inline">
+          <Link href="/auth" className={authLinkStyles}>
+            Sign In
+          </Link>
+        </li>
       )}
     </>
   );

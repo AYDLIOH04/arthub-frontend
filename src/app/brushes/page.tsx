@@ -1,4 +1,6 @@
+import BrushesList from "@/components/brushes/Brushes";
 import { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "ArtHub | Brushes",
@@ -6,7 +8,13 @@ export const metadata: Metadata = {
 };
 
 const BrushesPage = () => {
-  return <div>ArtHub - Brushes Page</div>;
+  return (
+    <main>
+      <h2>Brushes Page</h2>
+      <Link href="/brushes/create">Создать кисть</Link>
+      <BrushesList/>
+    </main>
+  );
 };
 
 export default BrushesPage;

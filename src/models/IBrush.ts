@@ -1,4 +1,5 @@
-export interface IBrushes {
+export interface IBrush {
+  id: Number;
   title: string;
   size: Number;
   link: string; 

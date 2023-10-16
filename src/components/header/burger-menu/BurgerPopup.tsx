@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { links } from "../header-links";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@/store";
 import { setIsAuth } from "@/store/features/auth/authSlice";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 interface BurgerPopupProps {
   toggleMenu: () => void;
@@ -10,8 +9,8 @@ interface BurgerPopupProps {
 }
 
 export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
-  const isAuth = useSelector((state: RootState) => state.auth.isAuth);
-  const dispatch = useDispatch();
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const dispatch = useAppDispatch();
 
   return (
     <div

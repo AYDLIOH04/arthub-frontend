@@ -1,8 +1,8 @@
-import { IBrushes } from "./IBrushes";
+import { IBrush } from "./IBrush";
 
 export interface IUser {
   id: number;
   username: string;
   email: string;
-  favorites: IBrushes[];
+  favorites: IBrush[];
 }

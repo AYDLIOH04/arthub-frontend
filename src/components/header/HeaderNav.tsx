@@ -10,20 +10,23 @@ export default function HeaderNav() {
 
   return (
     <div>
-      <nav className="space-x-6 hidden 1120px:block">
-        {links.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={
-              navLinkStyles +
-              (pathname === link.href ? activeNavLinkStyles : "")
-            }
-          >
-            {link.label}
-          </Link>
-        ))}
-        <Authorization />
+      <nav>
+        <ul className="space-x-6 hidden 1120px:block">
+          {links.map((link) => (
+            <li key={link.href} className="inline">
+              <Link
+                href={link.href}
+                className={
+                  navLinkStyles +
+                  (pathname === link.href ? activeNavLinkStyles : "")
+                }
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+          <Authorization />
+        </ul>
       </nav>
       <BurgerMenu/>
     </div>
