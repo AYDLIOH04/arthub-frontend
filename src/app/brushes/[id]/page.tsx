@@ -16,7 +16,7 @@ async function getBrush(id: number) {
   return res.json();
 }
 
-export default async function TicketDetails({ params }: any) {
+export default async function BrushDetails({ params }: any) {
   const brush: IBrush = await getBrush(params.id);
 
   return (
