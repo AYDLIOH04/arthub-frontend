@@ -3,7 +3,7 @@ import { IBrush } from "@/models/IBrush";
 import { notFound } from "next/navigation";
 
 async function getBrush(id: number) {
-  const res = await fetch(`http://localhost:5000/brushes/${id}`, {
+  const res = await fetch(`http://localhost:7000/brushes/${id}`, {
     next: {
       revalidate: 60,
     },

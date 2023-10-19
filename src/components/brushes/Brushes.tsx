@@ -2,7 +2,7 @@ import { IBrush } from "@/models/IBrush";
 import BrushesItem from "./Brush";
 
 async function getBrushes() {
-  const res = await fetch("http://localhost:5000/brushes", {
+  const res = await fetch("http://localhost:7000/brushes", {
     next: {
       revalidate: 5
     }});
