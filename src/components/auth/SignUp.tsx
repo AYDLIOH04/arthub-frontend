@@ -37,7 +37,7 @@ export default function SignUpForm({ setShowRegister }: any) {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="peer block min-h-[auto] w-full rounded bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0 border-2 border-indigo-100 focus:border-indigo-400 text-neutral-600"
+          className="peer placeholder:opacity-0 block min-h-[auto] w-full rounded bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear border-2 border-indigo-100 focus:border-indigo-400 text-neutral-600"
           id="signinPassword"
           placeholder="Enter password"
         />

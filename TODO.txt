@@ -1,7 +1,7 @@
 Server Fetching - для получения данных
 RTK - для изменения данных
 
+[V] SignIn/SignUp Form
 [X] Create Brush Form 
-[X] SignIn/SignUp Form
 
 
