@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { links } from "../header-links";
-import { setIsAuth } from "@/store/features/auth/authSlice";
+import { setIsAuth } from "@/store/features/auth/authSlice"; // Удалить
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 
 interface BurgerPopupProps {
@@ -9,8 +9,8 @@ interface BurgerPopupProps {
 }
 
 export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
-  const isAuth = useAppSelector((state) => state.auth.isAuth);
-  const dispatch = useAppDispatch();
+  const isAuth = useAppSelector((state) => state.auth.isAuth); // Удалить
+  const dispatch = useAppDispatch();  // Удалить
 
   return (
     <div
@@ -34,8 +34,8 @@ export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
             <li className="text-white text-[18px] hover:text-slate-300">
               <Link href="/profile" onClick={toggleMenu}>Профиль</Link>
             </li>
-            <li className="text-white text-[18px] hover:text-slate-300">
-              <a onClick={() => {dispatch(setIsAuth(false)); toggleMenu()}}>Sign Out</a>
+            <li className="text-white text-[18px] hover:text-slate-300 cursor-pointer">
+              <a onClick={() => {dispatch(setIsAuth(false)); toggleMenu()}}>Sign Out</a>  {/* Удалить + работать через редюсер AuthSlice (вызвать ф-ию logout) */}
             </li>
           </>
         ) : (

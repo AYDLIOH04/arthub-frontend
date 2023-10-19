@@ -1,11 +1,22 @@
+'use client';
+
 import { MouseEvent, useState } from "react";
+
+import { setIsAuth } from "@/store/features/auth/authSlice"; // Удалить
+import { useAppDispatch } from "@/store/hooks"; // Удалить
+import { useRouter } from "next/navigation";
 
 export default function SignInForm({ setShowRegister }: any) {
   const [email, setEmail] = useState<string | any>('');
   const [password, setPassword] = useState<string | any>('');
+  const router = useRouter()
   
+  const dispatch = useAppDispatch(); // Удалить
+
   function loginHandler(e: MouseEvent<HTMLFormElement>) {
     e.preventDefault();
+    dispatch(setIsAuth(true)) // Удалить
+    router.back();
   }
 
   return (

@@ -1,3 +1,4 @@
+import PrivatePageProvider from "@/components/PageProvider";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,7 +7,11 @@ export const metadata: Metadata = {
 };
 
 const ProfilePage = () => {
-  return <div>Profile Page</div>;
+  return (
+    <PrivatePageProvider>
+      <h1>Profile Page</h1>
+    </PrivatePageProvider>
+  );
 };
 
 export default ProfilePage;
