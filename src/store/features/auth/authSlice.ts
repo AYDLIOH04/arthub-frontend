@@ -1,6 +1,7 @@
 import { IAuth } from '@/models/IAuth';
 import { RootState } from '@/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import Cookies from 'js-cookie';
 
 export interface AuthState {
   name: string | null;
@@ -19,27 +20,28 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<IAuth>) => {
-      localStorage.setItem("user", JSON.stringify({
-        name: action.payload,
-        token: action.payload,
-      }))
+      Cookies.set("user", JSON.stringify({
+        name: action.payload.name,
+        token: action.payload.token,
+      }), { expires: 7 });
 
-      state.name = action.payload.name;
-      state.token = action.payload.token;
-      state.isAuth = true;
+      const user = Cookies.get("user");
+      if (user) {
+        const parsedUser = JSON.parse(user);
+        state.name = parsedUser.name;
+        state.token = parsedUser.token;
+        state.isAuth = true;
+      }
     },
     logout: (state) => {
-      localStorage.clear();
+      Cookies.remove("user");
       state.name = null;
       state.token = null;
       state.isAuth = false;
-    },
-    setIsAuth: (state, action: PayloadAction<boolean>) => {
-      state.isAuth = action.payload;
     },
   },
 });
 
 export const selectAuth = (state: RootState) => state.auth;
-export const { setIsAuth, setUser, logout } = authSlice.actions;
+export const { setUser, logout } = authSlice.actions;
 export default authSlice.reducer;

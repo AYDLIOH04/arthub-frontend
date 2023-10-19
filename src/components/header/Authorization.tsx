@@ -7,13 +7,19 @@ import {
   navLinkStyles,
 } from "./header-links";
 import { usePathname } from "next/navigation";
-import { setIsAuth } from "@/store/features/auth/authSlice";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { logout } from "@/store/features/auth/authSlice";
+import { toast } from "react-toastify";
 
 export const Authorization = () => {
   const pathname = usePathname();
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useAppDispatch();
+
+  function signOut() {
+    dispatch(logout());
+    toast.success("Выход успешен");
+  }
 
   return (
     <>
@@ -32,7 +38,7 @@ export const Authorization = () => {
           </li>
           <li className="inline">
             <button
-              onClick={() => dispatch(setIsAuth(false))}
+              onClick={signOut}
               className={authLinkStyles}
             >
               Sign Out

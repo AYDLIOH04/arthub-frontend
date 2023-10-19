@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { links } from "../header-links";
-import { setIsAuth } from "@/store/features/auth/authSlice"; // Удалить
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { logout } from "@/store/features/auth/authSlice";
+import { toast } from "react-toastify";
 
 interface BurgerPopupProps {
   toggleMenu: () => void;
@@ -9,8 +10,14 @@ interface BurgerPopupProps {
 }
 
 export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
-  const isAuth = useAppSelector((state) => state.auth.isAuth); // Удалить
-  const dispatch = useAppDispatch();  // Удалить
+  const isAuth = useAppSelector((state) => state.auth.isAuth);
+  const dispatch = useAppDispatch();
+
+  function signOut() {
+    dispatch(logout());
+    toggleMenu();
+    toast.success("Выход успешен");
+  }
 
   return (
     <div
@@ -32,10 +39,12 @@ export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
         {isAuth ? (
           <>
             <li className="text-white text-[18px] hover:text-slate-300">
-              <Link href="/profile" onClick={toggleMenu}>Профиль</Link>
+              <Link href="/profile" onClick={toggleMenu}>
+                Профиль
+              </Link>
             </li>
             <li className="text-white text-[18px] hover:text-slate-300 cursor-pointer">
-              <a onClick={() => {dispatch(setIsAuth(false)); toggleMenu()}}>Sign Out</a>  {/* Удалить + работать через редюсер AuthSlice (вызвать ф-ию logout) */}
+              <a onClick={signOut}>Sign Out</a>{" "}
             </li>
           </>
         ) : (

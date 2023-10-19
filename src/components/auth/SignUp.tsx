@@ -1,13 +1,48 @@
-import { MouseEvent, useState } from "react";
+import { useRegisterMutation } from "@/store/features/auth/authApi";
+import { setUser } from "@/store/features/auth/authSlice";
+import { useAppDispatch } from "@/store/hooks";
+import { useRouter } from "next/navigation";
+import { MouseEvent, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 export default function SignUpForm({ setShowRegister }: any) {
-  const [email, setEmail] = useState<string | any>('');
-  const [password, setPassword] = useState<string | any>('');
+  const [email, setEmail] = useState<string | any>("");
+  const [password, setPassword] = useState<string | any>("");
+  const router = useRouter();
 
+  const dispatch = useAppDispatch();
+  const [
+    registerUser,
+    {
+      data: registerData,
+      isSuccess: isRegisterSuccess,
+      isError: isRegisterError,
+      error: registerError,
+    },
+  ] = useRegisterMutation();
 
-  function registrationHandler(e: MouseEvent<HTMLFormElement>) {
+  async function registrationHandler(e: MouseEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (email && password) {
+      await registerUser({ email, password });
+    }
   }
+
+  useEffect(() => {
+    if (isRegisterSuccess) {
+      dispatch(setUser({ name: email, token: registerData.access_token }));
+      setEmail("");
+      setPassword("");
+      toast.success("Регистрация успешена")
+      router.back();
+    }
+  }, [isRegisterSuccess]);
+
+  useEffect(() => {
+    if (isRegisterError) {
+      toast.error((registerError as any).data.message);
+    }
+  }, [isRegisterError]);
 
   return (
     <form
@@ -26,7 +61,9 @@ export default function SignUpForm({ setShowRegister }: any) {
         />
         <label
           htmlFor="signupEmail"
-          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${email && '-translate-y-[1rem] scale-[0.8] text-primary'} peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
+          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${
+            email && "-translate-y-[1rem] scale-[0.8] text-primary"
+          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
         >
           Email address
         </label>
@@ -43,7 +80,9 @@ export default function SignUpForm({ setShowRegister }: any) {
         />
         <label
           htmlFor="signinPassword"
-          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${password && '-translate-y-[1rem] scale-[0.8] text-primary'} peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
+          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${
+            password && "-translate-y-[1rem] scale-[0.8] text-primary"
+          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
         >
           Password
         </label>

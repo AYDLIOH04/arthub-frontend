@@ -1,23 +1,51 @@
-'use client';
+"use client";
 
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 
-import { setIsAuth } from "@/store/features/auth/authSlice"; // Удалить
+import { setUser } from "@/store/features/auth/authSlice"; // Удалить
 import { useAppDispatch } from "@/store/hooks"; // Удалить
 import { useRouter } from "next/navigation";
+import { useLoginMutation } from "@/store/features/auth/authApi";
+import { toast } from "react-toastify";
 
 export default function SignInForm({ setShowRegister }: any) {
-  const [email, setEmail] = useState<string | any>('');
-  const [password, setPassword] = useState<string | any>('');
-  const router = useRouter()
-  
-  const dispatch = useAppDispatch(); // Удалить
+  const [email, setEmail] = useState<string | any>("");
+  const [password, setPassword] = useState<string | any>("");
+  const router = useRouter();
 
-  function loginHandler(e: MouseEvent<HTMLFormElement>) {
+  const dispatch = useAppDispatch();
+  const [
+    loginUser,
+    {
+      data: loginData,
+      isSuccess: isLoginSucces,
+      isError: isLoginError,
+      error: loginError,
+    },
+  ] = useLoginMutation();
+
+  async function loginHandler(e: MouseEvent<HTMLFormElement>) {
     e.preventDefault();
-    dispatch(setIsAuth(true)) // Удалить
-    router.back();
+    if (email && password) {
+      await loginUser({ email, password });
+    }
   }
+
+  useEffect(() => {
+    if (isLoginSucces) {
+      dispatch(setUser({ name: email, token: loginData.access_token }));
+      setEmail("");
+      setPassword("");
+      toast.success("Вход успешен")
+      router.back();
+    }
+  }, [isLoginSucces]);
+
+  useEffect(() => {
+    if (isLoginError) {
+      toast.error((loginError as any).data.message);
+    }
+  }, [isLoginError]);
 
   return (
     <form
@@ -36,7 +64,9 @@ export default function SignInForm({ setShowRegister }: any) {
         />
         <label
           htmlFor="signinEmail"
-          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${email && '-translate-y-[1rem] scale-[0.8] text-primary'} peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
+          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${
+            email && "-translate-y-[1rem] scale-[0.8] text-primary"
+          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
         >
           Email address
         </label>
@@ -53,7 +83,9 @@ export default function SignInForm({ setShowRegister }: any) {
         />
         <label
           htmlFor="signupPassword"
-          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${password && '-translate-y-[1rem] scale-[0.8] text-primary'} peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
+          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${
+            password && "-translate-y-[1rem] scale-[0.8] text-primary"
+          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
         >
           Password
         </label>

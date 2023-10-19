@@ -3,11 +3,16 @@
 import { store } from "@/store";
 import React from "react";
 import { Provider } from "react-redux";
+import AuthProvider from "./auth-provider";
+import { ToastContainer } from 'react-toastify';
 
 export function ReduxProvider({ children }: { children: React.ReactNode }) {
   return (
     <Provider store={store}>
-      {children}
+      <AuthProvider>
+        {children}
+      </AuthProvider>
+      <ToastContainer/>
     </Provider>
   );
 }

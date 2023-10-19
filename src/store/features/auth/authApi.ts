@@ -1,7 +1,7 @@
 import { ICredential } from '@/models/ICredential';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = 'http://localhost:5000/auth';
+const baseUrl = 'http://localhost:5000';
 
 export const authApi = createApi({
   reducerPath: 'authApi',
@@ -9,7 +9,14 @@ export const authApi = createApi({
   endpoints: (builder) => ({
     login: builder.mutation({
       query: (credentials: ICredential) => ({
-        url: '/signin',
+        url: '/auth/signin',
+        method: 'POST',
+        body: credentials,
+      }),
+    }),
+    register: builder.mutation({
+      query: (credentials: ICredential) => ({
+        url: '/auth/signup',
         method: 'POST',
         body: credentials,
       }),
@@ -24,4 +31,4 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation } = authApi;
