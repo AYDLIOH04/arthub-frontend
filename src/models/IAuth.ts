@@ -1,4 +1,4 @@
 export interface IAuth {
-  username: string | null;
+  name: string | null;
   token: string | null;
 }

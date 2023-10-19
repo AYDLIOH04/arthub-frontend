@@ -20,7 +20,7 @@ export default function RootLayout({
       <body>
         <ReduxProvider>
           <Header />
-          <main className="main-layout h-[1000px]">{children}</main>
+          <main className="main-layout">{children}</main>
           <Footer/>
         </ReduxProvider>
       </body>

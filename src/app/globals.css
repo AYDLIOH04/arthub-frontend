@@ -28,5 +28,6 @@ body {
 
 
 .main-layout {
-  @apply max-w-[1200px] mx-auto mt-[100px];
+  @apply max-w-[1200px] mx-auto mt-[100px] mb-[10px];
+  min-height: calc(100vh - 150px);
 }

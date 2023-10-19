@@ -24,5 +24,6 @@ export default function CreateForm() {
     <form onSubmit={handleSubmit} className="w-1/2">
       <button>Submit</button>
     </form>
+    
   );
 }
