@@ -2,16 +2,18 @@ import { IAuth } from '@/models/IAuth';
 import { RootState } from '@/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
+import { useLogoutMutation } from './authApi';
+import { useAppDispatch } from '@/store/hooks';
 
 export interface AuthState {
   name: string | null;
-  token: string | null;
+  accessToken: string | null;
   isAuth: boolean;
 }
 
 const initialState: AuthState = {
   name: null,
-  token: null,
+  accessToken: null,
   isAuth: false,
 };
 
@@ -22,21 +24,21 @@ export const authSlice = createSlice({
     setUser: (state, action: PayloadAction<IAuth>) => {
       Cookies.set("user", JSON.stringify({
         name: action.payload.name,
-        token: action.payload.token,
+        accessToken: action.payload.accessToken,
       }), { expires: 7 });
 
       const user = Cookies.get("user");
       if (user) {
         const parsedUser = JSON.parse(user);
         state.name = parsedUser.name;
-        state.token = parsedUser.token;
+        state.accessToken = parsedUser.token;
         state.isAuth = true;
       }
     },
     logout: (state) => {
       Cookies.remove("user");
       state.name = null;
-      state.token = null;
+      state.accessToken = null;
       state.isAuth = false;
     },
   },

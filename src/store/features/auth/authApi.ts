@@ -1,5 +1,6 @@
 import { ICredential } from '@/models/ICredential';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import Cookies from 'js-cookie';
 
 const baseUrl = 'http://localhost:5000';
 
@@ -21,14 +22,26 @@ export const authApi = createApi({
         body: credentials,
       }),
     }),
-
-    // logout: builder.mutation({
-    //   query: () => ({
-    //     url: '/signout',
-    //     method: 'POST',
-    //   }),
-    // }),
+    logout: builder.mutation({
+      query: () => ({
+        url: '/auth/logout',
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${getTokenFromCookie()}`
+        },
+      }),
+    }),
+    refresh: builder.mutation({
+      query: () => ({
+        url: '/auth/refresh',
+        method: 'POST',
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useLogoutMutation } = authApi;
+
+function getTokenFromCookie() {
+  return JSON.parse(Cookies.get('user') || "{}").accessToken;
+}

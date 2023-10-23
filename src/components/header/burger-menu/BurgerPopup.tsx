@@ -3,6 +3,7 @@ import { links } from "../header-links";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { logout } from "@/store/features/auth/authSlice";
 import { toast } from "react-toastify";
+import { useLogoutMutation } from "@/store/features/auth/authApi";
 
 interface BurgerPopupProps {
   toggleMenu: () => void;
@@ -12,10 +13,12 @@ interface BurgerPopupProps {
 export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useAppDispatch();
+  const [logoutApi, {}] = useLogoutMutation();
 
-  function signOut() {
-    dispatch(logout());
+  async function signOut() {
     toggleMenu();
+    await logoutApi({});
+    dispatch(logout());
     toast.success("Выход успешен");
   }
 

@@ -30,7 +30,7 @@ export default function SignUpForm({ setShowRegister }: any) {
 
   useEffect(() => {
     if (isRegisterSuccess) {
-      dispatch(setUser({ name: email, token: registerData.access_token }));
+      dispatch(setUser({ name: email, accessToken: registerData.access_token }));
       setEmail("");
       setPassword("");
       toast.success("Регистрация успешена")
