@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useAppDispatch } from "./hooks";
-import { setUser } from "./features/auth/authSlice";
+import { logout, setUser } from "./features/auth/authSlice";
 import Cookies from "js-cookie";
 import { useRefreshMutation } from "./features/auth/authApi";
+import { toast } from "react-toastify";
 
 export default function AuthProvider({
   children,
@@ -10,7 +11,7 @@ export default function AuthProvider({
   children: React.ReactNode;
 }) {
   const dispatch = useAppDispatch();
-  const [refreshTokensApi, {data, isSuccess}] = useRefreshMutation();
+  const [refreshTokensApi, { data, isSuccess, isError }] = useRefreshMutation();
 
   async function refreshTokens() {
     return await refreshTokensApi({});
@@ -24,10 +25,18 @@ export default function AuthProvider({
   }, []);
 
   useEffect(() => {
-    if (isSuccess){
+    if (isSuccess) {
       dispatch(setUser(data));
+      // toast.success("Вход успешен");
     }
-  }, [isSuccess])
+  }, [isSuccess]);
+
+  useEffect(() => {
+    if (isError) {
+      dispatch(logout());
+      toast.error("Ошибка входа");
+    }
+  }, [isError]);
 
   return <>{children}</>;
 }
