@@ -35,12 +35,15 @@ export const authApi = createApi({
       query: () => ({
         url: '/auth/refresh',
         method: 'POST',
+        headers: {
+          Authorization: `Bearer ${getTokenFromCookie()}`
+        },
       }),
     }),
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useLogoutMutation } = authApi;
+export const { useLoginMutation, useRegisterMutation, useLogoutMutation, useRefreshMutation } = authApi;
 
 function getTokenFromCookie() {
   return JSON.parse(Cookies.get('user') || "{}").accessToken;

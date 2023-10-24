@@ -2,17 +2,15 @@ import { IAuth } from '@/models/IAuth';
 import { RootState } from '@/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';
-import { useLogoutMutation } from './authApi';
-import { useAppDispatch } from '@/store/hooks';
 
 export interface AuthState {
-  name: string | null;
+  email: string | null;
   accessToken: string | null;
   isAuth: boolean;
 }
 
 const initialState: AuthState = {
-  name: null,
+  email: null,
   accessToken: null,
   isAuth: false,
 };
@@ -22,22 +20,19 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<IAuth>) => {
-      Cookies.set("user", JSON.stringify({
-        name: action.payload.name,
-        accessToken: action.payload.accessToken,
-      }), { expires: 7 });
+      Cookies.set("user", JSON.stringify(action.payload), { expires: 7 });
 
       const user = Cookies.get("user");
       if (user) {
-        const parsedUser = JSON.parse(user);
-        state.name = parsedUser.name;
-        state.accessToken = parsedUser.token;
+        const parsedUser = JSON.parse(user || "{}");
+        state.email = parsedUser.email;
+        state.accessToken = parsedUser.accessToken;
         state.isAuth = true;
       }
     },
     logout: (state) => {
       Cookies.remove("user");
-      state.name = null;
+      state.email = null;
       state.accessToken = null;
       state.isAuth = false;
     },

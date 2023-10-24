@@ -33,7 +33,7 @@ export default function SignInForm({ setShowRegister }: any) {
 
   useEffect(() => {
     if (isLoginSucces) {
-      dispatch(setUser({ name: email, accessToken: loginData.access_token }));
+      dispatch(setUser(loginData));
       setEmail("");
       setPassword("");
       toast.success("Вход успешен")

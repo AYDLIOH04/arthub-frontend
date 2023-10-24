@@ -13,7 +13,7 @@ interface BurgerPopupProps {
 export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useAppDispatch();
-  const [logoutApi, {}] = useLogoutMutation();
+  const [logoutApi, {isSuccess}] = useLogoutMutation();
 
   async function signOut() {
     toggleMenu();
