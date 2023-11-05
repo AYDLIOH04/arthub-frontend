@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query/react';
-import { userApi } from './api/userApi';
-import { brushesApi } from './api/brushesApi';
+import { userApi } from './features/user/userApi';
+import { brushesApi } from './features/brushes/brushesApi';
 import { authApi } from './features/auth/authApi';
 import authReducer, { AuthState } from './features/auth/authSlice'; // Импортируйте редюсер
 

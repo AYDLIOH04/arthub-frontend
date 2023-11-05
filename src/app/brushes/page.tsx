@@ -11,8 +11,7 @@ const BrushesPage = () => {
   return (
     <main>
       <h2>Brushes Page</h2>
-      <Link href="/brushes/create">Создать кисть</Link>
-      <BrushesList/>
+      {/* <BrushesList/> */}
     </main>
   );
 };

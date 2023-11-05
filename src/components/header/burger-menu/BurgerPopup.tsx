@@ -18,8 +18,10 @@ export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
   async function signOut() {
     toggleMenu();
     await logoutApi({});
-    dispatch(logout());
-    toast.success("Выход успешен");
+    if (isSuccess){
+      dispatch(logout());
+      toast.success("Выход успешен");
+    }
   }
 
   return (

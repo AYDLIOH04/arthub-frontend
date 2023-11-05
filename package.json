@@ -28,7 +28,6 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
-    "@types/js-cookie": "^3.0.5",
-    "json-server": "^0.17.4"
+    "@types/js-cookie": "^3.0.5"
   }
 }

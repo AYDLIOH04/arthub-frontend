@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useAppDispatch } from "./hooks";
-import { logout, setUser } from "./features/auth/authSlice";
+import { logout, refresh } from "./features/auth/authSlice";
 import Cookies from "js-cookie";
 import { useRefreshMutation } from "./features/auth/authApi";
 import { toast } from "react-toastify";
@@ -18,16 +18,16 @@ export default function AuthProvider({
   }
 
   useEffect(() => {
-    const userCookie = Cookies.get("user");
-    if (userCookie) {
+    const rt = Cookies.get("auth-rt");
+    if (rt) {
       refreshTokens();
     }
   }, []);
 
   useEffect(() => {
     if (isSuccess) {
-      dispatch(setUser(data));
-      // toast.success("Вход успешен");
+      dispatch(refresh(data));
+      toast.success("Вход успешен");
     }
   }, [isSuccess]);
 

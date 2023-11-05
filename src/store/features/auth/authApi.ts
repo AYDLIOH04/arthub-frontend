@@ -27,7 +27,7 @@ export const authApi = createApi({
         url: '/auth/logout',
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${getTokenFromCookie()}`
+          Authorization: `Bearer ${getCookieData('auth-data').token}`
         },
       }),
     }),
@@ -35,7 +35,9 @@ export const authApi = createApi({
       query: () => ({
         url: '/auth/refresh',
         method: 'POST',
-        body: getCookieData(),
+        headers: {
+          Authorization: `Bearer ${getCookieData('auth-rt')}`
+        },
       }),
     }),
   }),
@@ -43,11 +45,8 @@ export const authApi = createApi({
 
 export const { useLoginMutation, useRegisterMutation, useLogoutMutation, useRefreshMutation } = authApi;
 
-function getTokenFromCookie() {
-  return JSON.parse(Cookies.get('user') || "{}").accessToken;
-}
 
-function getCookieData() {
-  return JSON.parse(Cookies.get('user') || "{}");
+function getCookieData(data: string) {
+  return JSON.parse(Cookies.get(data) || "{}");
 }
 
