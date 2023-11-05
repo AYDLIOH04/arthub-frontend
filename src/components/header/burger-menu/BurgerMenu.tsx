@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from "react";
 import BurgerButton from "./BurgerButton";
 import BurgerPopup from "./BurgerPopup";

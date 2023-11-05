@@ -25,15 +25,15 @@ export const Authorization = () => {
   }
 
   return (
-    <>
+    <div className="hidden 1120px:block">
       {isAuth ? (
-        <>
+        <div className="space-x-5">
           <li className="inline">
             <Link
               href="/profile"
               className={
                 navLinkStyles +
-                (pathname === "/profile" ? activeNavLinkStyles : "")
+                (pathname === "/profile" ? "text-hover" : "")
               }
             >
               Профиль
@@ -44,17 +44,17 @@ export const Authorization = () => {
               onClick={signOut}
               className={authLinkStyles}
             >
-              Sign Out
+              Выход
             </button>
           </li>
-        </>
+        </div>
       ) : (
         <li className="inline">
           <Link href="/auth" className={authLinkStyles}>
-            Sign In
+            Вход
           </Link>
         </li>
       )}
-    </>
+    </div>
   );
 };

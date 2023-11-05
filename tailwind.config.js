@@ -13,6 +13,30 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
+    colors: {
+      background: "#321C4F",
+      color: "#fff",
+      hover: "#A175FF",
+      active: "#A175FF",
+      black: "#000",
+      ashBlack: "#222",
+      white: "#fafafa",
+      sky: "#00ccff",
+      green: "#22dddd",
+      blue: "#1300ff",
+      dusk: "#6600ff",
+      purple: "#9900ff",
+      pink: "#ff0066",
+      red: "#fe0222",
+      orange: "#fd7702",
+      yellow: "#ffbb00",
+    },
+    fontFamily: {
+      damione: "var(--damione-font)",
+      blender: "var(--blender-font)",
+      title: "var(--damione-font)",
+      paragraph: "var(--blender-font)",
+    },
     screens: {
       sm: "640px", // Small screens
       md: "768px", // Medium screens

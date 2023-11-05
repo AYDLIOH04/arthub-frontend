@@ -1,15 +1,41 @@
 import Header from "@/components/header/Header";
-import Footer from "@/components/footer/Footer";
+import Footer from "@/components/home/Footer";
 
 import "./globals.css";
 import type { Metadata } from "next";
 import { ReduxProvider } from "@/store/provider";
-import 'react-toastify/dist/ReactToastify.css';
-
+import "react-toastify/dist/ReactToastify.css";
 export const metadata: Metadata = {
   title: "ArtHub",
   description: "Digital design training",
 };
+
+import DamioneFont from "next/font/local";
+import BlenderProFont from "next/font/local";
+
+const damioneFont = DamioneFont({
+  weight: "500",
+  src: "../fonts/damione/Damione.ttf",
+  variable: "--damione-font",
+});
+
+const blenderFont = BlenderProFont({
+  src: [
+    {
+      path: "../fonts/blender-pro/BlenderPro-Thin.ttf",
+      weight: "300",
+    },
+    {
+      path: "../fonts/blender-pro/BlenderPro-Medium.ttf",
+      weight: "500",
+    },
+    {
+      path: "../fonts/blender-pro/BlenderPro-Bold.ttf",
+      weight: "700",
+    },
+  ],
+  variable: "--blender-font",
+});
 
 export default function RootLayout({
   children,
@@ -18,11 +44,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body>
+      <body
+        className={`${damioneFont.variable} ${blenderFont.variable} bg-background text-color`}
+      >
         <ReduxProvider>
           <Header />
-          <main className="main-layout">{children}</main>
-          <Footer/>
+          <main className="max-w-[1920px] mx-auto">{children}</main>
         </ReduxProvider>
       </body>
     </html>
