@@ -36,7 +36,7 @@ export const authApi = createApi({
         url: '/auth/refresh',
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${getCookieData('auth-rt')}`
+          Authorization: `Bearer ${getCookieData('auth-refresh')}`
         },
       }),
     }),

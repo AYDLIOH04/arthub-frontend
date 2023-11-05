@@ -1,6 +1,6 @@
 "use client";
 
-import sweetSoftLogo from "public/home/sweet-soft.png";
+import sweetSoftLogo from "public/home/sweet-soft.svg";
 import Image from "next/image";
 import { BsDiscord, BsTelegram, BsGithub } from "react-icons/bs";
 import { motion } from "framer-motion";
@@ -39,13 +39,13 @@ export default function Footer() {
       >
         <h3 className="">Ссылки</h3>
         <ul className="mt-3 flex justify-center space-x-3 text-[28px]">
-          <li>
+          <li className="hover:text-hover linear duration-200">
             <BsDiscord />
           </li>
-          <li>
+          <li className="hover:text-hover linear duration-200">
             <BsTelegram />
           </li>
-          <li>
+          <li className="hover:text-hover linear duration-200">
             <BsGithub />
           </li>
         </ul>

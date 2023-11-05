@@ -18,7 +18,7 @@ export default function AuthProvider({
   }
 
   useEffect(() => {
-    const rt = Cookies.get("auth-rt");
+    const rt = Cookies.get("auth-refresh");
     if (rt) {
       refreshTokens();
     }

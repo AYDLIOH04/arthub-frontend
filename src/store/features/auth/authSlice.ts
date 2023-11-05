@@ -20,7 +20,7 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<IAuth>) => {
-      Cookies.set("auth-rt", JSON.stringify(action.payload.refresh_token), { expires: 7 });
+      Cookies.set("auth-refresh", JSON.stringify(action.payload.refresh_token), { expires: 7 });
       Cookies.set("auth-data", JSON.stringify({ email: action.payload.email, token: action.payload.access_token }), { expires: 1 });
 
       const user = Cookies.get("auth-data");
@@ -43,7 +43,7 @@ export const authSlice = createSlice({
     },
     logout: (state) => {
       Cookies.remove("auth-data");
-      Cookies.remove("auth-rt");
+      Cookies.remove("auth-refresh");
       state.email = null;
       state.accessToken = null;
       state.isAuth = false;
