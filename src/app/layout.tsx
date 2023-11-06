@@ -49,7 +49,7 @@ export default function RootLayout({
       >
         <ReduxProvider>
           <Header />
-          <main className="max-w-[1920px] mx-auto">{children}</main>
+          <main>{children}</main>
         </ReduxProvider>
       </body>
     </html>
