@@ -8,12 +8,12 @@ import { motion } from "framer-motion";
 export default function Footer() {
   return (
     <footer className="font-damione px-5 py-2 text-white text-center w-full h-[250px] flex justify-center items-center text-[10px] md:text-[18px]">
-      <div className="flex justify-center items-center max-h-[150px] w-full">
+      <div className="flex justify-center items-center max-h-[150px] w-full z-10">
         <motion.div
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          viewport={{once: true}}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="w-1/4 flex justify-center items-center flex-col"
         >
           <h3 className="uppercase">Созданно командой</h3>
@@ -27,8 +27,8 @@ export default function Footer() {
         <motion.div
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          viewport={{once: true}}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="w-1/2"
         >
           <h3 className="uppercase text-[16px] md:text-[20px]">ARTHUB</h3>
@@ -37,8 +37,8 @@ export default function Footer() {
         <motion.div
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          viewport={{once: true}}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="w-1/4"
         >
           <h3>Ссылки</h3>

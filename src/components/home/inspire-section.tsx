@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function InspireSection() {
   return (
     <section className="h-[100vh] flex justify-center items-center text-center">
-      <div className="flex justify-center items-center flex-col h-[500px] pt-[140px] gl:pt-0">
+      <div className="flex justify-center items-center flex-col h-[500px] pt-[140px] gl:pt-0 z-10">
         <motion.h2
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
