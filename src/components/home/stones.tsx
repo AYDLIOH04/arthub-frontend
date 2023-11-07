@@ -1,16 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 export function LeftStone() {
   return (
     <motion.div
-      initial={{ x: -400, y: 0}}
-      animate={{ x: 0, y: 200}}
+      initial={{ x: -400, y: 80 }}
+      animate={{ x: 0, y: 265 }}
       transition={{ duration: 1.3, ease: "easeOut" }}
       className="absolute left-0"
     >
-      <img src="/home/left-stone.png" alt="left-stone" />
+      <Image
+        src="/home/left-stone.png"
+        height={1020}
+        width={450}
+        alt="left-stone"
+      />
     </motion.div>
   );
 }
@@ -18,12 +24,17 @@ export function LeftStone() {
 export function RightStone() {
   return (
     <motion.div
-      initial={{ x: 400, y: 0}}
-      animate={{ x: 0, y: 200}}
+      initial={{ x: 400, y: 0 }}
+      animate={{ x: 0, y: 200 }}
       transition={{ duration: 1.3, ease: "easeOut" }}
       className="absolute right-0"
     >
-      <img src="/home/right-stone.png" alt="right-stone" />
+      <Image
+        src="/home/right-stone.png"
+        height={1020}
+        width={450}
+        alt="left-stone"
+      />
     </motion.div>
   );
 }
