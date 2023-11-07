@@ -43,6 +43,7 @@ module.exports = {
       lg: "1024px", // Large screens
       xl: "1280px", // Extra-large screens
       "1120px": "1120px", // Показываем header
+      gl: "1920px"
     },
   },
   plugins: [],

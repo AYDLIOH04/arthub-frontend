@@ -1,4 +1,5 @@
 import Footer from "@/components/home/Footer";
+import StarsBackground from "@/components/home/stars-bg";
 
 export default function RootLayout({
   children,
@@ -7,10 +8,11 @@ export default function RootLayout({
 }) {
   return (
     <main className="home-layout">
-      <div className="home-inner">
-        {children}
-        <Footer />
+      <div className="relative">
+        <StarsBackground />
       </div>
+      {children}
+      <Footer />
     </main>
   );
 }

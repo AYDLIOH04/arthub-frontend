@@ -55,15 +55,15 @@ export default function SignUpForm({ setShowRegister }: any) {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="peer placeholder:opacity-0 block min-h-[auto] w-full rounded bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear border-2 border-indigo-100 focus:border-indigo-400 text-neutral-600"
+          className="peer placeholder:opacity-0 block min-h-[auto] w-full rounded bg-background px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear border-2 border-dusk text-white"
           id="signupEmail"
           placeholder="Enter email"
         />
         <label
           htmlFor="signupEmail"
-          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${
-            email && "-translate-y-[1rem] scale-[0.8] text-primary"
-          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
+          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-dusk transition-all duration-200 ease-out ${
+            email && "-translate-y-[1rem] scale-[0.8] text-dusk"
+          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] z-10 bg-background px-2 py-0 m-0 rounded-xl`}
         >
           Email address
         </label>
@@ -74,15 +74,15 @@ export default function SignUpForm({ setShowRegister }: any) {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="peer placeholder:opacity-0 block min-h-[auto] w-full rounded bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear border-2 border-indigo-100 focus:border-indigo-400 text-neutral-600"
+          className="peer placeholder:opacity-0 block min-h-[auto] w-full rounded bg-background px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear border-2 border-dusk focus:border-indigo-400 text-white"
           id="signinPassword"
           placeholder="Enter password"
         />
         <label
           htmlFor="signinPassword"
-          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-neutral-400 transition-all duration-200 ease-out ${
-            password && "-translate-y-[1rem] scale-[0.8] text-primary"
-          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] peer-focus:text-primary z-10 bg-white px-2 py-0 m-0 rounded-xl`}
+          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-dusk transition-all duration-200 ease-out ${
+            password && "-translate-y-[1rem] scale-[0.8] text-dusk"
+          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] z-10 bg-background px-2 py-0 m-0 rounded-xl`}
         >
           Password
         </label>
@@ -90,7 +90,7 @@ export default function SignUpForm({ setShowRegister }: any) {
 
       <button
         type="submit"
-        className="text-white text-[18px] bg-indigo-400 hover:bg-indigo-300 rounded-lg px-4 py-3 ease-in duration-150"
+        className="text-white text-[20px] bg-dusk hover:bg-hover rounded-lg px-4 py-3 ease-in duration-200"
       >
         Sign Up
       </button>
@@ -100,7 +100,7 @@ export default function SignUpForm({ setShowRegister }: any) {
           Есть аккаунт?{" "}
           <a
             onClick={() => setShowRegister(false)}
-            className="cursor-pointer hover:text-blue-500 ease-in duration-150 font-bold"
+            className="cursor-pointer hover:text-hover ease-out duration-200 font-bold"
           >
             {" "}
             Вход
