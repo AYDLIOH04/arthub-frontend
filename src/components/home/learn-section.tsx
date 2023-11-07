@@ -7,8 +7,9 @@ export default function LearnSection() {
     <section className="h-[100vh] flex justify-center items-center text-center">
       <motion.div
         initial={{ opacity: 0, y: 150 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.3, ease: "easeOut"}}
+        viewport={{ once: true }}
         className="flex justify-center items-center flex-col h-[500px]"
       >
         <h2 className="font-title text-[25px] md:text-[50px] uppercase">Обучайтесь</h2>

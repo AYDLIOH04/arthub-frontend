@@ -7,8 +7,10 @@ export default function RootLayout({
 }) {
   return (
     <main className="home-layout">
-      <div>{children}</div>
-      <Footer />
+      <div className="home-inner">
+        {children}
+        <Footer />
+      </div>
     </main>
   );
 }

@@ -12,7 +12,8 @@ export default function Footer() {
         <motion.div
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          viewport={{once: true}}
           className="w-1/4 flex justify-center items-center flex-col"
         >
           <h3 className="uppercase">Созданно командой</h3>
@@ -26,7 +27,8 @@ export default function Footer() {
         <motion.div
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          viewport={{once: true}}
           className="w-1/2"
         >
           <h3 className="uppercase text-[16px] md:text-[20px]">ARTHUB</h3>
@@ -35,7 +37,8 @@ export default function Footer() {
         <motion.div
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          viewport={{once: true}}
           className="w-1/4"
         >
           <h3>Ссылки</h3>

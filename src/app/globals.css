@@ -16,10 +16,20 @@
 
 .home-layout {
   width: 100%;
-  background-image: url('/home/bg-image.png');
+  background-image: url('/home/bg-image.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  
+  overflow: hidden;
+}
+
+.home-inner {
+  width: 100%;
+  background-image: url('/home/stars-after-bg.png');
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
 
-  overflow-y: hidden;
+  overflow: hidden;
 }

@@ -9,7 +9,8 @@ export default function InspireSection() {
         <motion.h2
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="font-title text-[25px] md:text-[50px] uppercase"
         >
           Вдохновляйтесь
@@ -17,7 +18,8 @@ export default function InspireSection() {
         <motion.p
           initial={{ scale: 0.6, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
           className="font-paragraph text-center text-[20px] md:text-[30px] mt-5 md:w-[420px] mx-auto font-[300] leading-8"
         >
           нашей коллекцией изображений или используйте их в качестве референсов
