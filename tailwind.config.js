@@ -14,6 +14,7 @@ module.exports = {
       },
     },
     colors: {
+      inherit: "inherit",
       background: "#321C4F",
       color: "#fff",
       hover: "#A175FF",
