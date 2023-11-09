@@ -26,7 +26,7 @@ export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
 
   return (
     <div
-      className={`fixed top-[70px] right-[5px] w-0 min-h-25 shadow-xl bg-indigo-400 transition-transform transform rounded-xl ${
+      className={`fixed top-[90px] left-[5px] w-0 min-h-25 shadow-xl bg-second transition-transform transform rounded-xl ${
         isOpen ? "w-36" : "w-0"
       } overflow-hidden`}
     >

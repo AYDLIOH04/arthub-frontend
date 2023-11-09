@@ -9,7 +9,7 @@ export function LeftStone() {
       initial={{ x: -400, y: 80 }}
       animate={{ x: 0, y: 265 }}
       transition={{ duration: 1.3, ease: "easeOut" }}
-      className="absolute left-0"
+      className="absolute left-0 w-[250px] sm:w-full flex justify-start"
     >
       <Image
         src="/home/left-stone.png"
@@ -27,7 +27,7 @@ export function RightStone() {
       initial={{ x: 400, y: 0 }}
       animate={{ x: 0, y: 200 }}
       transition={{ duration: 1.3, ease: "easeOut" }}
-      className="absolute right-0"
+      className="absolute right-0 w-[250px] sm:w-full flex justify-end"
     >
       <Image
         src="/home/right-stone.png"

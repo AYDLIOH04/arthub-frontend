@@ -17,6 +17,7 @@ module.exports = {
       background: "#321C4F",
       color: "#fff",
       hover: "#A175FF",
+      second: "#705CA5",
       active: "#A175FF",
       black: "#000",
       ashBlack: "#222",

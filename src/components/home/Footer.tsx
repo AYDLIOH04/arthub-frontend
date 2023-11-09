@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer className="font-damione px-5 py-2 text-white text-center w-full h-[250px] flex justify-center items-center text-[10px] md:text-[18px]">
+    <footer className="font-damione px-5 py-2 text-white text-center w-full h-[250px] flex justify-center items-end sm:items-center text-[10px] md:text-[18px]">
       <div className="flex justify-center items-center max-h-[150px] w-full z-10">
         <motion.div
           initial={{ scale: 0.6, opacity: 0 }}

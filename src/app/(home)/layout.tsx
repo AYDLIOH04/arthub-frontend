@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <main className="home-layout">
-      <div className="relative">
+      <div className="relative h-full">
         <StarsBackground />
       </div>
       {children}

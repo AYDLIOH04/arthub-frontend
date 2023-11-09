@@ -22,4 +22,11 @@
   background-repeat: no-repeat;
   
   overflow: hidden;
+  width: 100%;
+}
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  .home-layout {
+    background-image: url("/home/mobile-bg.png");
+  }
 }

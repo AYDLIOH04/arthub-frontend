@@ -7,10 +7,10 @@ interface BurgerButtonProps {
 
 export default function BurgerButton({toggleMenu, isOpen}: BurgerButtonProps) {
   return (
-    <div className="block 1120px:hidden">
+    <div className="block 1120px:hidden relative left-2 top-0 z-100">
       <button
         onClick={toggleMenu}
-        className="text-gray-500 hover:text-gray-900 focus:outline-none"
+        className="text-gray-500 focus:outline-none bg-second px-3 py-3 rounded-[50%]"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
