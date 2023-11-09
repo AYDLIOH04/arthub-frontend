@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function InspireSection() {
   return (
-    <section className="h-[100vh] flex justify-center items-center text-center sm:pt-[140px] pt-[440px]">
+    <section className="sm:h-[100vh] h-[800px] flex justify-center items-center text-center sm:pt-[140px] pt-[400px] mb-[120px] sm:mb-[50px]">
       <div className="flex justify-center items-center flex-col h-[500px] gl:pt-0 z-0">
         <motion.h2
           initial={{ scale: 0.6, opacity: 0 }}

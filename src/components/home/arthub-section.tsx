@@ -10,7 +10,7 @@ export default function ArthubSection() {
       <div className="relative z-0">
         <Stalactites />
       </div>
-      <section className="flex justify-center items-center h-[100vh] z-0 relative">
+      <section className="sm:h-[100vh] h-[800px] flex justify-center items-center z-0 relative">
         <LeftStone/>
         <RightStone/>
 

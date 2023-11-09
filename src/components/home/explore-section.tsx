@@ -5,7 +5,7 @@ import Programs from "./programs";
 
 export default function ExploreSection() {
   return (
-    <section className="h-[100vh] flex flex-col justify-center items-center text-center mb-[150px]">
+    <section className="sm:h-[100vh] h-[800px] flex flex-col justify-center items-center text-center sm:mb-[150px]">
       <motion.div
         initial={{ opacity: 0, y: 300 }}
         whileInView={{ y: 0, opacity: 1 }}

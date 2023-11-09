@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function LearnSection() {
   return (
-    <section className="h-[100vh] flex justify-center items-center text-center">
+    <section className="sm:h-[100vh] h-[800px] flex justify-center items-center text-center">
       <motion.div
         initial={{ opacity: 0, y: 150 }}
         whileInView={{ y: 0, opacity: 1 }}
