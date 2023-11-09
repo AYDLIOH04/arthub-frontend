@@ -65,19 +65,19 @@ export default function Programs() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1, duration: 0.7 }}
       >
-        <li>
+        <li className="hover:text-hover">
           <CgFigma />
         </li>
-        <li>
+        <li className="hover:text-hover">
           <SiAdobephotoshop />
         </li>
-        <li>
+        <li className="hover:text-hover">
           <SiKrita />
         </li>
-        <li>
+        <li className="hover:text-hover">
           <SiAdobeillustrator />
         </li>
-        <li>
+        <li className="hover:text-hover">
           <SiInkscape />
         </li>
       </motion.ul>
