@@ -10,7 +10,7 @@ export default function Stalactites() {
       transition={{ duration: 1.3, ease: "easeOut" }}
       className="absolute top-0 w-full overflow-hidden z-0"
     >
-      <img src="/home/stalactites.png" alt="bg" className="w-full" />
+      <img src="/home/stalactites.png" alt="" className="w-full pointer-events-none select-none" />
     </motion.div>
   );
 }

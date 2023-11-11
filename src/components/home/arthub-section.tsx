@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Stalactites from "@/components/home/stalactites";
-import {LeftStone, RightStone} from "./stones";
+import { LeftStone, RightStone } from "./stones";
 
 export default function ArthubSection() {
   return (
@@ -10,11 +10,10 @@ export default function ArthubSection() {
       <div className="relative z-0">
         <Stalactites />
       </div>
-      <section className="sm:h-[100vh] h-[800px] flex justify-center items-center z-0 relative">
-        <LeftStone/>
-        <RightStone/>
-
-        <div className="flex justify-center items-center flex-col h-[500px] z-0">
+      <section className="sm:h-[100vh] h-[800px] flex justify-center items-center z-10 relative">
+        <LeftStone />
+        <RightStone />
+        <div className="flex justify-center items-center flex-col h-[500px] z-10">
           <motion.h1
             initial={{ y: -200, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}

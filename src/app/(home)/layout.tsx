@@ -8,9 +8,7 @@ export default function Layout({
 }) {
   return (
     <main className="home-layout">
-      <div className="relative">
-        <StarsBackground />
-      </div>
+      <StarsBackground />
       {children}
       <Footer />
     </main>

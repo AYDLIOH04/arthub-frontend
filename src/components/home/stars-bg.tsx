@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function StarsBackground() {
   return (
-    <>
-      <div className="w-full absolute top-0 overflow-hidden z-0 sm:flex hidden">
+    <div className="w-full absolute top-0 overflow-hidden z-0">
+      <div className="sm:flex hidden">
         <motion.img
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
@@ -17,7 +17,7 @@ export default function StarsBackground() {
           }}
           src="/home/stars-1.png"
           alt="stars-1"
-          className="h-full w-full absolute top-0"
+          className="h-full w-full absolute top-0 pointer-events-none select-none"
         />
         <motion.img
           initial={{ opacity: 0 }}
@@ -31,10 +31,10 @@ export default function StarsBackground() {
           }}
           src="/home/stars-2.png"
           alt="stars-2"
-          className="h-full w-full top-0"
+          className="h-full w-full top-0 pointer-events-none select-none"
         />
       </div>
-      <div className="w-full absolute top-0 overflow-hidden z-0 sm:hidden flex">
+      <div className="sm:hidden flex">
         <motion.img
           initial={{ opacity: 1 }}
           animate={{ opacity: 0 }}
@@ -46,7 +46,7 @@ export default function StarsBackground() {
           }}
           src="/home/mobile-stars-1.png"
           alt="stars-1"
-          className="min-w-full absolute top-0 h-[3450px]"
+          className="min-w-full absolute top-0 h-[3450px] pointer-events-none select-none"
         />
         <motion.img
           initial={{ opacity: 0 }}
@@ -60,9 +60,9 @@ export default function StarsBackground() {
           }}
           src="/home/mobile-stars-2.png"
           alt="stars-2"
-          className="min-w-full top-0 h-[3450px]"
+          className="min-w-full top-0 h-[3450px] pointer-events-none select-none"
         />
       </div>
-    </>
+    </div>
   );
 }

@@ -23,6 +23,7 @@
   
   overflow: hidden;
   height: 100%;
+  position: relative;
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
