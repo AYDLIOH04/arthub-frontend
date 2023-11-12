@@ -8,6 +8,8 @@ import { toast } from "react-toastify";
 export default function SignUpForm({ setShowRegister }: any) {
   const [email, setEmail] = useState<string | any>("");
   const [password, setPassword] = useState<string | any>("");
+  const [login, setLogin] = useState<string | any>("");
+
   const router = useRouter();
 
   const dispatch = useAppDispatch();
@@ -23,8 +25,8 @@ export default function SignUpForm({ setShowRegister }: any) {
 
   async function registrationHandler(e: MouseEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (email && password) {
-      await registerUser({ email, password });
+    if (email && password && login) {
+      await registerUser({ email, password, login });
     }
   }
 
@@ -33,6 +35,7 @@ export default function SignUpForm({ setShowRegister }: any) {
       dispatch(setUser(registerData));
       setEmail("");
       setPassword("");
+      setLogin("");
       toast.success("Регистрация успешена")
       router.back();
     }
@@ -47,10 +50,10 @@ export default function SignUpForm({ setShowRegister }: any) {
   return (
     <form
       onSubmit={registrationHandler}
-      className="block max-w-sm rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mx-auto"
+      className="block max-w-sm rounded-lg p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] mx-auto"
     >
       <h1 className="text-[20px] text-center mb-5">Регистрация</h1>
-      <div className="relative mb-12" data-te-input-wrapper-init>
+      <div className="relative mb-6" data-te-input-wrapper-init>
         <input
           type="email"
           value={email}
@@ -85,6 +88,25 @@ export default function SignUpForm({ setShowRegister }: any) {
           } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] z-10 bg-background px-2 py-0 m-0 rounded-xl`}
         >
           Password
+        </label>
+      </div>
+
+      <div className="relative mb-12" data-te-input-wrapper-init>
+        <input
+          type="login"
+          value={login}
+          onChange={(e) => setLogin(e.target.value)}
+          className="peer placeholder:opacity-0 block min-h-[auto] w-full rounded bg-background px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear border-2 border-dusk text-white"
+          id="signupLogin"
+          placeholder="Enter login"
+        />
+        <label
+          htmlFor="signupLogin"
+          className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] truncate leading-[1.6] text-dusk transition-all duration-200 ease-out ${
+            login && "-translate-y-[1rem] scale-[0.8] text-dusk"
+          } peer-focus:-translate-y-[1rem] peer-focus:scale-[0.8] z-10 bg-background px-2 py-0 m-0 rounded-xl`}
+        >
+          Login
         </label>
       </div>
 

@@ -1,7 +1,7 @@
 import { IBrush } from '@/models/IBrush';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = 'http://localhost:5000/';
+const baseUrl = process.env.BACKEND_URL;
 
 export const brushesApi = createApi({
   reducerPath: 'brushesApi',
