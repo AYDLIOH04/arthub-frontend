@@ -1,8 +1,8 @@
 'use client'
 
 import { useState } from "react";
-import BurgerButton from "./BurgerButton";
-import BurgerPopup from "./BurgerPopup";
+import BurgerButton from "./burger-button";
+import BurgerPopup from "./burger-popup";
 
 export default function BurgerMenu() {
   const [isOpen, setIsOpen] = useState(false);

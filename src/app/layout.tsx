@@ -8,6 +8,9 @@ import "react-toastify/dist/ReactToastify.css";
 export const metadata: Metadata = {
   title: "ArtHub",
   description: "Digital design training",
+  icons: {
+    icon: 'icon.svg',
+  }
 };
 
 import DamioneFont from "next/font/local";

@@ -1,16 +1,19 @@
-import React from 'react'
+import React from "react";
 
 interface BurgerButtonProps {
   toggleMenu: () => void;
   isOpen: boolean;
 }
 
-export default function BurgerButton({toggleMenu, isOpen}: BurgerButtonProps) {
+export default function BurgerButton({
+  toggleMenu,
+  isOpen,
+}: BurgerButtonProps) {
   return (
-    <div className="block 1120px:hidden relative left-2 top-0 z-100">
+    <div className="block 1120px:hidden relative right-2 top-0 z-100">
       <button
         onClick={toggleMenu}
-        className="text-gray-500 focus:outline-none bg-second px-3 py-3 rounded-[50%]"
+        className="text-gray-500 focus:outline-none bg-second px-3 py-3 rounded-[50%] absolute right-0"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -37,5 +40,5 @@ export default function BurgerButton({toggleMenu, isOpen}: BurgerButtonProps) {
         </svg>
       </button>
     </div>
-  )
+  );
 }

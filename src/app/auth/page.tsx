@@ -1,4 +1,4 @@
-import Auth from "@/components/auth/Auth";
+import Auth from "@/components/auth/auth";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,9 +7,9 @@ export const metadata: Metadata = {
 
 const AuthPage = () => {
   return (
-    <main>
-      <Auth/>
-    </main>
+    <div className="flex justify-center items-center h-[100vh] px-3 relative">
+      <Auth />
+    </div>
   );
 };
 

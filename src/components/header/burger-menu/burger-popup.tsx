@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { links } from "../header-links";
+import { links } from "../links-data";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { logout } from "@/store/features/auth/authSlice";
 import { toast } from "react-toastify";
@@ -13,12 +13,12 @@ interface BurgerPopupProps {
 export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useAppDispatch();
-  const [logoutApi, {isSuccess}] = useLogoutMutation();
+  const [logoutApi, { isSuccess }] = useLogoutMutation();
 
   async function signOut() {
     toggleMenu();
     await logoutApi({});
-    if (isSuccess){
+    if (isSuccess) {
       dispatch(logout());
       toast.success("Выход успешен");
     }
@@ -26,7 +26,7 @@ export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
 
   return (
     <div
-      className={`fixed top-[90px] left-[5px] w-0 min-h-25 shadow-xl bg-second transition-transform transform rounded-xl ${
+      className={`fixed top-[90px] right-[5px] w-0 min-h-25 shadow-xl bg-second transition-transform transform rounded-xl ${
         isOpen ? "w-36" : "w-0"
       } overflow-hidden`}
     >

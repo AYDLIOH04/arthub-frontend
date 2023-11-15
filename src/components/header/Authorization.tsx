@@ -5,7 +5,7 @@ import {
   activeNavLinkStyles,
   authLinkStyles,
   navLinkStyles,
-} from "./header-links";
+} from "./links-data";
 import { usePathname } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toast } from "react-toastify";
@@ -32,18 +32,14 @@ export const Authorization = () => {
             <Link
               href="/profile"
               className={
-                navLinkStyles +
-                (pathname === "/profile" ? "text-hover" : "")
+                navLinkStyles + (pathname === "/profile" ? "text-hover" : "")
               }
             >
               Профиль
             </Link>
           </li>
           <li className="inline">
-            <button
-              onClick={signOut}
-              className={authLinkStyles}
-            >
+            <button onClick={signOut} className={authLinkStyles}>
               Выход
             </button>
           </li>

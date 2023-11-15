@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 const ProgramsPage = () => {
-  return <div className="h-[800px]">Programs</div>;
+  return <div className="text-center mt-[120px] text-2xl">Programs Page</div>;
 };
 
 export default ProgramsPage;

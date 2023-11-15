@@ -7,8 +7,8 @@ export default function ProfileDetails() {
   const {email} = useAppSelector(selectAuth);
 
   return (
-    <div>
-      <h2>Profile Details</h2>
+    <div className="text-center mt-[120px] ">
+      <h2 className="text-2xl">Profile Details</h2>
       <p>{email}</p>
     </div>
   )

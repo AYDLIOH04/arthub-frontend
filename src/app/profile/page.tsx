@@ -1,5 +1,5 @@
 import PrivatePageProvider from "@/components/PageProvider";
-import ProfileDetails from "@/components/profile/ProfileDetails";
+import ProfileDetails from "@/components/profile/profile-details";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const ProfilePage = () => {
   return (
     <PrivatePageProvider>
-      <ProfileDetails/>
+      <ProfileDetails />
     </PrivatePageProvider>
   );
 };

@@ -18,6 +18,8 @@ module.exports = {
       background: "#321C4F",
       color: "#fff",
       hover: "#A175FF",
+      main_purple: "#62469e",
+      second_purple: "#906ae2",
       second: "#705CA5",
       active: "#A175FF",
       black: "#000",

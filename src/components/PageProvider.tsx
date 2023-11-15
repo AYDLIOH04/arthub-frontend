@@ -9,5 +9,5 @@ export default function PrivatePageProvider({ children }: { children: any }) {
     redirect("/auth");
   }
 
-  return <main>{children}</main>;
+  return <>{children}</>;
 }

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 const ReferencesPage = () => {
-  return <div>ArtHub - References Page</div>;
+  return <div className="text-center mt-[120px] text-2xl">References Page</div>;
 };
 
 export default ReferencesPage;
