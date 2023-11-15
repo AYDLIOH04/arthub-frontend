@@ -1,4 +1,4 @@
-import Brushes from "@/components/brushes/brushes";
+import Brushes from "@/components/brushes/Brushes";
 import BrushesSearch from "@/components/brushes/brushes-search";
 import BrushesSelect from "@/components/brushes/brushes-select";
 import { Metadata } from "next";

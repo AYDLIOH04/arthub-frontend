@@ -1,4 +1,4 @@
-import { Authorization } from "./authorization";
+import { Authorization } from "./Authorization";
 import HeaderNav from "./header-nav";
 import BurgerMenu from "./burger-menu/burger-menu";
 
