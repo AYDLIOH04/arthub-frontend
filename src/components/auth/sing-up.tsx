@@ -95,7 +95,7 @@ export default function SignUpForm({ setShowRegister }: any) {
           className="cursor-pointer hover:text-hover ease-out duration-200 font-bold"
         >
           {" "}
-          Вход
+          Войти
         </a>
       </h2>
     </form>

@@ -88,7 +88,7 @@ export default function SignInForm({ setShowRegister }: any) {
           className="cursor-pointer hover:text-hover ease-out duration-200 font-bold"
         >
           {" "}
-          Войти
+          Зарегистрироваться
         </a>
       </h2>
     </form>
