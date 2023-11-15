@@ -7,7 +7,7 @@ import { useAppDispatch } from "@/store/hooks"; // Удалить
 import { useRouter } from "next/navigation";
 import { useLoginMutation } from "@/store/features/auth/authApi";
 import { toast } from "react-toastify";
-import Input from "../UI/auth-input";
+import AuthInput from "../UI/auth-input";
 
 export default function SignInForm({ setShowRegister }: any) {
   const [email, setEmail] = useState<string | any>("");
@@ -58,7 +58,7 @@ export default function SignInForm({ setShowRegister }: any) {
         Вход
       </h1>
 
-      <Input
+      <AuthInput
         value={email}
         onChange={(e: any) => setEmail(e.target.value)}
         type="email"
@@ -66,7 +66,7 @@ export default function SignInForm({ setShowRegister }: any) {
         placeholder="Email"
       />
 
-      <Input
+      <AuthInput
         value={password}
         onChange={(e: any) => setPassword(e.target.value)}
         type="password"

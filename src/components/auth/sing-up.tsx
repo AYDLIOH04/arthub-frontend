@@ -4,7 +4,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { useRouter } from "next/navigation";
 import { MouseEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import Input from "../UI/auth-input";
+import AuthInput from "../UI/auth-input";
 
 export default function SignUpForm({ setShowRegister }: any) {
   const [email, setEmail] = useState<string | any>("");
@@ -57,7 +57,7 @@ export default function SignUpForm({ setShowRegister }: any) {
         Регистрация
       </h1>
 
-      <Input
+      <AuthInput
         value={login}
         onChange={(e: any) => setLogin(e.target.value)}
         type="text"
@@ -65,7 +65,7 @@ export default function SignUpForm({ setShowRegister }: any) {
         placeholder="Username"
       />
 
-      <Input
+      <AuthInput
         value={email}
         onChange={(e: any) => setEmail(e.target.value)}
         type="email"
@@ -73,7 +73,7 @@ export default function SignUpForm({ setShowRegister }: any) {
         placeholder="Email"
       />
 
-      <Input
+      <AuthInput
         value={password}
         onChange={(e: any) => setPassword(e.target.value)}
         type="password"

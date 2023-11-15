@@ -6,7 +6,7 @@ type InputProps = {
   placeholder: string;
 };
 
-export default function Input({
+export default function AuthInput({
   id,
   type,
   value,
