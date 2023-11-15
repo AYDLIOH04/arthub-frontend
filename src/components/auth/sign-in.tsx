@@ -76,9 +76,9 @@ export default function SignInForm({ setShowRegister }: any) {
 
       <button
         type="submit"
-        className="text-white text-[20px] bg-background hover:bg-hover rounded-lg px-4 py-3 ease-in duration-200 w-full mt-8"
+        className="text-white text-[20px] bg-background hover:bg-hover rounded-lg px-4 py-3 ease-in duration-200 w-full mt-8 uppercase"
       >
-        Sign In
+        Войти
       </button>
 
       <h2 className="text-[20px]">
