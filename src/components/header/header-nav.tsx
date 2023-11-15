@@ -1,9 +1,7 @@
 "use client";
 import Link from "next/link";
-import { Authorization } from "./Authorization";
 import { usePathname } from "next/navigation";
 import { activeNavLinkStyles, navLinkStyles, links } from "./links-data";
-import BurgerMenu from "./burger-menu/burger-menu";
 
 export default function HeaderNav() {
   const pathname = usePathname();
