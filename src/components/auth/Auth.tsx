@@ -20,7 +20,7 @@ export default function Auth() {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="gl:w-[1200px] w-[900px] mx-auto md:flex bg-main_purple md:py-10 py-5 md:px-10 px-0 rounded-md"
+      className="gl:w-[1200px] w-[900px] mx-auto md:flex bg-main_purple md:py-10 py-5 md:px-10 px-0 rounded-xl"
     >
       <div className="md:w-1/2 w-full flex items-center z-50">
         {showRegister ? (

@@ -54,7 +54,7 @@ export default function SignInForm({ setShowRegister }: any) {
       onSubmit={loginHandler}
       className="max-w-sm rounded-lg p-6 mx-auto w-full flex flex-col gap-5 font-blender text-[25px]"
     >
-      <h1 className="text-[20px] text-center uppercase font-damione mb-4">
+      <h1 className="text-[25px] text-center uppercase mb-4">
         Вход
       </h1>
 
