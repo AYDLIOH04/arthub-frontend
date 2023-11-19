@@ -3,7 +3,7 @@
 import { useState } from "react";
 import SearchInput from "../UI/search-input";
 
-export default function BrushesSearch() {
+const BrushesSearch = () => {
   const [search, setSearch] = useState("");
 
   const brushesSearchSubmit = (e: any) => {
@@ -19,4 +19,6 @@ export default function BrushesSearch() {
       onSubmit={brushesSearchSubmit}
     />
   );
-}
+};
+
+export default BrushesSearch;

@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
 import { useState } from "react";
 import BurgerButton from "./burger-button";
 import BurgerPopup from "./burger-popup";
 
-export default function BurgerMenu() {
+const BurgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -17,4 +17,6 @@ export default function BurgerMenu() {
       <BurgerPopup toggleMenu={toggleMenu} isOpen={isOpen} />
     </>
   );
-}
+};
+
+export default BurgerMenu;

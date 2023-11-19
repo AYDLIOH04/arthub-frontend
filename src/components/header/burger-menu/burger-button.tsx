@@ -5,10 +5,7 @@ interface BurgerButtonProps {
   isOpen: boolean;
 }
 
-export default function BurgerButton({
-  toggleMenu,
-  isOpen,
-}: BurgerButtonProps) {
+const BurgerButton = ({ toggleMenu, isOpen }: BurgerButtonProps) => {
   return (
     <div className="block 1120px:hidden relative right-2 top-0 z-100">
       <button
@@ -41,4 +38,6 @@ export default function BurgerButton({
       </button>
     </div>
   );
-}
+};
+
+export default BurgerButton;

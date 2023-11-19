@@ -1,8 +1,8 @@
-import { Authorization } from "./Authorization";
+import Authorization from "./Authorization";
 import HeaderNav from "./header-nav";
 import BurgerMenu from "./burger-menu/burger-menu";
 
-export default function Header() {
+const Header = () => {
   return (
     <header className="my-[15px] py-4 font-blender uppercase px-5 1120px:flex justify-around items-center w-full fixed top-0 max-h-[68px] z-[100]">
       <HeaderNav />
@@ -10,4 +10,6 @@ export default function Header() {
       <BurgerMenu />
     </header>
   );
-}
+};
+
+export default Header;

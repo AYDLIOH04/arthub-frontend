@@ -7,7 +7,7 @@ import { useAppSelector } from "@/store/hooks";
 import { redirect } from "next/navigation";
 import { motion } from "framer-motion";
 
-export default function Auth() {
+const Auth = () => {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const [showRegister, setShowRegister] = useState(false);
 
@@ -34,4 +34,6 @@ export default function Auth() {
       </div>
     </motion.div>
   );
-}
+};
+
+export default Auth;

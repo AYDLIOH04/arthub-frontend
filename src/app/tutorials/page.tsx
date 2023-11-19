@@ -11,7 +11,7 @@ const TutorialsPage = () => {
   return (
     <PrivatePageProvider>
       <main className="text-center mt-[150px]">
-        <h1 className="text-2xl">Tutorials Page</h1>;
+        <h1 className="text-2xl">Tutorials Page</h1>
         <Video />
       </main>
     </PrivatePageProvider>

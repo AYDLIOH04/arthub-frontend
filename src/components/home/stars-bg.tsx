@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function StarsBackground() {
+const StarsBackground = () => {
   return (
     <div className="w-full absolute top-0 overflow-hidden z-0">
       <div className="sm:flex hidden">
@@ -65,4 +65,6 @@ export default function StarsBackground() {
       </div>
     </div>
   );
-}
+};
+
+export default StarsBackground;

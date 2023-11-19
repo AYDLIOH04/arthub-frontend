@@ -9,7 +9,7 @@ import {
 import { CgFigma } from "react-icons/cg";
 import { motion } from "framer-motion";
 
-export default function Programs() {
+const Programs = () => {
   return (
     <>
       <ul className="justify-center space-x-20 text-[80px] text-center text-white md:flex hidden">
@@ -83,4 +83,6 @@ export default function Programs() {
       </motion.ul>
     </>
   );
-}
+};
+
+export default Programs;

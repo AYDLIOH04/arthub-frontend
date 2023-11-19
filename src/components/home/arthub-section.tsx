@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Stalactites from "@/components/home/stalactites";
 import { LeftStone, RightStone } from "./stones";
 
-export default function ArthubSection() {
+const ArthubSection = () => {
   return (
     <>
       <div className="relative z-0">
@@ -37,4 +37,6 @@ export default function ArthubSection() {
       </section>
     </>
   );
-}
+};
+
+export default ArthubSection;

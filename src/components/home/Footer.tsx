@@ -5,7 +5,7 @@ import Image from "next/image";
 import { BsDiscord, BsTelegram, BsGithub } from "react-icons/bs";
 import { motion } from "framer-motion";
 
-export default function Footer() {
+const Footer = () => {
   return (
     <footer className="font-damione px-2 py-2 text-white text-center w-full text-[10px] md:text-[18px] z-10 relative">
       <motion.div
@@ -45,4 +45,6 @@ export default function Footer() {
       </motion.div>
     </footer>
   );
-}
+};
+
+export default Footer;

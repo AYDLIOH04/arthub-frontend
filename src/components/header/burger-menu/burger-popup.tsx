@@ -10,19 +10,19 @@ interface BurgerPopupProps {
   isOpen: boolean;
 }
 
-export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
+const BurgerPopup = ({ isOpen, toggleMenu }: BurgerPopupProps) => {
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useAppDispatch();
   const [logoutApi, { isSuccess }] = useLogoutMutation();
 
-  async function signOut() {
+  const signOut = async () => {
     toggleMenu();
     await logoutApi({});
     if (isSuccess) {
       dispatch(logout());
       toast.success("Выход успешен");
     }
-  }
+  };
 
   return (
     <div
@@ -62,4 +62,6 @@ export default function BurgerPopup({ isOpen, toggleMenu }: BurgerPopupProps) {
       </ul>
     </div>
   );
-}
+};
+
+export default BurgerPopup;

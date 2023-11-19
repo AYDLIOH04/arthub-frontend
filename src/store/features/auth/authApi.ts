@@ -46,7 +46,6 @@ export const authApi = createApi({
 export const { useLoginMutation, useRegisterMutation, useLogoutMutation, useRefreshMutation } = authApi;
 
 
-function getCookieData(data: string) {
+const getCookieData = (data: string) => {
   return JSON.parse(Cookies.get(data) || "{}");
 }
-

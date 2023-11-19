@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export function LeftStone() {
+export const LeftStone = () => {
   return (
     <motion.div
       initial={{ x: -400, y: 80 }}
@@ -20,9 +20,9 @@ export function LeftStone() {
       />
     </motion.div>
   );
-}
+};
 
-export function RightStone() {
+export const RightStone = () => {
   return (
     <motion.div
       initial={{ x: 400, y: 0 }}
@@ -39,4 +39,4 @@ export function RightStone() {
       />
     </motion.div>
   );
-}
+};

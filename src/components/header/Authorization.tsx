@@ -12,17 +12,17 @@ import { toast } from "react-toastify";
 import { logout } from "@/store/features/auth/authSlice";
 import { useLogoutMutation } from "@/store/features/auth/authApi";
 
-export const Authorization = () => {
+const Authorization = () => {
   const pathname = usePathname();
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useAppDispatch();
   const [logoutApi, {}] = useLogoutMutation();
 
-  async function signOut() {
+  const signOut = async () => {
     await logoutApi({});
     dispatch(logout());
     toast.success("Выход успешен");
-  }
+  };
 
   return (
     <div className="hidden 1120px:block">
@@ -54,3 +54,5 @@ export const Authorization = () => {
     </div>
   );
 };
+
+export default Authorization;

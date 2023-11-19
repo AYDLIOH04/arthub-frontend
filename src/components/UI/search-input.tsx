@@ -1,4 +1,5 @@
 import { FaSearch } from "react-icons/fa";
+import { RxCross2 } from "react-icons/rx";
 
 type SearchInputProps = {
   value: string;
@@ -6,11 +7,7 @@ type SearchInputProps = {
   onSubmit: any;
 };
 
-export default function SearchInput({
-  value,
-  onChange,
-  onSubmit,
-}: SearchInputProps) {
+const SearchInput = ({ value, onChange, onSubmit }: SearchInputProps) => {
   return (
     <form
       onSubmit={onSubmit}
@@ -22,8 +19,20 @@ export default function SearchInput({
       <input
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full outline-none bg-second_purple rounded h-full px-2 mr-3"
+        className={`${
+          value ? "mr-0" : "mr-4"
+        } w-full outline-none bg-second_purple rounded h-full px-2 placeholder:text-[#c0c0c0]`}
+        placeholder="Поиск..."
       />
+      <button
+        className={`${value ? "block" : "hidden"} text-[25px] mx-1 transition`}
+        onClick={() => onChange("")}
+        type="button"
+      >
+        <RxCross2 />
+      </button>
     </form>
   );
-}
+};
+
+export default SearchInput;

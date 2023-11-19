@@ -4,11 +4,7 @@ type SelectButtonProps = {
   children: any;
 };
 
-export default function SelectButton({
-  onClick,
-  text,
-  children,
-}: SelectButtonProps) {
+const SelectButton = ({ onClick, text, children }: SelectButtonProps) => {
   return (
     <button
       onClick={onClick}
@@ -20,4 +16,6 @@ export default function SelectButton({
       </div>
     </button>
   );
-}
+};
+
+export default SelectButton;

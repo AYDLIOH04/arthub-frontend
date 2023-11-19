@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function LearnSection() {
+const LearnSection = () => {
   return (
     <section className="sm:h-[100vh] h-[800px] flex justify-center items-center text-center z-10">
       <motion.div
@@ -21,4 +21,6 @@ export default function LearnSection() {
       </motion.div>
     </section>
   );
-}
+};
+
+export default LearnSection;

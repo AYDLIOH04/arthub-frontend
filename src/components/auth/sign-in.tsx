@@ -9,7 +9,7 @@ import { useLoginMutation } from "@/store/features/auth/authApi";
 import { toast } from "react-toastify";
 import AuthInput from "../UI/auth-input";
 
-export default function SignInForm({ setShowRegister }: any) {
+const SignInForm = ({ setShowRegister }: any) => {
   const [email, setEmail] = useState<string | any>("");
   const [password, setPassword] = useState<string | any>("");
   const router = useRouter();
@@ -26,12 +26,12 @@ export default function SignInForm({ setShowRegister }: any) {
     },
   ] = useLoginMutation();
 
-  async function loginHandler(e: MouseEvent<HTMLFormElement>) {
+  const loginHandler = async (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (email && password) {
       await loginUser({ email, password });
     }
-  }
+  };
 
   useEffect(() => {
     if (isLoginSucces) {
@@ -54,9 +54,7 @@ export default function SignInForm({ setShowRegister }: any) {
       onSubmit={loginHandler}
       className="max-w-sm rounded-lg p-6 mx-auto w-full flex flex-col gap-5 font-blender text-[25px]"
     >
-      <h1 className="text-[25px] text-center uppercase mb-4">
-        Вход
-      </h1>
+      <h1 className="text-[25px] text-center uppercase mb-4">Вход</h1>
 
       <AuthInput
         value={email}
@@ -93,4 +91,6 @@ export default function SignInForm({ setShowRegister }: any) {
       </h2>
     </form>
   );
-}
+};
+
+export default SignInForm;

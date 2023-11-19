@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { activeNavLinkStyles, navLinkStyles, links } from "./links-data";
 
-export default function HeaderNav() {
+const HeaderNav = () => {
   const pathname = usePathname();
 
   return (
@@ -25,4 +25,6 @@ export default function HeaderNav() {
       </ul>
     </nav>
   );
-}
+};
+
+export default HeaderNav;

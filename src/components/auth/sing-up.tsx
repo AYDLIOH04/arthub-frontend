@@ -6,14 +6,14 @@ import { MouseEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import AuthInput from "../UI/auth-input";
 
-export default function SignUpForm({ setShowRegister }: any) {
+const SignUpForm = ({ setShowRegister }: any) => {
   const [email, setEmail] = useState<string | any>("");
   const [password, setPassword] = useState<string | any>("");
   const [login, setLogin] = useState<string | any>("");
 
   const router = useRouter();
-
   const dispatch = useAppDispatch();
+
   const [
     registerUser,
     {
@@ -24,12 +24,12 @@ export default function SignUpForm({ setShowRegister }: any) {
     },
   ] = useRegisterMutation();
 
-  async function registrationHandler(e: MouseEvent<HTMLFormElement>) {
+  const registrationHandler = async (e: MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (email && password && login) {
       await registerUser({ email, password, login });
     }
-  }
+  };
 
   useEffect(() => {
     if (isRegisterSuccess) {
@@ -53,9 +53,7 @@ export default function SignUpForm({ setShowRegister }: any) {
       onSubmit={registrationHandler}
       className="max-w-sm rounded-lg p-6 mx-auto w-full flex flex-col gap-5 font-blender text-[25px]"
     >
-      <h1 className="text-[25px] text-center uppercase mb-4">
-        Регистрация
-      </h1>
+      <h1 className="text-[25px] text-center uppercase mb-4">Регистрация</h1>
 
       <AuthInput
         value={login}
@@ -100,4 +98,6 @@ export default function SignUpForm({ setShowRegister }: any) {
       </h2>
     </form>
   );
-}
+};
+
+export default SignUpForm;

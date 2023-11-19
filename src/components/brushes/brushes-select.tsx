@@ -25,7 +25,7 @@ const programList: Program[] = [
   { text: "Figma", icon: <CgFigma />, query: "figma" },
 ];
 
-export default function BrushesSelect() {
+const BrushesSelect = () => {
   const brushesClick = (query: string) => {
     console.log(query);
   };
@@ -33,10 +33,16 @@ export default function BrushesSelect() {
   return (
     <div className="flex flex-wrap space-x-4 md:mt-0 mt-3 justify-center">
       {programList.map((p) => (
-        <SelectButton onClick={() => brushesClick(p.query)} text={p.text}>
+        <SelectButton
+          key={p.text}
+          onClick={() => brushesClick(p.query)}
+          text={p.text}
+        >
           {p.icon}
         </SelectButton>
       ))}
     </div>
   );
-}
+};
+
+export default BrushesSelect;

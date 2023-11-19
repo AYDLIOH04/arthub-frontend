@@ -1,15 +1,16 @@
-'use client';
+"use client";
 
-import { selectAuth } from "@/store/features/auth/authSlice"
-import { useAppSelector } from "@/store/hooks"
+import useCurrentUser from "@/hooks/useCurrentUser";
 
-export default function ProfileDetails() {
-  const {email} = useAppSelector(selectAuth);
+const ProfileDetails = () => {
+  const user = useCurrentUser();
 
   return (
     <div className="text-center mt-[120px] ">
       <h2 className="text-2xl">Profile Details</h2>
-      <p>{email}</p>
+      <p>{user.email}</p>
     </div>
-  )
-}
+  );
+};
+
+export default ProfileDetails;

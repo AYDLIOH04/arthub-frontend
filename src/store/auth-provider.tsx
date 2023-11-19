@@ -5,17 +5,13 @@ import Cookies from "js-cookie";
 import { useRefreshMutation } from "./features/auth/authApi";
 import { toast } from "react-toastify";
 
-export default function AuthProvider({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useAppDispatch();
   const [refreshTokensApi, { data, isSuccess, isError }] = useRefreshMutation();
 
-  async function refreshTokens() {
+  const refreshTokens = async () => {
     return await refreshTokensApi({});
-  }
+  };
 
   useEffect(() => {
     const rt = Cookies.get("auth-refresh");
@@ -39,4 +35,6 @@ export default function AuthProvider({
   }, [isError]);
 
   return <>{children}</>;
-}
+};
+
+export default AuthProvider;

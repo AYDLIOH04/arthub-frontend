@@ -6,14 +6,7 @@ type InputProps = {
   placeholder: string;
 };
 
-export default function AuthInput({
-  id,
-  type,
-  value,
-  onChange,
-  placeholder,
-  
-}: InputProps) {
+const AuthInput = ({ id, type, value, onChange, placeholder }: InputProps) => {
   return (
     <div className="relative">
       <input
@@ -34,4 +27,6 @@ export default function AuthInput({
       </label>
     </div>
   );
-}
+};
+
+export default AuthInput;

@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: "ArtHub",
   description: "Digital design training",
   icons: {
-    icon: 'icon.svg',
-  }
+    icon: "icon.svg",
+  },
 };
 
 import DamioneFont from "next/font/local";
@@ -40,11 +40,7 @@ const blenderFont = BlenderProFont({
   variable: "--blender-font",
 });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ru">
       <body
@@ -57,4 +53,6 @@ export default function RootLayout({
       </body>
     </html>
   );
-}
+};
+
+export default RootLayout;

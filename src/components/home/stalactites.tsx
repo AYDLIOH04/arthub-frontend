@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-export default function Stalactites() {
+const Stalactites = () => {
   return (
     <motion.div
       initial={{ y: -1000, scale: 1.5 }}
@@ -13,4 +13,6 @@ export default function Stalactites() {
       <img src="/home/stalactites.png" alt="" className="w-full pointer-events-none select-none" />
     </motion.div>
   );
-}
+};
+
+export default Stalactites;
