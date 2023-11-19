@@ -10,8 +10,8 @@ export const metadata: Metadata = {
 
 const BrushesPage = () => {
   return (
-    <div className="max-w-[1200px] mx-auto mt-[120px]">
-      <div className="md:flex md:space-x-10 items-center md:mx-0 mx-2 mb-5">
+    <div className="w-full lg:max-w-[1400px] mx-auto mt-[120px] font-blender">
+      <div className="flex flex-col md:flex-row md:space-x-10 justify-center items-center md:mx-0 mx-2 mb-5 gap-1">
         <BrushesSearch />
         <BrushesSelect />
       </div>

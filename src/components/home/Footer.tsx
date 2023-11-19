@@ -13,7 +13,7 @@ const Footer = () => {
         whileInView={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="flex justify-center items-start sm:items-center max-h-[150px] sm:min-h-[200px] w-full z-10 bg-background sm:bg-inherit px-4 py-2 rounded-[12px]"
+        className="flex justify-center items-start sm:items-center max-h-[150px] sm:min-h-[200px] w-full z-10 bg-page_elem_bg sm:bg-inherit px-4 py-2 rounded-[12px]"
       >
         <div className="w-1/4 flex justify-center items-center flex-col">
           <h3 className="uppercase">Созданно командой</h3>

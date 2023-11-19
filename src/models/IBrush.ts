@@ -1,6 +1,8 @@
 export interface IBrush {
   id: Number;
+  description: string;
   title: string;
-  size: Number;
+  programm: string;
   link: string; 
+  image: string
 }

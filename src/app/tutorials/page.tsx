@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const TutorialsPage = () => {
   return (
     <PrivatePageProvider>
-      <main className="text-center mt-[150px]">
+      <main className="text-center mt-[120px]">
         <h1 className="text-2xl">Tutorials Page</h1>
         <Video />
       </main>

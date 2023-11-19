@@ -22,7 +22,7 @@ const SearchInput = ({ value, onChange, onSubmit }: SearchInputProps) => {
         className={`${
           value ? "mr-0" : "mr-4"
         } w-full outline-none bg-second_purple rounded h-full px-2 placeholder:text-[#c0c0c0]`}
-        placeholder="Поиск..."
+        placeholder="Поиск"
       />
       <button
         className={`${value ? "block" : "hidden"} text-[25px] mx-1 transition`}
