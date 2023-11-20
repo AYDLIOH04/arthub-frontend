@@ -1,10 +1,11 @@
 type SelectButtonProps = {
   text: string;
   onClick: any;
-  children: any;
+  icon: any;
 };
 
-const SelectButton = ({ onClick, text, children }: SelectButtonProps) => {
+const SelectButton = ({ onClick, text, icon }: SelectButtonProps) => {
+  const Icon = icon;
   return (
     <button
       onClick={onClick}
@@ -12,7 +13,7 @@ const SelectButton = ({ onClick, text, children }: SelectButtonProps) => {
     >
       <div className="flex items-center xl:space-x-3">
         <p className="text-[18px] pl-2 xl:block hidden">{text}</p>
-        {children}
+        <Icon/>
       </div>
     </button>
   );
