@@ -1,6 +1,6 @@
 "use client";
 
-import { useGetAllBrushesQuery } from "@/store/features/brushes/brushesApi";
+import { useGetBrushesQuery } from "@/store/features/brushes/brushesApi";
 import BrushesSkeleton from "../UI/skeletons/brushes-skeletons";
 import Brush from "./Brush";
 import { IBrush } from "@/models/IBrush";
@@ -99,7 +99,7 @@ const brushFakeData: IBrush[] = [
 ];
 
 const Brushes = () => {
-  const { data: brushes, isLoading } = useGetAllBrushesQuery();
+  const { data: brushes, isLoading } = useGetBrushesQuery();
 
   if (isLoading) return <BrushesSkeleton />;
 

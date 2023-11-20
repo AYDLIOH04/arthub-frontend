@@ -8,18 +8,17 @@ export const brushesApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Brushes'],
   endpoints: (builder) => ({
-    getAllBrushes: builder.query<string[], void>({
+    getBrushes: builder.query<IBrush[], void>({
       query: () => ({
-        url: 'brush',
+        url: 'brushes',
       }),
       providesTags: result => ['Brushes']
     }),
-
-    // getBrush: builder.query<IBrush, {id: number}>({
-    //   query: ({id}) => ({
-    //     url: `brushes/${id}`,
-    //   })
-    // }),
+    getBrush: builder.query<IBrush, {id: number}>({
+      query: ({id}) => ({
+        url: `brushes/${id}`,
+      })
+    }),
 
     // createBrush: builder.mutation<IBrush, Partial<IBrush>>({
     //   query: (brushData) => ({
@@ -58,10 +57,6 @@ export const brushesApi = createApi({
 });
 
 export const {
-  useGetAllBrushesQuery,
-  // useGetBrushQuery,
-  // useCreateBrushMutation,
-  // useUpdateBrushMutation,
-  // useDeleteBrushMutation,
-  // useAddToFavouritesMutation,
+  useGetBrushesQuery,
+  useGetBrushQuery,
 } = brushesApi;

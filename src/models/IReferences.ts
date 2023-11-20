@@ -1,4 +1,4 @@
-export interface IBrush {
+export interface IReference {
   id: number;
   description: string;
   title: string;

@@ -1,6 +1,6 @@
+import getCookieData from '@/utils/get-cookie';
 import { ICredential } from '@/models/ICredential';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import Cookies from 'js-cookie';
 
 const baseUrl = 'http://localhost:7000';
 
@@ -43,9 +43,11 @@ export const authApi = createApi({
   }),
 });
 
-export const { useLoginMutation, useRegisterMutation, useLogoutMutation, useRefreshMutation } = authApi;
+export const {
+  useLoginMutation,
+  useRegisterMutation,
+  useLogoutMutation,
+  useRefreshMutation,
+} = authApi;
 
 
-const getCookieData = (data: string) => {
-  return JSON.parse(Cookies.get(data) || "{}");
-}
