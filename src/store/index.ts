@@ -7,6 +7,7 @@ import { brushesApi } from './features/brushes/brushesApi';
 import { authApi } from './features/auth/authApi';
 import { programsApi } from './features/programs/programsApi';
 import { referencesApi } from './features/references/referencesApi';
+import { tutorialsApi } from './features/tutorials/tutorialsApi';
 
 export const store = configureStore({
   reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [programsApi.reducerPath]: programsApi.reducer,
     [referencesApi.reducerPath]: referencesApi.reducer,
+    [tutorialsApi.reducerPath]: tutorialsApi.reducer,
     auth: authReducer,
   },
   middleware: (getDefaultMiddleware) =>
@@ -24,6 +26,7 @@ export const store = configureStore({
       authApi.middleware,
       programsApi.middleware,
       referencesApi.middleware,
+      tutorialsApi.middleware,
     ),
 });
 

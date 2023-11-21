@@ -1,4 +1,4 @@
-import { IAuth, IRefresh } from '@/models/IAuth';
+import { IAuth, IRefresh } from '@/models';
 import { RootState } from '@/store';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Cookies from 'js-cookie';

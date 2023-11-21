@@ -1,18 +1,56 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IUser } from '@/models/IUser';
+import { IUser, IBrush, IReference, ITutorial, IProgram } from '@/models';
+import getCookieData from '@/utils/get-cookie';
 
 const baseUrl = 'http://localhost:7000';
 
 export const userApi = createApi({
   reducerPath: 'userApi',
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({
+    baseUrl,
+    prepareHeaders: (headers, { getState }) => {
+      const token = getCookieData('auth-data').token;
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      }
+      return headers;
+    },
+  }),
+  tagTypes: ['User'],
   endpoints: (builder) => ({
-    getUser: builder.query<IUser, void>({
-      query: (userId) => `users/${userId}`,
+    getUserInfo: builder.query<IUser, void>({
+      query: () => ({
+        url: '/user/info',
+      }),
+      providesTags: result => result ? [{ type: 'User', id: result.id }] : [],
+    }),
+    getUserBrushes: builder.query<IBrush[], void>({
+      query: () => ({
+        url: '/user/brushes',
+      }),
+    }),
+    getUserReferences: builder.query<IReference[], void>({
+      query: () => ({
+        url: '/user/references',
+      }),
+    }),
+    getUserTutorials: builder.query<ITutorial[], void>({
+      query: () => ({
+        url: '/user/tutorials',
+      }),
+    }),
+    getUserPrograms: builder.query<IProgram[], void>({
+      query: () => ({
+        url: '/user/programs',
+      }),
     }),
   }),
 });
 
-export const { useGetUserQuery } = userApi;
-export const userApiReducer = userApi.reducer;
-export const userApiMiddleware = userApi.middleware;
+export const {
+  useGetUserInfoQuery,
+  useGetUserBrushesQuery,
+  useGetUserReferencesQuery,
+  useGetUserTutorialsQuery,
+  useGetUserProgramsQuery,
+} = userApi;

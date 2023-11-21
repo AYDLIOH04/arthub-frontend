@@ -4,10 +4,11 @@ import {
   SiInkscape,
   SiAdobeillustrator,
 } from "react-icons/si";
-import { FaQuestion } from "react-icons/fa";
+import { FaLinux, FaQuestion, FaWindows } from "react-icons/fa";
 import { CgFigma } from "react-icons/cg";
+import { MacosIcon } from "@/components/UI/icons";
 
-const getIcon = (program: string) => {
+export const getProgramsIcon = (program: string) => {
   switch (program) {
     case "Krita":
       return SiKrita;
@@ -25,4 +26,15 @@ const getIcon = (program: string) => {
   }
 };
 
-export default getIcon;
+export const getSystemsIcon = (os: string) => {
+  switch (os) {
+    case "MacOS":
+      return MacosIcon;
+    case "Windows":
+      return FaWindows;
+    case "Linux":
+      return FaLinux;
+    default:
+      return FaQuestion;
+  }
+};

@@ -1,9 +1,8 @@
-export interface IProgram {
+export interface ITutorial {
   id: number;
   description: string;
   title: string;
   programm: string;
   link: string; 
-  image: string;
-  systems: string[];
+  image: string
 }

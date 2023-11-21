@@ -1,7 +1,7 @@
 "use client";
 
-import { IBrush } from "@/models/IBrush";
-import getIcon from "@/utils/get-icon";
+import { IBrush } from "@/models";
+import { getProgramsIcon } from "@/utils/get-icon";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
@@ -12,7 +12,7 @@ const Brush = ({ brush }: { brush: IBrush }) => {
     setIsFavorite((current) => !current);
   };
 
-  const Icon = getIcon(brush.programm);
+  const Icon = getProgramsIcon(brush.programm);
   const LikeIcon = isFavorite ? FaHeart : FaRegHeart;
   return (
     <div
@@ -51,7 +51,7 @@ const Brush = ({ brush }: { brush: IBrush }) => {
             {brush.title}
           </h2>
           <div
-            onClick={() => {}} // TODO реализовать!
+            onClick={() => {}} // TODO реализовать переход на программу
             className="flex flex-row items-center gap-2 cursor-pointer group/item"
           >
             <Icon className="text-[26px] sm:text-[20px] group-hover/item:text-indigo-200 transition" />

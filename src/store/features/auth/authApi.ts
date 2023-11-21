@@ -1,6 +1,6 @@
-import getCookieData from '@/utils/get-cookie';
-import { ICredential } from '@/models/ICredential';
+import { ICredential } from '@/models';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import getCookieData from '@/utils/get-cookie';
 
 const baseUrl = 'http://localhost:7000';
 
