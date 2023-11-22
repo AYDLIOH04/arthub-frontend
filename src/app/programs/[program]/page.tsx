@@ -48,7 +48,7 @@ const ProgramsPage = ({ params: { program } }: Props) => {
 
   return (
     <>
-      <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender">
+      <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender min-h-[calc(100vh - 120px)]">
         <ProgramPage program={data} />
       </div>
       <MainFooter/>
