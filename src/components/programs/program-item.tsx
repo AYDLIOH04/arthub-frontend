@@ -9,7 +9,7 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
       className="
       flex sm:flex-row flex-col gap-2
       border-2 border-indigo-300
-      rounded-md
+      rounded-md overflow-hidden
     "
     >
       <div className="sm:w-1/6 w-full flex justify-center items-center">
@@ -21,7 +21,7 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
           className="select-none pointer-events-none p-3 w-full"
         />
       </div>
-      <div className="bg-main_purple sm:w-5/6 w-full rounded-r-md px-4 py-3">
+      <div className="bg-main_purple sm:w-5/6 w-full px-4 py-3">
         <h2 className="border-b-2 border-[#8F81B5] inline text-[24px] pb-0.5">
           {program.name}
         </h2>

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import BrushesSkeleton from "../UI/skeletons/brushes-skeletons";
+import BrushesSkeleton from "../UI/skeletons/brushes-skeleton";
 import { useGetBrushesQuery } from "@/store/features/brushes/brushesApi";
 import Brush from "./Brush";
 import Pagination from "../UI/pagination";
