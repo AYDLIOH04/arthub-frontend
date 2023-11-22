@@ -2,22 +2,37 @@
 
 import { IBrush } from "@/models";
 import { getProgramsIcon } from "@/utils/get-icon";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const Brush = ({ brush }: { brush: IBrush }) => {
+const Brush = ({
+  brush,
+  openViewPopup,
+}: {
+  brush: IBrush;
+  openViewPopup: any;
+}) => {
+  const router = useRouter();
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const toggleFavorite = () => {
+  const toggleFavorite = (event: any) => {
+    event.stopPropagation();
     setIsFavorite((current) => !current);
+  };
+
+  const routeToProgram = (event: any, url: string) => {
+    event.stopPropagation();
+    router.push(url);
   };
 
   const Icon = getProgramsIcon(brush.program);
   const LikeIcon = isFavorite ? FaHeart : FaRegHeart;
   return (
     <div
+      onClick={() => openViewPopup(brush)}
       className="
-      group
+      group cursor-pointer
       flex flex-col gap-3
       border-2 border-indigo-300
       rounded-md overflow-hidden
@@ -34,7 +49,7 @@ const Brush = ({ brush }: { brush: IBrush }) => {
         />
         <div
           onClick={toggleFavorite}
-          className="flex sm:hidden group-hover:flex absolute right-2 top-2 w-[50px] h-[50px] transition duration-200 bg-white rounded-full  justify-center items-center"
+          className="cursor-pointer flex sm:hidden group-hover:flex absolute right-2 top-2 w-[50px] h-[50px] transition duration-200 bg-white rounded-full  justify-center items-center"
         >
           <LikeIcon className="text-background" size={30} />
         </div>
@@ -51,7 +66,9 @@ const Brush = ({ brush }: { brush: IBrush }) => {
             {brush.title}
           </h2>
           <div
-            onClick={() => {}} // TODO реализовать переход на программу
+            onClick={(event) =>
+              routeToProgram(event, `/programs/${brush.program.toLowerCase()}`)
+            }
             className="flex flex-row items-center gap-2 cursor-pointer group/item"
           >
             <Icon className="text-[26px] sm:text-[20px] group-hover/item:text-indigo-200 transition" />
