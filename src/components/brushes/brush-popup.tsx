@@ -68,7 +68,7 @@ const BrushPopup = ({
               <img
                 src={brush.image}
                 alt={`Brush ${brush.image}`}
-                className="w-[300px] mx-auto rounded-md drop-shadow-xl"
+                className="sm:w-[400px] w-[240px] mx-auto rounded-md drop-shadow-xl"
               />
             </div>
             <div className="flex flex-col items-center mt-4 gap-3">
