@@ -19,7 +19,7 @@ const AuthInput = ({ id, type, value, onChange, placeholder }: InputProps) => {
       />
       <label
         htmlFor={id}
-        className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] leading-[1.8] text-white transition-all duration-200 ease-out ${
+        className={`pointer-events-none absolute left-2 top-[6px] mb-0 max-w-[90%] origin-[0_0] leading-[1.8] text-background transition-all duration-200 ease-out ${
           value && `-translate-y-[1.5rem] scale-[0.8]`
         } peer-focus:-translate-y-[1.5rem] peer-focus:scale-[0.8] z-10 bg-main_purple px-2 py-0 m-0 rounded-xl`}
       >

@@ -2,7 +2,7 @@ export interface IBrush {
   id: number;
   description: string;
   title: string;
-  programm: string;
+  program: string;
   link: string; 
   image: string
 }

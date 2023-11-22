@@ -1,5 +1,5 @@
 const BrushesSkeleton = () => {
-  const brushCount = 10;
+  const brushCount = 12;
 
   const brushElements = [];
   for (let i = 0; i < brushCount; i++) {

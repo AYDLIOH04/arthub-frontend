@@ -9,10 +9,10 @@ export const referencesApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['References'],
   endpoints: (builder) => ({
-    getReferences: builder.query<IReference[], { page?: number; pageSize?: number }>({
-      query: ({ page = 1, pageSize = 10 }) => ({
+    getReferences: builder.query<IReference[], { page?: number; size?: number }>({
+      query: ({ page = 1, size = 10 }) => ({
         url: 'references',
-        params: { page, pageSize },
+        params: { page, size },
       }),
       providesTags: result => ['References'],
     }),
@@ -21,17 +21,17 @@ export const referencesApi = createApi({
         url: `references/${id}`,
       }),
     }),
-    sortReferences: builder.query<IReference[], { program: string; page?: number; pageSize?: number }>({
-      query: ({ program, page = 1, pageSize = 10 }) => ({
+    sortReferences: builder.query<IReference[], { tag: string; page?: number; size?: number }>({
+      query: ({ tag, page = 1, size = 10 }) => ({
         url: '/references',
-        params: { program, page, pageSize },
+        params: { tag, page, size },
       }),
       providesTags: result => ['References'],
     }),
-    searchReferences: builder.query<IReference[], { search: string; page?: number; pageSize?: number }>({
-      query: ({ search, page = 1, pageSize = 10 }) => ({
+    searchReferences: builder.query<IReference[], { search: string; page?: number; size?: number }>({
+      query: ({ search, page = 1, size = 10 }) => ({
         url: '/references',
-        params: { search, page, pageSize },
+        params: { search, page, size },
       }),
       providesTags: result => ['References'],
     }),

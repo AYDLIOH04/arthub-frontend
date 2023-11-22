@@ -1,3 +1,4 @@
+import MainFooter from "@/components/UI/main-footer";
 import ProgramsList from "@/components/programs/program-list";
 import ProgramsSearch from "@/components/programs/programs-search";
 import ProgramsSelect from "@/components/programs/programs-select";
@@ -10,15 +11,18 @@ export const metadata: Metadata = {
 
 const ProgramsPage = () => {
   return (
-    <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender">
-      <div className="mx-5">
-        <div className="flex flex-col md:flex-row md:space-x-10 justify-between items-center md:mx-0 mx-2 mb-5 gap-1">
-          <ProgramsSearch />
-          <ProgramsSelect />
+    <>
+      <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender">
+        <div className="mx-5">
+          <div className="flex flex-col md:flex-row md:space-x-10 justify-between items-center md:mx-0 mx-2 mb-5 gap-1">
+            <ProgramsSearch />
+            <ProgramsSelect />
+          </div>
+          <ProgramsList />
         </div>
-        <ProgramsList />
       </div>
-    </div>
+      <MainFooter />
+    </>
   );
 };
 

@@ -9,10 +9,10 @@ export const tutorialsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Tutorials'],
   endpoints: (builder) => ({
-    getTutorials: builder.query<ITutorial[], { page?: number; pageSize?: number }>({
-      query: ({ page = 1, pageSize = 10 }) => ({
+    getTutorials: builder.query<ITutorial[], { page?: number; size?: number }>({
+      query: ({ page = 1, size = 10 }) => ({
         url: 'tutorials',
-        params: { page, pageSize },
+        params: { page, size },
       }),
       providesTags: result => ['Tutorials'],
     }),
@@ -21,17 +21,17 @@ export const tutorialsApi = createApi({
         url: `tutorials/${id}`,
       }),
     }),
-    sortTutorials: builder.query<ITutorial[], { program: string; page?: number; pageSize?: number }>({
-      query: ({ program, page = 1, pageSize = 10 }) => ({
+    sortTutorials: builder.query<ITutorial[], { program: string; page?: number; size?: number }>({
+      query: ({ program, page = 1, size = 10 }) => ({
         url: '/tutorials',
-        params: { program, page, pageSize },
+        params: { program, page, size },
       }),
       providesTags: result => ['Tutorials'],
     }),
-    searchTutorials: builder.query<ITutorial[], { search: string; page?: number; pageSize?: number }>({
-      query: ({ search, page = 1, pageSize = 10 }) => ({
+    searchTutorials: builder.query<ITutorial[], { search: string; page?: number; size?: number }>({
+      query: ({ search, page = 1, size = 10 }) => ({
         url: '/tutorials',
-        params: { search, page, pageSize },
+        params: { search, page, size },
       }),
       providesTags: result => ['Tutorials'],
     }),

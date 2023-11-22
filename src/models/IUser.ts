@@ -1,8 +1,12 @@
+import { IProgram, IReference, ITutorial } from ".";
 import { IBrush } from "./IBrush";
 
 export interface IUser {
   id: number;
-  username: string;
+  login: string;
   email: string;
-  favorites: IBrush[];
+  brushes: IBrush[];
+  tutorials: ITutorial[];
+  references: IReference[];
+  programs: IProgram[];
 }

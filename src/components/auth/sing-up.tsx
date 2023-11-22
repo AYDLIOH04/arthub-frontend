@@ -79,23 +79,25 @@ const SignUpForm = ({ setShowRegister }: any) => {
         placeholder="Password"
       />
 
-      <button
-        type="submit"
-        className="text-white text-[20px] bg-background hover:bg-hover rounded-lg px-4 py-3 ease-in duration-200 w-full mt-8 uppercase"
-      >
-        Зарегистрироваться
-      </button>
-
-      <h2 className="text-[20px]">
-        Есть аккаунт?{" "}
-        <a
-          onClick={() => setShowRegister(false)}
-          className="cursor-pointer hover:text-hover ease-out duration-200 font-bold"
+      <div>
+        <button
+          type="submit"
+          className="text-white text-[20px] bg-background hover:bg-hover rounded-lg px-4 py-3 ease-in duration-200 w-full mt-8 mb-3 uppercase"
         >
-          {" "}
-          Войти
-        </a>
-      </h2>
+          Зарегистрироваться
+        </button>
+
+        <h2 className="text-[20px] text-center">
+          Есть аккаунт?{" "}
+          <a
+            onClick={() => setShowRegister(false)}
+            className="cursor-pointer hover:text-hover ease-out duration-200 font-bold"
+          >
+            {" "}
+            Войти
+          </a>
+        </h2>
+      </div>
     </form>
   );
 };

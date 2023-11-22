@@ -9,10 +9,10 @@ export const brushesApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Brushes'],
   endpoints: (builder) => ({
-    getBrushes: builder.query<IBrush[], { page?: number; pageSize?: number }>({
-      query: ({ page = 1, pageSize = 16 }) => ({
+    getBrushes: builder.query<IBrush[], { page?: number; size?: number }>({
+      query: ({ page = 1, size = 16 }) => ({
         url: '/brushes',
-        params: { page, pageSize },
+        params: { page, size },
       }),
       providesTags: result => ['Brushes'],
     }),
@@ -21,17 +21,17 @@ export const brushesApi = createApi({
         url: `/brushes/${id}`,
       }),
     }),
-    sortBrushes: builder.query<IBrush[], { program: string; page?: number; pageSize?: number }>({
-      query: ({ program, page = 1, pageSize = 16 }) => ({
+    sortBrushes: builder.query<IBrush[], { program: string; page?: number; size?: number }>({
+      query: ({ program, page = 1, size = 16 }) => ({
         url: `/brushes`,
-        params: { program, page, pageSize },
+        params: { program, page, size },
       }),
       providesTags: result => ['Brushes'],
     }),
-    searchBrushes: builder.query<IBrush[], { search: string; page?: number; pageSize?: number }>({
-      query: ({ search, page = 1, pageSize = 16 }) => ({
+    searchBrushes: builder.query<IBrush[], { search: string; page?: number; size?: number }>({
+      query: ({ search, page = 1, size = 16 }) => ({
         url: `/brushes`,
-        params: { search, page, pageSize },
+        params: { search, page, size },
       }),
       providesTags: result => ['Brushes'],
     }),

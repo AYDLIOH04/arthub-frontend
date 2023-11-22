@@ -15,7 +15,7 @@ module.exports = {
       colors: {
         inherit: "inherit",
         page_elem_bg: "#2C1A4A",
-        background: "#321C4F",
+        background: "#37195E",
         color: "#fff",
         hover: "#A175FF",
         main_purple: "#62469e",

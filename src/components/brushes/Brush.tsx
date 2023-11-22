@@ -12,7 +12,7 @@ const Brush = ({ brush }: { brush: IBrush }) => {
     setIsFavorite((current) => !current);
   };
 
-  const Icon = getProgramsIcon(brush.programm);
+  const Icon = getProgramsIcon(brush.program);
   const LikeIcon = isFavorite ? FaHeart : FaRegHeart;
   return (
     <div
@@ -20,7 +20,7 @@ const Brush = ({ brush }: { brush: IBrush }) => {
       group
       flex flex-col gap-3
       border-2 border-indigo-300
-      rounded-md
+      rounded-md overflow-hidden
       max-w-[300px] min-h-[500px]
       hover:scale-105 scale-100
       transition duration-100
@@ -56,7 +56,7 @@ const Brush = ({ brush }: { brush: IBrush }) => {
           >
             <Icon className="text-[26px] sm:text-[20px] group-hover/item:text-indigo-200 transition" />
             <p className="hidden sm:block text-[14px] text-indigo-200">
-              {brush.programm}
+              {brush.program}
             </p>
           </div>
         </div>

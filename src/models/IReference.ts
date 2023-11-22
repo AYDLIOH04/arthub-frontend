@@ -1,8 +1,6 @@
 export interface IReference {
   id: number;
-  description: string;
+  hashtag: string;
   title: string;
-  programm: string;
-  link: string; 
   image: string
 }

@@ -20,17 +20,21 @@ const Auth = () => {
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="gl:w-[1200px] w-[900px] mx-auto md:flex bg-main_purple md:py-10 py-5 md:px-10 px-0 rounded-xl"
+      className="w-[900px] mx-auto md:flex"
     >
-      <div className="md:w-1/2 w-full flex items-center z-50">
+      <div className="md:w-1/2 w-full flex bg-main_purple items-center z-50 md:py-5 py-2 rounded-xl sm:rounded-none sm:rounded-l-xl">
         {showRegister ? (
           <SignUpForm setShowRegister={setShowRegister} />
         ) : (
           <SignInForm setShowRegister={setShowRegister} />
         )}
       </div>
-      <div className="w-1/2 hidden md:block">
-        <img src="icon.svg" alt="auth photo" className="h-full w-full" />
+      <div className="w-1/2 hidden md:flex justify-center items-center bg-[#2C1A4A] rounded-r-xl">
+        <img
+          src="auth/auth-photo.png"
+          alt="auth photo"
+          className="w-full select-none pointer-events-none"
+        />
       </div>
     </motion.div>
   );

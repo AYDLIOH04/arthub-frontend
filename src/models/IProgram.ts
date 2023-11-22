@@ -1,9 +1,24 @@
 export interface IProgram {
   id: number;
   description: string;
-  title: string;
-  programm: string;
+  name: string;
   link: string; 
-  image: string;
+  logo: string;
   systems: string[];
 }
+
+export interface IProgramFull {
+  id: number;
+  description: string;
+  name: string;
+  link: string; 
+  logo: string;
+  systems: string[];
+  pluses: string[];
+  minuses: string[];
+  examples: string[];
+}
+
+
+
+
