@@ -1,5 +1,5 @@
 import PrivatePageProvider from "@/components/PageProvider";
-import ProfileDetails from "@/components/profile/profile-details";
+import ProfileDetails from "@/app/profile/profile-details";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

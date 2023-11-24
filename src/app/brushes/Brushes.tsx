@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import BrushesSkeleton from "../UI/skeletons/brushes-skeleton";
 import { useGetBrushesQuery } from "@/store/features/brushes/brushesApi";
-import Brush from "./Brush";
-import Pagination from "../UI/pagination";
-import BrushesNotFound from "../UI/not-found/brushes-notfound";
-import BrushesFetchError from "../UI/error/brushes-error";
-import BrushPopup from "./brush-popup";
 import { IBrush } from "@/models";
+import Brush from "./Brush";
+import BrushPopup from "./brush-popup";
+import Pagination from "../../components/UI/pagination";
+import BrushesSkeleton from "../../components/UI/skeletons/brushes-skeleton";
+import BrushesNotFound from "../../components/UI/not-found/brushes-notfound";
+import BrushesFetchError from "../../components/UI/error/brushes-error";
 
 const data: IBrush[] = [
   {
@@ -85,7 +85,7 @@ const Brushes = () => {
   // if (!brushes) return <BrushesNotFound />;
 
   return (
-    <div className={`${popupView && "overflow-y-hidden"}`}>
+    <div>
       <div className="flex flex-wrap flex-row justify-center gap-8 mt-10">
         {data?.map((brush, index) => (
           <Brush key={index} brush={brush} openViewPopup={openViewPopup} />

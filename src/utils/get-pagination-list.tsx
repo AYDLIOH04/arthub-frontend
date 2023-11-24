@@ -20,9 +20,7 @@ const addPaginationItem = (
       } px-2`}
     >
       <button
-        className={`hover:text-hover ${
-          index === currentPage && "hover:text-white"
-        }`}
+        className={`${index === currentPage ? '' : 'hover:text-hover'} transition`}
         onClick={() => onPageChange(index)}
       >
         {index}

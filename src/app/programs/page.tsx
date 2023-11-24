@@ -1,7 +1,7 @@
 import MainFooter from "@/components/UI/main-footer";
-import ProgramsList from "@/components/programs/program-list";
-import ProgramsSearch from "@/components/programs/programs-search";
-import ProgramsSelect from "@/components/programs/programs-select";
+import ProgramsList from "@/app/programs/program-list";
+import ProgramsSearch from "@/app/programs/programs-search";
+import ProgramsSelect from "@/app/programs/programs-select";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

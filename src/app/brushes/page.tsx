@@ -1,7 +1,7 @@
 import MainFooter from "@/components/UI/main-footer";
-import Brushes from "@/components/brushes/Brushes";
-import BrushesSearch from "@/components/brushes/brushes-search";
-import BrushesSelect from "@/components/brushes/brushes-select";
+import Brushes from "@/app/brushes/Brushes";
+import BrushesSearch from "@/app/brushes/brushes-search";
+import BrushesSelect from "@/app/brushes/brushes-select";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

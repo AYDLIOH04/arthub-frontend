@@ -1,10 +1,10 @@
 "use client";
 
-import selectIcons from "@/data/select/programs-select-icons";
-import SelectButton from "../UI/select-button";
+import selectIcons from "@/data/select/brushes-select-icons";
+import SelectButton from "../../components/UI/select-button";
 
-const ProgramsSelect = () => {
-  const programsClick = (query: string) => {
+const BrushesSelect = () => {
+  const brushesClick = (query: string) => {
     console.log(query);
   };
 
@@ -13,7 +13,7 @@ const ProgramsSelect = () => {
       {selectIcons.map((p) => (
         <SelectButton
           key={p.text}
-          onClick={() => programsClick(p.query)}
+          onClick={() => brushesClick(p.query)}
           text={p.text}
           icon={p.icon}
         />
@@ -22,4 +22,4 @@ const ProgramsSelect = () => {
   );
 };
 
-export default ProgramsSelect;
+export default BrushesSelect;

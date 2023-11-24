@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import SearchInput from "../UI/search-input";
+import SearchInput from "../../components/UI/search-input";
 
-const BrushesSearch = () => {
+const ProgramsSearch = () => {
   const [search, setSearch] = useState("");
 
-  const brushesSearchSubmit = (e: any) => {
+  const programsSearchSubmit = (e: any) => {
     e.preventDefault();
     console.log(search);
     setSearch("");
@@ -16,9 +16,9 @@ const BrushesSearch = () => {
     <SearchInput
       value={search}
       onChange={setSearch}
-      onSubmit={brushesSearchSubmit}
+      onSubmit={programsSearchSubmit}
     />
   );
 };
 
-export default BrushesSearch;
+export default ProgramsSearch;

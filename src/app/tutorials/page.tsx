@@ -1,5 +1,5 @@
 import PrivatePageProvider from "@/components/PageProvider";
-import Video from "@/components/tutorials/Video";
+import Video from "@/app/tutorials/Video";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

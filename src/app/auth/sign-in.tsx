@@ -7,7 +7,7 @@ import { useAppDispatch } from "@/store/hooks"; // Удалить
 import { useRouter } from "next/navigation";
 import { useLoginMutation } from "@/store/features/auth/authApi";
 import { toast } from "react-toastify";
-import AuthInput from "../UI/auth-input";
+import AuthInput from "../../components/UI/auth-input";
 
 const SignInForm = ({ setShowRegister }: any) => {
   const [email, setEmail] = useState<string | any>("");

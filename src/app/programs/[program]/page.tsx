@@ -1,6 +1,6 @@
 import MainFooter from "@/components/UI/main-footer";
-import Footer from "@/components/home/Footer";
-import ProgramPage from "@/components/programs/program-page";
+import Footer from "@/app/(home)/Footer";
+import ProgramPage from "@/app/programs/[program]/program-page";
 import { parseUrlString } from "@/utils/parse-url";
 
 export async function generateMetadata({ params: { program } }: Props) {
@@ -33,7 +33,7 @@ const ProgramsPage = ({ params: { program } }: Props) => {
     pluses: [
       "Мощный и гибкий набор инструментов для создания векторных рисунков.",
       "Поддержка неограниченного масштабирования без потери качества изображения.",
-      "Интеграция с другими приложениями Adobe, такими как Photoshop, для более продвинутого редактирования и обработки изображений."
+      "Интеграция с другими приложениями Adobe, такими как Photoshop, для более продвинутого редактирования и обработки изображений.",
     ],
     minuses: [
       "Высокая стоимость программы, которая может быть недоступна для начинающих художников.",
@@ -51,7 +51,7 @@ const ProgramsPage = ({ params: { program } }: Props) => {
       <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender min-h-[calc(100vh - 120px)]">
         <ProgramPage program={data} />
       </div>
-      <MainFooter/>
+      <MainFooter />
     </>
   );
 };

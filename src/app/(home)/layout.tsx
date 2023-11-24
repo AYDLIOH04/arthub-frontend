@@ -1,5 +1,5 @@
-import Footer from "@/components/home/Footer";
-import StarsBackground from "@/components/home/stars-bg";
+import Footer from "@/app/(home)/Footer";
+import StarsBackground from "@/app/(home)/stars-bg";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

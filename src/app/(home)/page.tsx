@@ -1,7 +1,7 @@
-import ArthubSection from "@/components/home/arthub-section";
-import ExploreSection from "@/components/home/explore-section";
-import InspireSection from "@/components/home/inspire-section";
-import LearnSection from "@/components/home/learn-section";
+import ArthubSection from "@/app/(home)/arthub-section";
+import ExploreSection from "@/app/(home)/explore-section";
+import InspireSection from "@/app/(home)/inspire-section";
+import LearnSection from "@/app/(home)/learn-section";
 
 const Home = () => {
   return (
