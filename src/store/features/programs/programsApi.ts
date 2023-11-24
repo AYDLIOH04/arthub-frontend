@@ -1,4 +1,5 @@
 import { IProgram } from '@/models';
+import { IProgramFull } from '@/models/IProgram';
 import getCookieData from '@/utils/get-cookie';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -14,7 +15,7 @@ export const programsApi = createApi({
         url: 'programs',
       }),
     }),
-    getProgram: builder.query<IProgram, { program: string }>({
+    getProgram: builder.query<IProgramFull, { program: string }>({
       query: ({ program }) => ({
         url: `programs/${program}`,
       }),

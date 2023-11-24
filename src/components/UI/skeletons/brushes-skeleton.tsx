@@ -7,7 +7,7 @@ const BrushesSkeleton = () => {
   }
 
   return (
-    <div className="flex flex-wrap flex-row justify-center gap-8 mt-10">
+    <div className="flex flex-wrap flex-row justify-center gap-8">
       {brushElements}
     </div>
   );

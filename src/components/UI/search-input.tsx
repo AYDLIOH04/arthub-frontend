@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 
@@ -8,9 +9,22 @@ type SearchInputProps = {
 };
 
 const SearchInput = ({ value, onChange, onSubmit }: SearchInputProps) => {
+  const onSubmitSearch = (e: any) => {
+    e.preventDefault();
+    onSubmit()
+  };
+
+  const onClearSearch = () => {
+    onChange("")
+  };
+
+  useEffect(() => {
+    onSubmit()
+  }, [value])
+
   return (
     <form
-      onSubmit={onSubmit}
+      onSubmit={onSubmitSearch}
       className="flex items-center sm:w-[320px] w-full rounded-md bg-main_purple p-[3px] leading-[1.8] text-white h-10"
     >
       <button className="text-[22px] px-2">
@@ -26,7 +40,7 @@ const SearchInput = ({ value, onChange, onSubmit }: SearchInputProps) => {
       />
       <button
         className={`${value ? "block" : "hidden"} text-[25px] mx-1 transition`}
-        onClick={() => onChange("")}
+        onClick={onClearSearch}
         type="button"
       >
         <RxCross2 />

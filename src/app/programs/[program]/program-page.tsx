@@ -1,7 +1,16 @@
-import { IProgramFull } from "@/models/IProgram";
-import Image from "next/image";
+"use client";
 
-const ProgramPage = ({ program }: { program: IProgramFull }) => {
+import { useGetProgramQuery } from "@/store/features/programs/programsApi";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+
+const ProgramPage = ({ query }: { query: string }) => {
+  const { data: program, isLoading, isError } = useGetProgramQuery({query} as any);
+
+  if (isError || !program) {
+    notFound();
+  }
+
   return (
     <div
       className="
@@ -83,7 +92,10 @@ const ProgramPage = ({ program }: { program: IProgramFull }) => {
       <div>
         <ul className="flex sm:flex-row flex-col sm:gap-10 gap-4 items-center">
           {program.examples.map((example, index) => (
-            <li key={index} className="rounded-md overflow-hidden scale-100 hover:scale-110 transition">
+            <li
+              key={index}
+              className="rounded-md overflow-hidden scale-100 hover:scale-110 transition"
+            >
               <img src={example} alt={`example-${index}`} />
             </li>
           ))}

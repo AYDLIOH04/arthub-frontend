@@ -6,13 +6,14 @@ const baseUrl = 'http://localhost:7000';
 
 export const brushesApi = createApi({
   reducerPath: 'brushesApi',
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  baseQuery: fetchBaseQuery({
+    baseUrl,
+  }),
   tagTypes: ['Brushes'],
   endpoints: (builder) => ({
-    getBrushes: builder.query<IBrush[], { page?: number; size?: number }>({
-      query: ({ page = 1, size = 16 }) => ({
-        url: '/brushes',
-        params: { page, size },
+    getBrushes: builder.query<{ response: IBrush[], totalCount: number }, { program?: string, search?: string, page: number; size: number }>({
+      query: ({ page = 1, size = 16, program, search }) => ({
+        url: `/brushes?page=${page}&size=${size}${program ? `&${program}` : ''}${search ? `&${search}` : ''}`,
       }),
       providesTags: result => ['Brushes'],
     }),
@@ -20,20 +21,6 @@ export const brushesApi = createApi({
       query: ({ id }) => ({
         url: `/brushes/${id}`,
       }),
-    }),
-    sortBrushes: builder.query<IBrush[], { program: string; page?: number; size?: number }>({
-      query: ({ program, page = 1, size = 16 }) => ({
-        url: `/brushes`,
-        params: { program, page, size },
-      }),
-      providesTags: result => ['Brushes'],
-    }),
-    searchBrushes: builder.query<IBrush[], { search: string; page?: number; size?: number }>({
-      query: ({ search, page = 1, size = 16 }) => ({
-        url: `/brushes`,
-        params: { search, page, size },
-      }),
-      providesTags: result => ['Brushes'],
     }),
     addToFavorite: builder.query<void, { brush: IBrush }>({
       query: ({ brush }) => ({
@@ -51,7 +38,5 @@ export const brushesApi = createApi({
 export const {
   useGetBrushesQuery,
   useGetBrushQuery,
-  useSortBrushesQuery,
-  useSearchBrushesQuery,
   useAddToFavoriteQuery,
 } = brushesApi;

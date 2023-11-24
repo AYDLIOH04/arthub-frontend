@@ -8,7 +8,7 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
     <li
       className="
       flex sm:flex-row flex-col gap-2
-      border-2 border-indigo-300
+      border-2 border-second_purple
       rounded-md overflow-hidden
     "
     >

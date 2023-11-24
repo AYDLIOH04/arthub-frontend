@@ -3,21 +3,28 @@
 import { useState } from "react";
 import SearchInput from "../../components/UI/search-input";
 
-const BrushesSearch = () => {
+const BrushesSearch = ({
+  onSearchChange,
+  setCurrentPage,
+}: {
+  onSearchChange: (search: string) => void;
+  setCurrentPage: (page: number) => void;
+}) => {
   const [search, setSearch] = useState("");
 
-  const brushesSearchSubmit = (e: any) => {
-    e.preventDefault();
-    console.log(search);
-    setSearch("");
+  const brushesSearchSubmit = () => {
+    onSearchChange(search ? `search=${search}` : "");
+    setCurrentPage(1);
   };
 
   return (
-    <SearchInput
-      value={search}
-      onChange={setSearch}
-      onSubmit={brushesSearchSubmit}
-    />
+    <div>
+      <SearchInput
+        value={search}
+        onChange={setSearch}
+        onSubmit={brushesSearchSubmit}
+      />
+    </div>
   );
 };
 
