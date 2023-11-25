@@ -10,27 +10,15 @@ export const programsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Programs'],
   endpoints: (builder) => ({
-    getPrograms: builder.query<IProgram[], void>({
-      query: () => ({
-        url: 'programs',
+    getPrograms: builder.query<IProgram[], { system?: string, search?: string }>({
+      query: ({ system, search }) => ({
+        url: `/programs${system ? `${system}` : ''}${search ? `&${search}` : ''}`,
       }),
     }),
     getProgram: builder.query<IProgramFull, { program: string }>({
       query: ({ program }) => ({
-        url: `programs/${program}`,
+        url: `/programs/${program}`,
       }),
-    }),
-    sortPrograms: builder.query<IProgram[], { system: string }>({
-      query: ({ system }) => ({
-        url: `programs?system=${system}`,
-      }),
-      providesTags: result => ['Programs'],
-    }),
-    searchPrograms: builder.query<IProgram[], { search: string }>({
-      query: ({ search }) => ({
-        url: `programs?search=${search}`,
-      }),
-      providesTags: result => ['Programs'],
     }),
     addToFavorite: builder.query<void, { program: IProgram }>({
       query: ({ program }) => ({
@@ -48,7 +36,5 @@ export const programsApi = createApi({
 export const {
   useGetProgramsQuery,
   useGetProgramQuery,
-  useSortProgramsQuery,
-  useSearchProgramsQuery,
   useAddToFavoriteQuery
 } = programsApi;

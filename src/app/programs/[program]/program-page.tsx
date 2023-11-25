@@ -1,11 +1,19 @@
 "use client";
 
+import ProgramSkeleton from "@/components/UI/skeletons/program-skeleton";
 import { useGetProgramQuery } from "@/store/features/programs/programsApi";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
 const ProgramPage = ({ query }: { query: string }) => {
-  const { data: program, isLoading, isError } = useGetProgramQuery({query} as any);
+  const {
+    data: program,
+    isLoading,
+    isError,
+    error,
+  } = useGetProgramQuery({ program: query });
+
+  if (isLoading) return <ProgramSkeleton />;
 
   if (isError || !program) {
     notFound();

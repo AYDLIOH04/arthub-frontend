@@ -16,6 +16,9 @@ const ProgramsSelect = () => {
           onClick={() => programsClick(p.query)}
           text={p.text}
           icon={p.icon}
+          query={""}
+          currentQuery={""}
+          onRemove={undefined}
         />
       ))}
     </div>

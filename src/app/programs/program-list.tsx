@@ -7,21 +7,21 @@ import ProgramsFetchError from "@/components/UI/error/programs-error";
 import ProgramsSkeleton from "@/components/UI/skeletons/programs-skeleton";
 
 const ProgramsList = () => {
-  const { data: programs, isLoading, isError } = useGetProgramsQuery();
+  // const { data: programs, isLoading, isError } = useGetProgramsQuery();
 
-  if (isLoading) return <ProgramsSkeleton />;
+  if (true) return <ProgramsSkeleton />;
 
-  if (isError) return <ProgramsFetchError />;
+  // if (isError) return <ProgramsFetchError />;
 
-  if (!programs || !programs.length) return <ProgramsNotFound />;
+  // if (!programs || !programs.length) return <ProgramsNotFound />;
 
-  return (
-    <ul className="space-y-4">
-      {programs?.map((program) => (
-        <ProgramItem key={program.id} program={program} />
-      ))}
-    </ul>
-  );
+  // return (
+  //   <ul className="space-y-4">
+  //     {programs?.map((program) => (
+  //       <ProgramItem key={program.id} program={program} />
+  //     ))}
+  //   </ul>
+  // );
 };
 
 export default ProgramsList;

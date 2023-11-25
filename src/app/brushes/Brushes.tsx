@@ -33,11 +33,11 @@ const Brushes = ({
     search,
     program: select,
     page: currentPage,
-    size: 4,
+    size: 2,
   });
 
   const totalCountHeader = data?.totalCount;
-  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 4) : 1;
+  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 2) : 1;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -45,7 +45,7 @@ const Brushes = ({
 
   if (isLoading) return <BrushesSkeleton />;
 
-  if (error) {
+  if (isError) {
     if ("status" in error && error.status === 404) {
       return <BrushesNotFound />;
     }

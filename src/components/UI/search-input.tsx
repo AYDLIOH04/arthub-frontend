@@ -1,3 +1,4 @@
+import useDebounce from "@/hooks/useDebounce";
 import { useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
@@ -18,9 +19,12 @@ const SearchInput = ({ value, onChange, onSubmit }: SearchInputProps) => {
     onChange("")
   };
 
+  const debouncedValue = useDebounce(value, 700);
+
   useEffect(() => {
-    onSubmit()
-  }, [value])
+    onSubmit();
+    console.log(value)
+  }, [debouncedValue]);
 
   return (
     <form
