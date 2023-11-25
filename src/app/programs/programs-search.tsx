@@ -6,8 +6,7 @@ import SearchInput from "../../components/UI/search-input";
 const ProgramsSearch = () => {
   const [search, setSearch] = useState("");
 
-  const programsSearchSubmit = (e: any) => {
-    e.preventDefault();
+  const programsSearchSubmit = () => {
     console.log(search);
     setSearch("");
   };

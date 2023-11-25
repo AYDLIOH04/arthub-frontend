@@ -45,9 +45,12 @@ const Brushes = ({
 
   if (isLoading) return <BrushesSkeleton />;
 
-  if (error?.status === 404) return <BrushesNotFound />;
-
-  if (isError) return <BrushesFetchError />;
+  if (error) {
+    if ("status" in error && error.status === 404) {
+      return <BrushesNotFound />;
+    }
+    return <BrushesFetchError />;
+  }
 
   if (!data || !data?.response.length) return <BrushesNotFound />;
 
