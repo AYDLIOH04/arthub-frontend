@@ -12,7 +12,7 @@ export const programsApi = createApi({
   endpoints: (builder) => ({
     getPrograms: builder.query<IProgram[], { system?: string, search?: string }>({
       query: ({ system, search }) => ({
-        url: `/programs${system ? `${system}` : ''}${search ? `&${search}` : ''}`,
+        url: `/programs${system ? `?${system}` : ''}${search ? `${system ? '&' : '?'}${search}` : ''}`,
       }),
     }),
     getProgram: builder.query<IProgramFull, { program: string }>({

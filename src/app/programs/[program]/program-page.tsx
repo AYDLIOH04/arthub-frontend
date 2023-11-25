@@ -31,9 +31,8 @@ const ProgramPage = ({ query }: { query: string }) => {
     >
       <div className="flex sm:flex-row flex-col gap-8 mb-3">
         <div className="sm:w-1/6 w-full flex justify-center items-center">
-          <Image
-            // TODO src={program.logo}
-            src="/programs/Photoshop.png"
+          <img
+            src={program.logo}
             width={250}
             height={250}
             alt={program.name}

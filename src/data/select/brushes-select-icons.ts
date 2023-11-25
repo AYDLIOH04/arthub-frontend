@@ -12,7 +12,7 @@ const selectIcons: SelectIconsType[] = [
   { text: "Krita", icon: SiKrita, query: "krita" },
   { text: "PS", icon: SiAdobephotoshop, query: "photoshop" },
   { text: "Ink", icon: SiInkscape, query: "ink" },
-  { text: "AI", icon: SiAdobeillustrator, query: "adobe-illustrator" },
+  { text: "AI", icon: SiAdobeillustrator, query: "illustrator" },
   { text: "Figma", icon: CgFigma, query: "figma" },
 ];
 

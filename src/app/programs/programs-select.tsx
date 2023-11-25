@@ -2,10 +2,23 @@
 
 import selectIcons from "@/data/select/programs-select-icons";
 import SelectButton from "../../components/UI/select-button";
+import { useState } from "react";
 
-const ProgramsSelect = () => {
+const ProgramsSelect = ({
+  onSelectChange,
+}: {
+  onSelectChange: (select: string) => void;
+}) => {
+  const [currentQuery, setCurrentQuery] = useState("");
+
   const programsClick = (query: string) => {
-    console.log(query);
+    setCurrentQuery(query);
+    onSelectChange(`system=${query}`);
+  };
+
+  const removeSelect = () => {
+    setCurrentQuery("");
+    onSelectChange("");
   };
 
   return (
@@ -13,12 +26,12 @@ const ProgramsSelect = () => {
       {selectIcons.map((p) => (
         <SelectButton
           key={p.text}
-          onClick={() => programsClick(p.query)}
           text={p.text}
           icon={p.icon}
-          query={""}
-          currentQuery={""}
-          onRemove={undefined}
+          query={p.query}
+          currentQuery={currentQuery}
+          onClick={programsClick}
+          onRemove={removeSelect}
         />
       ))}
     </div>

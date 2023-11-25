@@ -6,7 +6,7 @@ export async function generateMetadata({ params: { program } }: Props) {
   const title = parseUrlString(program)
     .split(" ")
     .map((t) => t[0].toUpperCase() + t.slice(1))
-    .join(' ');
+    .join(" ");
 
   return {
     title: `ArtHub | ${title}`,
@@ -21,15 +21,12 @@ type Props = {
 };
 
 const ProgramsPage = ({ params: { program } }: Props) => {
-  const query = program.replace("%20", "").toLowerCase();
+  const query = program.toLowerCase();
 
   return (
-    <>
-      <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender min-h-[calc(100vh - 120px)]">
-        <ProgramPage query={query} />
-      </div>
-      <MainFooter />
-    </>
+    <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender min-h-[calc(100vh - 120px)]">
+      <ProgramPage query={query} />
+    </div>
   );
 };
 

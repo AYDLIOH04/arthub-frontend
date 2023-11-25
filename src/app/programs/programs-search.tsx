@@ -3,12 +3,15 @@
 import { useState } from "react";
 import SearchInput from "../../components/UI/search-input";
 
-const ProgramsSearch = () => {
+const ProgramsSearch = ({
+  onSearchChange,
+}: {
+  onSearchChange: (search: string) => void;
+}) => {
   const [search, setSearch] = useState("");
 
   const programsSearchSubmit = () => {
-    console.log(search);
-    setSearch("");
+    onSearchChange(search ? `search=${search}` : "")
   };
 
   return (

@@ -28,7 +28,7 @@ export const getProgramsIcon = (program: string) => {
 
 export const getSystemsIcon = (os: string) => {
   switch (os) {
-    case "MacOS":
+    case "Macos":
       return MacosIcon;
     case "Windows":
       return FaWindows;

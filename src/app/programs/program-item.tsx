@@ -1,25 +1,42 @@
 import { IProgram } from "@/models";
 import { getSystemsIcon } from "@/utils/get-icon";
-import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const ProgramItem = ({ program }: { program: IProgram }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+  const LikeIcon = isFavorite ? FaHeart : FaRegHeart;
+
+  const toggleFavorite = (event: any) => {
+    event.stopPropagation();
+    setIsFavorite((current) => !current);
+  };
+
   return (
     <li
       className="
+      group hover:scale-[1.03] scale-100
       flex sm:flex-row flex-col gap-2
       border-2 border-second_purple
       rounded-md overflow-hidden
+      transition duration-100
     "
     >
-      <div className="sm:w-1/6 w-full flex justify-center items-center">
-        <Image
-          src="/programs/Photoshop.png"
+      <div className="sm:w-1/6 w-full flex justify-center items-center relative">
+        <img
+          src={program.logo}
           width={200}
           height={200}
           alt={program.name}
           className="select-none pointer-events-none p-3 w-full"
         />
+        <div
+          onClick={toggleFavorite}
+          className="cursor-pointer flex sm:hidden sm:left-2 group-hover:flex absolute right-2 top-2 w-[50px] h-[50px] transition duration-200 bg-white rounded-full  justify-center items-center"
+        >
+          <LikeIcon className="text-background" size={30} />
+        </div>
       </div>
       <div className="bg-main_purple sm:w-5/6 w-full px-4 py-3">
         <h2 className="border-b-2 border-[#8F81B5] inline text-[24px] pb-0.5">

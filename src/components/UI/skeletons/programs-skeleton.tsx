@@ -5,10 +5,11 @@ const ProgramItemSkeleton = () => {
       flex sm:flex-row flex-col
       border-2 border-second_purple
       rounded-md overflow-hidden
-      h-[210px] w-full"
+      min-h-[210px] w-full"
     >
-      <div className="sm:w-1/6 w-full flex justify-center items-center">
+      <div className="sm:w-1/6 w-full flex justify-center items-center sm:h-auto h-[300px] relative">
         <div className="bg-gradient-to-br from-background via-main_purple to-main_purple h-5/6 w-5/6 rounded-md animate-pulse" />
+        <div className="flex sm:left-2 group-hover:flex absolute right-2 top-2 w-[50px] h-[50px] bg-gradient-to-br from-main_purple via-second_purple to-main_purple rounded-full animate-pulse" />
       </div>
       <div className="bg-main_purple sm:w-5/6 w-full px-4 py-3">
         <div className="bg-gradient-to-br from-main_purple via-second_purple to-main_purple h-[25px] w-[180px] rounded-md animate-pulse" />

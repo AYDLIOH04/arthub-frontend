@@ -19,7 +19,7 @@ const SearchInput = ({ value, onChange, onSubmit }: SearchInputProps) => {
     onChange("")
   };
 
-  const debouncedValue = useDebounce(value, 700);
+  const debouncedValue = useDebounce(value, 500);
 
   useEffect(() => {
     onSubmit();
