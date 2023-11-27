@@ -2,7 +2,6 @@
 
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IBrush } from "@/models";
-import { useAddToFavoriteMutation } from "@/store/features/brushes/brushesApi";
 import { getProgramsIcon } from "@/utils/get-icon";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -26,6 +25,8 @@ const Brush = ({
     if (user.isAuth) {
       addToFavorite({brush});
       setIsFavorite((current) => !current);
+    } else {
+      router.push('/auth')
     }
   };
 
