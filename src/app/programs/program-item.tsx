@@ -1,16 +1,27 @@
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { IProgram } from "@/models";
 import { getSystemsIcon } from "@/utils/get-icon";
 import Link from "next/link";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const ProgramItem = ({ program }: { program: IProgram }) => {
+const ProgramItem = ({
+  program,
+  addToFavorite,
+}: {
+  program: IProgram;
+  addToFavorite: any;
+}) => {
+  const user = useCurrentUser();
   const [isFavorite, setIsFavorite] = useState(false);
   const LikeIcon = isFavorite ? FaHeart : FaRegHeart;
 
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
-    setIsFavorite((current) => !current);
+    if (user.isAuth) {
+      addToFavorite({program});
+      setIsFavorite((current) => !current);
+    }
   };
 
   return (
@@ -33,7 +44,13 @@ const ProgramItem = ({ program }: { program: IProgram }) => {
         />
         <div
           onClick={toggleFavorite}
-          className="cursor-pointer flex sm:hidden sm:left-2 group-hover:flex absolute right-2 top-2 w-[50px] h-[50px] transition duration-200 bg-white rounded-full  justify-center items-center"
+          className={`
+            cursor-pointer
+            flex ${isFavorite ? 'sm:flex' : 'sm:hidden'} group-hover:flex
+            sm:left-2 absolute right-2 top-2 w-[50px] h-[50px]
+            transition duration-200
+            bg-white rounded-full
+            justify-center items-center`}
         >
           <LikeIcon className="text-background" size={30} />
         </div>

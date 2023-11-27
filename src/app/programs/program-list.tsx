@@ -1,6 +1,9 @@
 "use client";
 
-import { useGetProgramsQuery } from "@/store/features/programs/programsApi";
+import {
+  useAddToFavoriteMutation,
+  useGetProgramsQuery,
+} from "@/store/features/programs/programsApi";
 import ProgramItem from "./program-item";
 import ProgramsNotFound from "@/components/UI/not-found/programs-notfound";
 import ProgramsFetchError from "@/components/UI/error/programs-error";
@@ -13,11 +16,12 @@ const ProgramsList = ({
   search: string;
   select: string;
 }) => {
+  const [addToFavoriteProgram] = useAddToFavoriteMutation();
   const {
     data: programs,
     isLoading,
     isError,
-    error
+    error,
   } = useGetProgramsQuery({ search, system: select });
 
   if (isLoading) return <ProgramsSkeleton />;
@@ -34,7 +38,11 @@ const ProgramsList = ({
   return (
     <ul className="space-y-4">
       {programs?.map((program) => (
-        <ProgramItem key={program.id} program={program} />
+        <ProgramItem
+          key={program.id}
+          program={program}
+          addToFavorite={addToFavoriteProgram}
+        />
       ))}
     </ul>
   );

@@ -1,6 +1,8 @@
 "use client";
 
+import useCurrentUser from "@/hooks/useCurrentUser";
 import { IBrush } from "@/models";
+import { useAddToFavoriteMutation } from "@/store/features/brushes/brushesApi";
 import { getProgramsIcon } from "@/utils/get-icon";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -9,16 +11,22 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 const Brush = ({
   brush,
   openViewPopup,
+  addToFavorite,
 }: {
   brush: IBrush;
   openViewPopup: any;
+  addToFavorite: any;
 }) => {
   const router = useRouter();
   const [isFavorite, setIsFavorite] = useState(false);
+  const user = useCurrentUser();
 
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
-    setIsFavorite((current) => !current);
+    if (user.isAuth) {
+      addToFavorite({brush});
+      setIsFavorite((current) => !current);
+    }
   };
 
   const routeToProgram = (event: any, url: string) => {
@@ -49,7 +57,12 @@ const Brush = ({
         />
         <div
           onClick={toggleFavorite}
-          className="cursor-pointer flex sm:hidden group-hover:flex absolute right-2 top-2 w-[50px] h-[50px] transition duration-200 bg-white rounded-full  justify-center items-center"
+          className={`
+            cursor-pointer
+            flex ${isFavorite ? 'sm:flex' : 'sm:hidden'}  group-hover:flex 
+            absolute right-2 top-2 w-[50px] h-[50px]
+            transition duration-200 bg-white rounded-full
+            justify-center items-center`}
         >
           <LikeIcon className="text-background" size={30} />
         </div>

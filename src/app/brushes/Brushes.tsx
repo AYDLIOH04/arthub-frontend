@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useGetBrushesQuery } from "@/store/features/brushes/brushesApi";
+import {
+  useAddToFavoriteMutation,
+  useGetBrushesQuery,
+} from "@/store/features/brushes/brushesApi";
 import { IBrush } from "@/models";
 import Brush from "./Brush";
 import BrushPopup from "./brush-popup";
@@ -29,15 +32,17 @@ const Brushes = ({
     setPopupView(true);
   };
 
+  const [addToFavoriteBrush] = useAddToFavoriteMutation();
+
   const { data, isLoading, isError, error } = useGetBrushesQuery({
     search,
     program: select,
     page: currentPage,
-    size: 2,
+    size: 4,
   });
 
   const totalCountHeader = data?.totalCount;
-  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 2) : 1;
+  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 4) : 1;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -58,7 +63,12 @@ const Brushes = ({
     <div>
       <div className="flex flex-wrap flex-row justify-center gap-8 mt-10">
         {data.response?.map((brush, index) => (
-          <Brush key={index} brush={brush} openViewPopup={openViewPopup} />
+          <Brush
+            key={index}
+            brush={brush}
+            openViewPopup={openViewPopup}
+            addToFavorite={addToFavoriteBrush}
+          />
         ))}
       </div>
       <Pagination

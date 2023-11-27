@@ -20,7 +20,7 @@ export const programsApi = createApi({
         url: `/programs/${program}`,
       }),
     }),
-    addToFavorite: builder.query<void, { program: IProgram }>({
+    addToFavorite: builder.mutation<void, { program: IProgram }>({
       query: ({ program }) => ({
         url: `/programs/${program.id}/add-favorite`,
         method: 'POST',
@@ -36,5 +36,5 @@ export const programsApi = createApi({
 export const {
   useGetProgramsQuery,
   useGetProgramQuery,
-  useAddToFavoriteQuery
+  useAddToFavoriteMutation,
 } = programsApi;

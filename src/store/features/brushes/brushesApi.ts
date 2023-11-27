@@ -22,7 +22,7 @@ export const brushesApi = createApi({
         url: `/brushes/${id}`,
       }),
     }),
-    addToFavorite: builder.query<void, { brush: IBrush }>({
+    addToFavorite: builder.mutation<void, { brush: IBrush }>({
       query: ({ brush }) => ({
         url: `/brushes/${brush.id}/add-favorite`,
         method: 'POST',
@@ -38,5 +38,5 @@ export const brushesApi = createApi({
 export const {
   useGetBrushesQuery,
   useGetBrushQuery,
-  useAddToFavoriteQuery,
+  useAddToFavoriteMutation,
 } = brushesApi;
