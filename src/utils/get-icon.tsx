@@ -16,7 +16,7 @@ export const getProgramsIcon = (program: string) => {
       return SiAdobephotoshop;
     case "Inkscape":
       return SiInkscape;
-    case "Ai":
+    case "Illustrator":
       return SiAdobeillustrator;
     case "Figma":
       return CgFigma;
