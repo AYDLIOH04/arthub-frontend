@@ -3,7 +3,6 @@ import { IProgram } from "@/models";
 import { getSystemsIcon } from "@/utils/get-icon";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const ProgramItem = ({
@@ -15,14 +14,12 @@ const ProgramItem = ({
 }) => {
   const user = useCurrentUser();
   const router = useRouter();
-  const [isFavorite, setIsFavorite] = useState(false);
-  const LikeIcon = isFavorite ? FaHeart : FaRegHeart;
+  const LikeIcon = program.favorite ? FaHeart : FaRegHeart;
 
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
     if (user.isAuth) {
       addToFavorite({program});
-      setIsFavorite((current) => !current);
     } else {
       router.push('/auth')
     }
@@ -50,7 +47,7 @@ const ProgramItem = ({
           onClick={toggleFavorite}
           className={`
             cursor-pointer
-            flex ${isFavorite ? 'sm:flex' : 'sm:hidden'} group-hover:flex
+            flex ${program.favorite ? 'sm:flex' : 'sm:hidden'} group-hover:flex
             sm:left-2 absolute right-2 top-2 w-[50px] h-[50px]
             transition duration-200
             bg-white rounded-full

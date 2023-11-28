@@ -11,9 +11,12 @@ export const brushesApi = createApi({
   }),
   tagTypes: ['Brushes'],
   endpoints: (builder) => ({
-    getBrushes: builder.query<{ response: IBrush[], totalCount: number }, { program?: string, search?: string, page: number; size: number }>({
-      query: ({ page = 1, size = 16, program, search }) => ({
-        url: `/brushes?page=${page}&size=${size}${program ? `&${program}` : ''}${search ? `&${search}` : ''}`,
+    getBrushes: builder.query<{ response: IBrush[], totalCount: number }, { program?: string, search?: string, like?: boolean, page: number; size: number }>({
+      query: ({ page = 1, size = 16, program, search, like }) => ({
+        url: `/brushes${like ? '/like' : ''}?page=${page}&size=${size}${program ? `&${program}` : ''}${search ? `&${search}` : ''}`,
+        headers: {
+          Authorization: `Bearer ${getCookieData('auth-data').token}`
+        },
       }),
       providesTags: result => ['Brushes'],
     }),
@@ -31,6 +34,7 @@ export const brushesApi = createApi({
           Authorization: `Bearer ${getCookieData('auth-data').token}`
         },
       }),
+      invalidatesTags: result => ['Brushes'],
     }),
   }),
 });

@@ -10,10 +10,11 @@ export const programsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Programs'],
   endpoints: (builder) => ({
-    getPrograms: builder.query<IProgram[], { system?: string, search?: string }>({
-      query: ({ system, search }) => ({
-        url: `/programs${system ? `?${system}` : ''}${search ? `${system ? '&' : '?'}${search}` : ''}`,
+    getPrograms: builder.query<IProgram[], { system?: string, search?: string, like?: boolean }>({
+      query: ({ system, search, like }) => ({
+        url: `/programs${like ? '/like' : ''}${system ? `?${system}` : ''}${search ? `${system ? '&' : '?'}${search}` : ''}`,
       }),
+      providesTags: result => ['Programs'],
     }),
     getProgram: builder.query<IProgramFull, { program: string }>({
       query: ({ program }) => ({
@@ -29,6 +30,7 @@ export const programsApi = createApi({
           Authorization: `Bearer ${getCookieData('auth-data').token}`
         },
       }),
+      invalidatesTags: result => ['Programs'],
     }),
   }),
 });

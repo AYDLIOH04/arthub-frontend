@@ -4,7 +4,6 @@ import useCurrentUser from "@/hooks/useCurrentUser";
 import { IBrush } from "@/models";
 import { getProgramsIcon } from "@/utils/get-icon";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const Brush = ({
@@ -17,14 +16,12 @@ const Brush = ({
   addToFavorite: any;
 }) => {
   const router = useRouter();
-  const [isFavorite, setIsFavorite] = useState(false);
   const user = useCurrentUser();
 
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
     if (user.isAuth) {
       addToFavorite({brush});
-      setIsFavorite((current) => !current);
     } else {
       router.push('/auth')
     }
@@ -36,7 +33,7 @@ const Brush = ({
   };
 
   const Icon = getProgramsIcon(brush.program);
-  const LikeIcon = isFavorite ? FaHeart : FaRegHeart;
+  const LikeIcon = brush.favorite ? FaHeart : FaRegHeart;
   return (
     <div
       onClick={() => openViewPopup(brush)}
@@ -60,7 +57,7 @@ const Brush = ({
           onClick={toggleFavorite}
           className={`
             cursor-pointer
-            flex ${isFavorite ? 'sm:flex' : 'sm:hidden'}  group-hover:flex 
+            flex ${brush.favorite ? 'sm:flex' : 'sm:hidden'}  group-hover:flex 
             absolute right-2 top-2 w-[50px] h-[50px]
             transition duration-200 bg-white rounded-full
             justify-center items-center`}

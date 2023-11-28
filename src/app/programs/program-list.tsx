@@ -8,6 +8,7 @@ import ProgramItem from "./program-item";
 import ProgramsNotFound from "@/components/UI/not-found/programs-notfound";
 import ProgramsFetchError from "@/components/UI/error/programs-error";
 import ProgramsSkeleton from "@/components/UI/skeletons/programs-skeleton";
+import getCookieData from "@/utils/get-cookie";
 
 const ProgramsList = ({
   search,
@@ -17,12 +18,11 @@ const ProgramsList = ({
   select: string;
 }) => {
   const [addToFavoriteProgram] = useAddToFavoriteMutation();
-  const {
-    data: programs,
-    isLoading,
-    isError,
-    error,
-  } = useGetProgramsQuery({ search, system: select });
+  const { data, isLoading, isError, error } = useGetProgramsQuery({
+    search,
+    system: select,
+    like: getCookieData("auth-data").token ? true : false,
+  });
 
   if (isLoading) return <ProgramsSkeleton />;
 
@@ -33,11 +33,11 @@ const ProgramsList = ({
     return <ProgramsFetchError />;
   }
 
-  if (!programs || !programs?.length) return <ProgramsNotFound />;
+  if (!data || !data?.length) return <ProgramsNotFound />;
 
   return (
     <ul className="space-y-4">
-      {programs?.map((program) => (
+      {data?.map((program) => (
         <ProgramItem
           key={program.id}
           program={program}

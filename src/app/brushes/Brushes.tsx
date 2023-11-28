@@ -12,6 +12,7 @@ import Pagination from "../../components/UI/pagination";
 import BrushesSkeleton from "../../components/UI/skeletons/brushes-skeleton";
 import BrushesNotFound from "../../components/UI/not-found/brushes-notfound";
 import BrushesFetchError from "../../components/UI/error/brushes-error";
+import getCookieData from "@/utils/get-cookie";
 
 const Brushes = ({
   search,
@@ -33,12 +34,12 @@ const Brushes = ({
   };
 
   const [addToFavoriteBrush] = useAddToFavoriteMutation();
-
   const { data, isLoading, isError, error } = useGetBrushesQuery({
     search,
     program: select,
     page: currentPage,
     size: 4,
+    like: getCookieData("auth-data").token ? true : false,
   });
 
   const totalCountHeader = data?.totalCount;

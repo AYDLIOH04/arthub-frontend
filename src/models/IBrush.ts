@@ -5,4 +5,5 @@ export interface IBrush {
   program: string;
   link: string; 
   image: string
+  favorite?: boolean;
 }
