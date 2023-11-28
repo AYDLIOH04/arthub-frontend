@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   useAddToFavoriteMutation,
   useGetBrushesQuery,
@@ -38,12 +38,12 @@ const Brushes = ({
     search,
     program: select,
     page: currentPage,
-    size: 4,
+    size: 6,
     like: getCookieData("auth-data").token ? true : false,
   });
 
   const totalCountHeader = data?.totalCount;
-  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 4) : 1;
+  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 6) : 1;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

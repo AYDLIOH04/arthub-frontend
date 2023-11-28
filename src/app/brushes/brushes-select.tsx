@@ -14,9 +14,8 @@ const BrushesSelect = ({
   const [currentQuery, setCurrentQuery] = useState("");
 
   const brushesClick = (query: string) => {
-    const q = query[0].toUpperCase() + query.slice(1);
     setCurrentQuery(query);
-    onSelectChange(`program=${q}`);
+    onSelectChange(`program=${query}`);
     setCurrentPage(1);
   };
 
