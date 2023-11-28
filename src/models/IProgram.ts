@@ -20,6 +20,11 @@ export interface IProgramFull {
   examples: string[];
 }
 
+export interface IProgramSelect {
+  id: number;
+  name: string;
+  logo: string;
+}
 
 
 

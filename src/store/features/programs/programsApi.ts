@@ -1,5 +1,5 @@
 import { IProgram } from '@/models';
-import { IProgramFull } from '@/models/IProgram';
+import { IProgramFull, IProgramSelect } from '@/models/IProgram';
 import getCookieData from '@/utils/get-cookie';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
@@ -13,12 +13,20 @@ export const programsApi = createApi({
     getPrograms: builder.query<IProgram[], { system?: string, search?: string, like?: boolean }>({
       query: ({ system, search, like }) => ({
         url: `/programs${like ? '/like' : ''}${system ? `?${system}` : ''}${search ? `${system ? '&' : '?'}${search}` : ''}`,
+        headers: {
+          Authorization: `Bearer ${getCookieData('auth-data').token}`
+        },
       }),
       providesTags: result => ['Programs'],
     }),
     getProgram: builder.query<IProgramFull, { program: string }>({
       query: ({ program }) => ({
         url: `/programs/${program}`,
+      }),
+    }),
+    getProgramsToSelect: builder.query<IProgramSelect, void>({
+      query: () => ({
+        url: `/programs/select`,
       }),
     }),
     addToFavorite: builder.mutation<void, { program: IProgram }>({

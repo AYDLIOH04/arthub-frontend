@@ -3,6 +3,7 @@
 import selectIcons from "@/data/select/brushes-select-icons";
 import SelectButton from "../../components/UI/select-button";
 import { useState } from "react";
+import { getProgramsIcon } from "@/utils/get-icon";
 
 const BrushesSelect = ({
   onSelectChange,
@@ -27,17 +28,20 @@ const BrushesSelect = ({
 
   return (
     <div className="flex flex-wrap space-x-4 md:mt-0 mt-3 justify-center items-center">
-      {selectIcons.map((p) => (
-        <SelectButton
-          key={p.text}
-          onClick={brushesClick}
-          onRemove={removeSelect}
-          currentQuery={currentQuery}
-          query={p.query}
-          text={p.text}
-          icon={p.icon}
-        />
-      ))}
+      {selectIcons.map((p) => {
+        const Icon = getProgramsIcon(p.query[0].toUpperCase() + p.query.slice(1));
+        return (
+          <SelectButton
+            key={p.text}
+            onClick={brushesClick}
+            onRemove={removeSelect}
+            currentQuery={currentQuery}
+            query={p.query}
+            text={p.text}
+            icon={Icon}
+          />
+        );
+      })}
     </div>
   );
 };
