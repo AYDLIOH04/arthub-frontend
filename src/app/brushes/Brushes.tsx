@@ -62,7 +62,7 @@ const Brushes = ({
 
   return (
     <div>
-      <div className="flex flex-wrap flex-row justify-center gap-8 mt-10">
+      <div className="flex flex-wrap flex-row justify-center gap-8">
         {data.response?.map((brush, index) => (
           <Brush
             key={index}

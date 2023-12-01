@@ -1,4 +1,3 @@
-import MainFooter from "@/components/UI/main-footer";
 import ProgramPage from "@/app/programs/[program]/program-page";
 import { parseUrlString } from "@/utils/parse-url";
 

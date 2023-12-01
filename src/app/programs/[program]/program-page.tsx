@@ -101,7 +101,7 @@ const ProgramPage = ({ query }: { query: string }) => {
           {program.examples.map((example, index) => (
             <li
               key={index}
-              className="rounded-md overflow-hidden scale-100 hover:scale-110 transition"
+              className="rounded-md overflow-hidden scale-100 hover:scale-110 transition sm:w-1/3 w-full"
             >
               <img src={example} alt={`example-${index}`} />
             </li>

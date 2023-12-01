@@ -64,7 +64,7 @@ const ProgramItem = ({
           <p className="font-thin text-[18px]">{program.description}</p>
           <div className="mt-2 flex justify-between items-center">
             <Link
-              href={`/programs/${program.name}`}
+              href={`/programs/${program.name.toLowerCase()}`}
               className="font-thin text-[24px] border-2 border-white rounded-[5px] px-2 hover:bg-hover hover:border-hover transition"
             >
               Подробнее
