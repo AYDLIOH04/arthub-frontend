@@ -2,7 +2,7 @@ import { ICredential } from '@/models';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import getCookieData from '@/utils/get-cookie';
 
-const baseUrl = 'http://localhost:7000';
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export const authApi = createApi({
   reducerPath: 'authApi',

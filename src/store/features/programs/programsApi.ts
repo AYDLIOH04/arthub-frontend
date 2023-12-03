@@ -3,7 +3,7 @@ import { IProgramFull, IProgramSelect } from '@/models/IProgram';
 import getCookieData from '@/utils/get-cookie';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-const baseUrl = 'http://localhost:7000';
+const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 export const programsApi = createApi({
   reducerPath: 'programsApi',
