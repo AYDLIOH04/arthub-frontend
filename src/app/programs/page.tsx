@@ -12,7 +12,7 @@ const ProgramsPage = () => {
   return (
     <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender lg:min-h-[calc(100vh - 120px)]">
       <div className="mx-5">
-        <div className="flex flex-col md:flex-row md:space-x-10 justify-between items-center md:mx-0 mx-2 mb-5 gap-1">
+        <div className="flex flex-col md:flex-row md:space-x-10 justify-between items-center mx-0 mb-5 gap-1">
           <ProgramsSearch onSearchChange={setSearch} />
           <ProgramsSelect onSelectChange={setSelect} />
         </div>

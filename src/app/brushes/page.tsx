@@ -12,7 +12,7 @@ const BrushesPage = () => {
 
   return (
     <div className="w-full lg:max-w-[1400px] mx-auto mt-[120px] font-blender min-h-[calc(100vh - 120px)]">
-      <div className="flex flex-col md:flex-row md:space-x-10 justify-center items-center md:mx-0 mx-2 mb-8 gap-1">
+      <div className="flex flex-col md:flex-row md:space-x-10 justify-center items-center md:mx-0 mx-5 mb-8 gap-1">
         <BrushesSearch
           onSearchChange={setSearch}
           setCurrentPage={setCurrentPage}

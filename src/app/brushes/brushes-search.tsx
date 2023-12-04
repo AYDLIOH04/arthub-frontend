@@ -18,13 +18,11 @@ const BrushesSearch = ({
   };
 
   return (
-    <div>
-      <SearchInput
-        value={search}
-        onChange={setSearch}
-        onSubmit={brushesSearchSubmit}
-      />
-    </div>
+    <SearchInput
+      value={search}
+      onChange={setSearch}
+      onSubmit={brushesSearchSubmit}
+    />
   );
 };
 
