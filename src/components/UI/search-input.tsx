@@ -19,11 +19,10 @@ const SearchInput = ({ value, onChange, onSubmit }: SearchInputProps) => {
     onChange("")
   };
 
-  const debouncedValue = useDebounce(value, 500);
+  const debouncedValue = useDebounce(value, 300);
 
   useEffect(() => {
     onSubmit();
-    console.log(value)
   }, [debouncedValue]);
 
   return (
@@ -39,7 +38,7 @@ const SearchInput = ({ value, onChange, onSubmit }: SearchInputProps) => {
         onChange={(e) => onChange(e.target.value)}
         className={`${
           value ? "mr-0" : "mr-4"
-        } w-full outline-none bg-second_purple rounded h-full px-2 placeholder:text-[#c0c0c0]`}
+        } w-full outline-none bg-second_purple rounded h-full px-2 placeholder:text-slate-300`}
         placeholder="Поиск"
       />
       <button

@@ -1,24 +1,28 @@
 "use client";
 
-import selectIcons from "@/data/select/programs-select-icons";
+import selectIcons from "@/data/select/difficulty-select-icons";
 import SelectButton from "../../components/UI/selections/select-button";
 import { useState } from "react";
 
-const ProgramsSelect = ({
+const TutorialsSelect = ({
   onSelectChange,
+  setCurrentPage,
 }: {
   onSelectChange: (select: string) => void;
+  setCurrentPage: (page: number) => void;
 }) => {
   const [currentQuery, setCurrentQuery] = useState("");
 
   const onSelectClick = (query: string) => {
     setCurrentQuery(query);
-    onSelectChange(`system=${query}`);
+    onSelectChange(`difficulty=${query}`);
+    setCurrentPage(1);
   };
 
   const onSelectRemove = () => {
     setCurrentQuery("");
     onSelectChange("");
+    setCurrentPage(1);
   };
 
   return (
@@ -38,4 +42,4 @@ const ProgramsSelect = ({
   );
 };
 
-export default ProgramsSelect;
+export default TutorialsSelect;

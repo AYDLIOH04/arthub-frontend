@@ -1,32 +1,27 @@
 "use client";
-
+import selection from "@/data/select/bodyparts-select";
 import LargeSelect from "@/components/UI/selections/large-select";
-import selectIcons from "@/data/select/brushes-select";
 
-const BrushesSelect = ({
+const ReferencesSelect = ({
   onSelectChange,
-  setCurrentPage,
 }: {
   onSelectChange: (select: string) => void;
-  setCurrentPage: (page: number) => void;
 }) => {
   const onSelectClick = (query: string) => {
-    onSelectChange(`program=${query}`);
-    setCurrentPage(1);
+    onSelectChange(`hastag=${query}`);
   };
 
   const onSelectRemove = () => {
     onSelectChange("");
-    setCurrentPage(1);
   };
 
   return (
     <LargeSelect
       onSelectClick={onSelectClick}
       onSelectRemove={onSelectRemove}
-      selection={selectIcons}
+      selection={selection}
     />
   );
 };
 
-export default BrushesSelect;
+export default ReferencesSelect;

@@ -23,14 +23,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(refresh(data));
-      toast.success("Вход успешен");
+      // toast.success("Вход успешен");
     }
   }, [isSuccess]);
 
   useEffect(() => {
     if (isError) {
       dispatch(logout());
-      toast.error("Ошибка входа");
+      // toast.error("Ошибка входа");
     }
   }, [isError]);
 

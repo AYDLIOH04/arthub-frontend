@@ -3,7 +3,9 @@ export interface ITutorial {
   author: string;
   description: string;
   title: string;
-  program: string;
+  difficulty: string;
   link: string; 
   image: string
+  favorite?: boolean;
+  time?: string;
 }

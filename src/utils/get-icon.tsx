@@ -8,6 +8,8 @@ import { FaLinux, FaQuestion, FaWindows } from "react-icons/fa";
 import { CgFigma } from "react-icons/cg";
 import { MacosIcon } from "@/components/UI/icons";
 
+import { TbStar, TbStarFilled, TbStarHalfFilled } from "react-icons/tb";
+
 export const getProgramsIcon = (program: string) => {
   switch (program) {
     case "Krita":
@@ -20,7 +22,6 @@ export const getProgramsIcon = (program: string) => {
       return SiAdobeillustrator;
     case "Figma":
       return CgFigma;
-    // Добавьте другие программы и соответствующие им иконки по необходимости
     default:
       return FaQuestion;
   }
@@ -34,6 +35,19 @@ export const getSystemsIcon = (os: string) => {
       return FaWindows;
     case "Linux":
       return FaLinux;
+    default:
+      return FaQuestion;
+  }
+};
+
+export const getDifficultyIcon = (d: string) => {
+  switch (d) {
+    case "easy":
+      return TbStar;
+    case "normal":
+      return TbStarHalfFilled;
+    case "hard":
+      return TbStarFilled;
     default:
       return FaQuestion;
   }

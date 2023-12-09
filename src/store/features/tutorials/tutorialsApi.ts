@@ -9,33 +9,21 @@ export const tutorialsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   tagTypes: ['Tutorials'],
   endpoints: (builder) => ({
-    getTutorials: builder.query<ITutorial[], { page?: number; size?: number }>({
-      query: ({ page = 1, size = 10 }) => ({
-        url: 'tutorials',
-        params: { page, size },
+    getTutorials: builder.query<{ response: ITutorial[], totalCount: number }, { difficulty?: string, search?: string, like?: boolean, page: number; size: number }>({
+      query: ({ page = 1, size = 16, difficulty, search, like }) => ({
+        url: `/tutorials${like ? '/like' : ''}?page=${page}&size=${size}${difficulty ? `&${difficulty}` : ''}${search ? `&${search}` : ''}`,
+        headers: {
+          Authorization: `Bearer ${getCookieData('auth-data').token}`
+        },
       }),
       providesTags: result => ['Tutorials'],
     }),
-    getTutorial: builder.query<ITutorial, { id: number }>({
+    getTutorial: builder.query<ITutorial, { id: string }>({
       query: ({ id }) => ({
         url: `tutorials/${id}`,
       }),
     }),
-    sortTutorials: builder.query<ITutorial[], { program: string; page?: number; size?: number }>({
-      query: ({ program, page = 1, size = 10 }) => ({
-        url: '/tutorials',
-        params: { program, page, size },
-      }),
-      providesTags: result => ['Tutorials'],
-    }),
-    searchTutorials: builder.query<ITutorial[], { search: string; page?: number; size?: number }>({
-      query: ({ search, page = 1, size = 10 }) => ({
-        url: '/tutorials',
-        params: { search, page, size },
-      }),
-      providesTags: result => ['Tutorials'],
-    }),
-    addToFavoriteTutorial: builder.query<void, { tutorial: ITutorial }>({
+    addToFavorite: builder.mutation<void, { tutorial: ITutorial }>({
       query: ({ tutorial }) => ({
         url: `/tutorials/${tutorial.id}/add-favorite`,
         method: 'POST',
@@ -44,6 +32,7 @@ export const tutorialsApi = createApi({
           Authorization: `Bearer ${getCookieData('auth-data').token}`,
         },
       }),
+      invalidatesTags: result => ['Tutorials'],
     }),
   }),
 });
@@ -51,7 +40,5 @@ export const tutorialsApi = createApi({
 export const {
   useGetTutorialsQuery,
   useGetTutorialQuery,
-  useSortTutorialsQuery,
-  useSearchTutorialsQuery,
-  useAddToFavoriteTutorialQuery,
+  useAddToFavoriteMutation
 } = tutorialsApi;

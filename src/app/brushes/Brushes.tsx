@@ -38,12 +38,12 @@ const Brushes = ({
     search,
     program: select,
     page: currentPage,
-    size: 6,
+    size: 2,
     like: getCookieData("auth-data").token ? true : false,
   });
 
   const totalCountHeader = data?.totalCount;
-  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 6) : 1;
+  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 2) : 1;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -61,7 +61,7 @@ const Brushes = ({
   if (!data || !data?.response.length) return <BrushesNotFound />;
 
   return (
-    <div>
+    <section>
       <div className="flex flex-wrap flex-row justify-center gap-8">
         {data.response?.map((brush, index) => (
           <Brush
@@ -82,7 +82,7 @@ const Brushes = ({
         popupView={popupView}
         setPopupView={setPopupView}
       />
-    </div>
+    </section>
   );
 };
 
