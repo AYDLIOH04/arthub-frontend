@@ -1,6 +1,6 @@
 const TutorialItemSkeleton = () => {
   return (
-    <div className="w-[351px] h-[321px] bg-main_purple flex flex-col gap-2 rounded-md p-3 group duration-300">
+    <div className="w-[365px] h-[321px] bg-main_purple flex flex-col gap-2 rounded-md p-3 group duration-300">
       <div className="rounded-t-md overflow-hidden relative">
         <div className=" w-full h-[250px]">
           <div className="bg-gradient-to-br from-background via-main_purple to-background rounded-md animate-pulse h-full w-full" />
