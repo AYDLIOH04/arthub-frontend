@@ -6,6 +6,7 @@ import { RxCrossCircled } from "react-icons/rx";
 import ISelect from "./select.interface";
 import { isEscapeKey } from "@/utils/keyboard-utils";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import useEscapeKeydown from "@/hooks/useEscapeKeydown";
 
 const LargeSelect = ({
   onSelectClick,
@@ -22,24 +23,8 @@ const LargeSelect = ({
   const [currentSelectSearch, setCurrentSelectSearch] = useState("");
 
   const ref = useRef<HTMLDivElement>(null);
-
-  useClickOutside(ref, () => {
-    setOpen(false);
-  });
-
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (isEscapeKey(event)) {
-        setOpen(false);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyPress);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [setOpen]);
+  useClickOutside(() => setOpen(false), ref, open);
+  useEscapeKeydown(() => setOpen(false), open)
 
   const onOpenToggle = (e: any) => {
     e.stopPropagation();

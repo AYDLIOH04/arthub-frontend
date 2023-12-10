@@ -5,6 +5,7 @@ import { isEscapeKey } from "@/utils/keyboard-utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { RxCross2 } from "react-icons/rx";
 import { useClickOutside } from "@/hooks/useClickOutside";
+import useEscapeKeydown from "@/hooks/useEscapeKeydown";
 
 const BrushPopup = ({
   brush,
@@ -16,23 +17,8 @@ const BrushPopup = ({
   setPopupView: any;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  useClickOutside(ref, () => {
-    setPopupView(false);
-  });
-
-  useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (isEscapeKey(event)) {
-        setPopupView(false);
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyPress);
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [setPopupView]);
+  useClickOutside(() => setPopupView(false), ref, popupView);
+  useEscapeKeydown(() => setPopupView(false), popupView);
 
   return (
     <AnimatePresence mode="wait">
