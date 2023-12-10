@@ -1,10 +1,11 @@
 import { selectSearch } from "@/utils/select-searct";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import { RxCrossCircled } from "react-icons/rx";
 import ISelect from "./select.interface";
 import { isEscapeKey } from "@/utils/keyboard-utils";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 const LargeSelect = ({
   onSelectClick,
@@ -19,6 +20,12 @@ const LargeSelect = ({
   const [selectionList, setSelectionList] = useState<ISelect[]>(selection);
   const [currentSelect, setCurrentSelect] = useState<ISelect | null>(null);
   const [currentSelectSearch, setCurrentSelectSearch] = useState("");
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useClickOutside(ref, () => {
+    setOpen(false);
+  });
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -73,7 +80,7 @@ const LargeSelect = ({
   };
 
   return (
-    <div className="relative sm:w-[280px] w-full">
+    <div ref={ref} className="relative sm:w-[280px] w-full">
       <div
         onClick={() => setOpen(true)}
         className="

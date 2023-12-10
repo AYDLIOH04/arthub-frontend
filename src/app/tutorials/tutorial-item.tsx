@@ -86,7 +86,7 @@ const TutorialItem = ({
             flex ${
               tutorial.favorite ? "sm:flex" : "sm:hidden"
             }  group-hover:flex 
-            absolute right-0 bottom-0 w-[45px] h-[45px]
+            absolute right-0 bottom-0 w-[45px] h-[45px] hover:bg-gray-300 hover:scale-110
             transition duration-200 bg-white rounded-full
             justify-center items-center`}
         >

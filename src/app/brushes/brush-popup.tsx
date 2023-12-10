@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IBrush } from "@/models/IBrush";
 import { isEscapeKey } from "@/utils/keyboard-utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { RxCross2 } from "react-icons/rx";
+import { useClickOutside } from "@/hooks/useClickOutside";
 
 const BrushPopup = ({
   brush,
@@ -14,6 +15,11 @@ const BrushPopup = ({
   popupView: boolean;
   setPopupView: any;
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  useClickOutside(ref, () => {
+    setPopupView(false);
+  });
+
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
       if (isEscapeKey(event)) {
@@ -36,7 +42,6 @@ const BrushPopup = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          onClick={() => setPopupView(false)}
           className="
           fixed top-0 left-0 z-[1000]
           h-screen w-screen
@@ -46,6 +51,7 @@ const BrushPopup = ({
           "
         >
           <motion.div
+            ref={ref}
             initial={{ opacity: 0, scale: 0.5, translateY: -500 }}
             animate={{ opacity: 1, scale: 1, translateY: 0 }}
             exit={{ opacity: 0, scale: 0.5, translateY: -500 }}
@@ -58,7 +64,7 @@ const BrushPopup = ({
               bg-white rounded-full
               w-[50px] h-[50px] z-10
               flex justify-center items-center
-              cursor-pointer
+              cursor-pointer hover:opacity-75 transition hover:scale-110
               "
               onClick={() => setPopupView(false)}
             >

@@ -58,7 +58,7 @@ const Brush = ({
           className={`
             cursor-pointer
             flex ${brush.favorite ? 'sm:flex' : 'sm:hidden'}  group-hover:flex 
-            absolute right-2 top-2 w-[50px] h-[50px]
+            absolute right-2 top-2 w-[50px] h-[50px]  hover:bg-gray-300  hover:scale-110
             transition duration-200 bg-white rounded-full
             justify-center items-center`}
         >

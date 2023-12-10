@@ -49,7 +49,7 @@ const ProgramItem = ({
             cursor-pointer
             flex ${program.favorite ? 'sm:flex' : 'sm:hidden'} group-hover:flex
             sm:left-2 absolute right-2 top-2 w-[50px] h-[50px]
-            transition duration-200
+            transition duration-200 hover:bg-gray-200 hover:scale-110
             bg-white rounded-full
             justify-center items-center`}
         >
