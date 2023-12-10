@@ -1,4 +1,5 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
+import useHover from "@/hooks/useHover";
 import { ITutorial } from "@/models";
 import { getDifficultyIcon } from "@/utils/get-icon";
 import { getTruncatedText } from "@/utils/get-truncated-text";
@@ -15,7 +16,16 @@ const TutorialItem = ({
 }) => {
   const user = useCurrentUser();
   const router = useRouter();
+
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hoverRef, isHovered] = useHover(
+    () => {
+      setTimeout(() => setIsPlaying(true), 300);
+    },
+    () => {
+      setTimeout(() => setIsPlaying(false), 300);
+    }
+  );
 
   const Icon = getDifficultyIcon(tutorial.difficulty);
   const LikeIcon = tutorial.favorite ? FaHeart : FaRegHeart;
@@ -33,19 +43,10 @@ const TutorialItem = ({
     router.push(`/tutorials/${tutorial.id}`);
   };
 
-  const onVideoMouseEnter = () => {
-    setTimeout(() => setIsPlaying(true), 300);
-  };
-
-  const onVideoMouseLeave = () => {
-    setTimeout(() => setIsPlaying(false), 300);
-  };
-
   return (
     <div
+      ref={hoverRef}
       onClick={onPlayClick}
-      onMouseEnter={onVideoMouseEnter}
-      onMouseLeave={onVideoMouseLeave}
       className="cursor-pointer w-[365px] h-[321px] bg-main_purple flex flex-col gap-2 rounded-md p-3 group hover:scale-105 duration-300"
     >
       <div className="rounded-t-md overflow-hidden relative">
