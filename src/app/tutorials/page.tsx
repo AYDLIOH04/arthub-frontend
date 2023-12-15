@@ -1,8 +1,8 @@
 "use client";
 
-import TutorialsSearch from "./tutorials-search";
-import TutorialsSelect from "./tutorials-select";
-import TutorialList from "./tutorial-list";
+import TutorialsSearch from "./(components)/tutorials-search";
+import TutorialsSelect from "./(components)/tutorials-select";
+import TutorialList from "./(components)/tutorial-list";
 import { useState } from "react";
 
 const TutorialsPage = () => {

@@ -1,29 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import SearchInput from "../../components/UI/search-input";
+import SearchInput from "../../../components/UI/search-input";
 
-const BrushesSearch = ({
+const ProgramsSearch = ({
   onSearchChange,
-  setCurrentPage,
 }: {
   onSearchChange: (search: string) => void;
-  setCurrentPage: (page: number) => void;
 }) => {
   const [search, setSearch] = useState("");
 
-  const brushesSearchSubmit = () => {
+  const programsSearchSubmit = () => {
     onSearchChange(search ? `search=${search}` : "");
-    setCurrentPage(1);
   };
 
   return (
     <SearchInput
       value={search}
       onChange={setSearch}
-      onSubmit={brushesSearchSubmit}
+      onSubmit={programsSearchSubmit}
     />
   );
 };
 
-export default BrushesSearch;
+export default ProgramsSearch;

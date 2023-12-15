@@ -1,7 +1,6 @@
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { IBrush } from "@/models/IBrush";
-import { isEscapeKey } from "@/utils/keyboard-utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { RxCross2 } from "react-icons/rx";
 import { useClickOutside } from "@/hooks/useClickOutside";

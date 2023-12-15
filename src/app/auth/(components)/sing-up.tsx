@@ -4,7 +4,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { useRouter } from "next/navigation";
 import { MouseEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import AuthInput from "../../components/UI/auth-input";
+import AuthInput from "../../../components/UI/auth-input";
 
 const SignUpForm = ({ setShowRegister }: any) => {
   const [email, setEmail] = useState<string | any>("");

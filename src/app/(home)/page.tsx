@@ -1,8 +1,8 @@
-import ArthubSection from "@/app/(home)/arthub-section";
-import ExploreSection from "@/app/(home)/explore-section";
-import InspireSection from "@/app/(home)/inspire-section";
-import LearnSection from "@/app/(home)/learn-section";
-import ScrollButton from "./scroll-button";
+import ArthubSection from "@/app/(home)/(components)/arthub-section";
+import ExploreSection from "@/app/(home)/(components)/explore-section";
+import InspireSection from "@/app/(home)/(components)/inspire-section";
+import LearnSection from "@/app/(home)/(components)/learn-section";
+import ScrollButton from "./(components)/scroll-button";
 
 const Home = () => {
   return (

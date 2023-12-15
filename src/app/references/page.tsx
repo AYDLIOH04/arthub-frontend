@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import ReferenceList from "./reference-list";
-import ReferencesSearch from "./references-search";
-import ReferencesSelect from "./references-select";
+import ReferenceList from "./(components)/reference-list";
+import ReferencesSearch from "./(components)/references-search";
+import ReferencesSelect from "./(components)/references-select";
 
 const TutorialsPage = () => {
   const [search, setSearch] = useState("");

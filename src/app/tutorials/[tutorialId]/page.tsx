@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import TutorialPage from "./tutorial-page";
+import TutorialPage from "./(components)/tutorial-page";
 
 export const metadata: Metadata = {
   title: "ArtHub | Tutorial",

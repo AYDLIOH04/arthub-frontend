@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import ProgramsList from "@/app/programs/program-list";
-import ProgramsSearch from "@/app/programs/programs-search";
-import ProgramsSelect from "@/app/programs/programs-select";
+import ProgramsList from "@/app/programs/(components)/program-list";
+import ProgramsSearch from "@/app/programs/(components)/programs-search";
+import ProgramsSelect from "@/app/programs/(components)/programs-select";
 import { useState } from "react";
 
 const ProgramsPage = () => {

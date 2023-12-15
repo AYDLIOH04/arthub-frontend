@@ -1,4 +1,4 @@
-import Auth from "@/app/auth/Auth";
+import Auth from "@/app/auth/(components)/Auth";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

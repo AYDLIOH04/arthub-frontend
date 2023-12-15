@@ -1,4 +1,4 @@
-import { LeftStone } from "@/app/(home)/stones";
+import { LeftStone } from "@/app/(home)/(components)/stones";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

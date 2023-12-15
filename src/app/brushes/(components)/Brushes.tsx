@@ -8,10 +8,10 @@ import {
 import { IBrush } from "@/models";
 import Brush from "./Brush";
 import BrushPopup from "./brush-popup";
-import Pagination from "../../components/UI/pagination";
-import BrushesSkeleton from "../../components/UI/skeletons/brushes-skeleton";
-import BrushesNotFound from "../../components/UI/not-found/brushes-notfound";
-import BrushesFetchError from "../../components/UI/error/brushes-error";
+import Pagination from "../../../components/UI/pagination";
+import BrushesSkeleton from "../../../components/UI/skeletons/brushes-skeleton";
+import BrushesNotFound from "../../../components/UI/not-found/brushes-notfound";
+import BrushesFetchError from "../../../components/UI/error/brushes-error";
 import getCookieData from "@/utils/get-cookie";
 
 const Brushes = ({

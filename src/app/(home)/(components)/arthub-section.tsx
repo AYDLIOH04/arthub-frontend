@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Stalactites from "@/app/(home)/stalactites";
+import Stalactites from "./stalactites";
 import { LeftStone, RightStone } from "./stones";
 
 const ArthubSection = () => {

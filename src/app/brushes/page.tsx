@@ -1,8 +1,8 @@
 "use client";
 
-import BrushesSearch from "@/app/brushes/brushes-search";
-import BrushesSelect from "@/app/brushes/brushes-select";
-import Brushes from "@/app/brushes/Brushes";
+import BrushesSearch from "@/app/brushes/(components)/brushes-search";
+import BrushesSelect from "@/app/brushes/(components)/brushes-select";
+import Brushes from "@/app/brushes/(components)/Brushes";
 import { useState } from "react";
 
 const BrushesPage = () => {

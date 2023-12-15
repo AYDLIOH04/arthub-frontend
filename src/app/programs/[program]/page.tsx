@@ -1,4 +1,4 @@
-import ProgramPage from "@/app/programs/[program]/program-page";
+import ProgramPage from "@/app/programs/[program]/(components)/program-page";
 import { parseUrlString } from "@/utils/parse-url";
 
 export async function generateMetadata({ params: { program } }: Props) {

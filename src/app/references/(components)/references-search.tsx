@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import SearchInput from "../../components/UI/search-input";
+import SearchInput from "../../../components/UI/search-input";
 
 const ReferencesSearch = ({
   onSearchChange,

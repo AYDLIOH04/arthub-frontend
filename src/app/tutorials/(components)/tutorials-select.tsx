@@ -1,7 +1,7 @@
 "use client";
 
 import selectIcons from "@/data/select/difficulty-select-icons";
-import SelectButton from "../../components/UI/selections/select-button";
+import SelectButton from "../../../components/UI/selections/select-button";
 import { useState } from "react";
 
 const TutorialsSelect = ({
