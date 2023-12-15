@@ -1,32 +1,10 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import useTimerRedirect from "@/hooks/useTimerRedirect";
 import { IoLogoAppleAr } from "react-icons/io5";
 
 const NotFoundProgram = () => {
-  const router = useRouter();
-  const [redirectSeconds, setRedirectSeconds] = useState(3);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      router.push("/programs");
-    }, redirectSeconds * 1000);
-
-    const interval = setInterval(() => {
-      setRedirectSeconds((prevSeconds) => {
-        if (prevSeconds === 1) {
-          clearInterval(interval);
-        }
-        return prevSeconds - 1;
-      });
-    }, 1000);
-
-    return () => {
-      clearTimeout(timer);
-      clearInterval(interval);
-    };
-  }, []);
+  const redirectSeconds = useTimerRedirect('/programs', 3);
 
   return (
     <div className="flex items-center justify-center h-screen font-blender">
