@@ -59,14 +59,14 @@ const BrushPopup = ({
               <img
                 src={brush.image}
                 alt={`Brush ${brush.image}`}
-                className="sm:w-[320px] w-[220px] mx-auto rounded-md drop-shadow-xl"
+                className="sm:h-[300px] h-[280px] mx-auto rounded-md drop-shadow-xl"
               />
             </div>
             <div className="flex flex-col items-center mt-4 gap-3">
               <h2 className="text-[20px] font-bold pb-1 border-b-2 border-indigo-300">
                 {brush.title}
               </h2>
-              <p className="text-center text-[20px]">{brush.description}</p>
+              <p className="text-center text-[20px] overflow-y-auto h-[180px]">{brush.description}</p>
               <div className="flex flex-row gap-4 justify-around w-full text-[22px] text-white text-center">
                 <Link
                   href={`/programs/${brush.program.toLowerCase()}`}
