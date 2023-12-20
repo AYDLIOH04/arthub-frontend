@@ -1,13 +1,13 @@
-import ISelect from "@/components/UI/selections/select.interface";
+import SelectType from "@/components/UI/selections/select.type";
 
-const selection: ISelect[] = [
-  { id: 1, label: "Лицо", query: "лицо" },
-  { id: 2, label: "Руки", query: "руки" },
-  { id: 3, label: "Ноги", query: "ноги" },
-  { id: 4, label: "Позы", query: "позы" },
-  { id: 5, label: "Геометрия", query: "геометрия" },
-  { id: 6, label: "Кувшин", query: "кувшин" },
-  { id: 7, label: "Стекло", query: "стекло" },
+const selection: SelectType[] = [
+  { id: 1, label: "Лицо", query: "лицо", category: 'человек' },
+  { id: 2, label: "Руки", query: "руки", category: 'человек' },
+  { id: 3, label: "Ноги", query: "ноги", category: 'человек' },
+  { id: 4, label: "Позы", query: "позы", category: 'человек' },
+  { id: 5, label: "Геометрия", query: "геометрия", category: 'композиция' },
+  { id: 6, label: "Кувшин", query: "кувшин", category: 'композиция' },
+  { id: 7, label: "Стекло", query: "стекло", category: 'композиция' },
 ];
 
 export default selection

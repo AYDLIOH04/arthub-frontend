@@ -1,6 +1,6 @@
-import ISelect from "@/components/UI/selections/select.interface";
+import SelectType from "@/components/UI/selections/select.type";
 
-const selectIcons: ISelect[] = [
+const selectIcons: SelectType[] = [
   { id: 1, label: "Krita", query: "krita" },
   { id: 2, label: "Photoshop", query: "photoshop" },
   { id: 3, label: "Inkscape", query: "inkscape" },

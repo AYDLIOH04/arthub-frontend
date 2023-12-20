@@ -3,12 +3,14 @@ import mainSelection from "@/data/select/main-reference";
 import secondSelection from "@/data/select/second-reference";
 import LargeSelect from "@/components/UI/selections/large-select";
 import { useEffect, useState } from "react";
+import SelectType from "@/components/UI/selections/select.type";
 
 const ReferencesSelect = ({
   onSelectChange,
 }: {
   onSelectChange: (select: string) => void;
 }) => {
+  const [subcategory, setSubcategory] = useState<SelectType[]>(secondSelection);
   const [mainSelect, setMainSelect] = useState("");
   const [secondSelect, setSecondSelect] = useState("");
 
@@ -22,6 +24,8 @@ const ReferencesSelect = ({
 
   const onMainSelectClick = (query: string) => {
     setMainSelect(query);
+    setSecondSelect("");
+    setSubcategory(secondSelection.filter((sb) => sb.category === query));
   };
 
   const onSecondSelectClick = (query: string) => {
@@ -30,6 +34,8 @@ const ReferencesSelect = ({
 
   const onMainSelectRemove = () => {
     setMainSelect("");
+    setSecondSelect("");
+    setSubcategory(secondSelection);
   };
 
   const onSecondSelectRemove = () => {
@@ -48,7 +54,7 @@ const ReferencesSelect = ({
         label="Подкатегория"
         onSelectClick={onSecondSelectClick}
         onSelectRemove={onSecondSelectRemove}
-        selection={secondSelection}
+        selection={subcategory}
       />
     </div>
   );

@@ -1,11 +1,12 @@
 import { selectSearch } from "@/utils/select-searct";
 import { AnimatePresence, motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import { RxCrossCircled } from "react-icons/rx";
-import ISelect from "./select.interface";
+import ISelect from "./select.type";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import useEscapeKeydown from "@/hooks/useEscapeKeydown";
+import SelectType from "./select.type";
 
 const LargeSelect = ({
   label,
@@ -16,12 +17,18 @@ const LargeSelect = ({
   label?: string;
   onSelectClick: (query: string) => void;
   onSelectRemove: () => void;
-  selection: ISelect[];
+  selection: SelectType[];
 }) => {
   const [open, setOpen] = useState(false);
-  const [selectionList, setSelectionList] = useState<ISelect[]>(selection);
-  const [currentSelect, setCurrentSelect] = useState<ISelect | null>(null);
+  const [selectionList, setSelectionList] = useState<SelectType[]>(selection);
+  const [currentSelect, setCurrentSelect] = useState<SelectType | null>(null);
   const [currentSelectSearch, setCurrentSelectSearch] = useState("");
+
+  useEffect(() => {
+    setSelectionList(selection);
+    setCurrentSelect(null);
+    setCurrentSelectSearch("");
+  }, [selection]);
 
   const ref = useRef<HTMLDivElement>(null);
   useClickOutside(() => setOpen(false), ref, open);
