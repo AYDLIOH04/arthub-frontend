@@ -49,7 +49,7 @@ const ReferenceItem = ({
             flex ${
               reference.favorite ? "sm:flex sm:opacity-100" : "sm:hidden"
             }  group-hover:flex 
-            absolute top-2 right-2 sm:opacity-0 opacity-100 group-hover:opacity-100 duration-200 sm:w-[50px] w-[30px] sm:h-[50px] h-[30px] hover:bg-gray-300 hover:scale-110 bg-white rounded-full justify-center items-center`}
+            absolute sm:top-2 top-1 sm:right-2 right-1 sm:opacity-0 opacity-100 group-hover:opacity-100 duration-200 sm:w-[50px] w-[25px] sm:h-[50px] h-[25px] hover:bg-gray-300 hover:scale-110 bg-white rounded-full justify-center items-center`}
       >
         <LikeIcon className="text-background sm:text-[30px] text-[15px]" />
       </div>
