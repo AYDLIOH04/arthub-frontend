@@ -1,18 +1,19 @@
 import { selectSearch } from "@/utils/select-searct";
 import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";
 import { RxCrossCircled } from "react-icons/rx";
 import ISelect from "./select.interface";
-import { isEscapeKey } from "@/utils/keyboard-utils";
 import { useClickOutside } from "@/hooks/useClickOutside";
 import useEscapeKeydown from "@/hooks/useEscapeKeydown";
 
 const LargeSelect = ({
+  label,
   onSelectClick,
   onSelectRemove,
   selection,
 }: {
+  label?: string;
   onSelectClick: (query: string) => void;
   onSelectRemove: () => void;
   selection: ISelect[];
@@ -24,7 +25,7 @@ const LargeSelect = ({
 
   const ref = useRef<HTMLDivElement>(null);
   useClickOutside(() => setOpen(false), ref, open);
-  useEscapeKeydown(() => setOpen(false), open)
+  useEscapeKeydown(() => setOpen(false), open);
 
   const onOpenToggle = (e: any) => {
     e.stopPropagation();
@@ -75,7 +76,7 @@ const LargeSelect = ({
       >
         <input
           className="text-[18px] w-11/12 px-2 py-1 rounded-md bg-second_purple placeholder:text-slate-300 outline-none"
-          placeholder="Выберите сортировку"
+          placeholder={label ? label : "Выберите сортировку"}
           value={currentSelectSearch}
           onChange={onSearchChange}
         />

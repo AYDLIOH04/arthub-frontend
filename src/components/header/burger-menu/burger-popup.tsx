@@ -44,7 +44,7 @@ const BurgerPopup = ({ isOpen, toggleMenu }: BurgerPopupProps) => {
         {isAuth ? (
           <>
             <li className="text-white text-[18px] hover:text-slate-300">
-              <Link href="/profile" onClick={toggleMenu}>
+              <Link href="/profile/favorites" onClick={toggleMenu}>
                 Профиль
               </Link>
             </li>

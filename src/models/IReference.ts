@@ -3,4 +3,5 @@ export interface IReference {
   hashtag: string;
   title: string;
   image: string
+  favorite?: boolean;
 }

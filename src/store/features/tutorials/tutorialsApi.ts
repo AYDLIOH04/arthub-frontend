@@ -18,10 +18,14 @@ export const tutorialsApi = createApi({
       }),
       providesTags: result => ['Tutorials'],
     }),
-    getTutorial: builder.query<ITutorial, { id: string }>({
-      query: ({ id }) => ({
-        url: `tutorials/${id}`,
+    getTutorial: builder.query<ITutorial, { id: string, like: boolean }>({
+      query: ({ id, like }) => ({
+        url: `tutorials/${id}${like ? '/liked' : ''}`,
+        headers: {
+          Authorization: `Bearer ${getCookieData('auth-data').token}`
+        },
       }),
+      providesTags: result => ['Tutorials'],
     }),
     addToFavorite: builder.mutation<void, { tutorial: ITutorial }>({
       query: ({ tutorial }) => ({

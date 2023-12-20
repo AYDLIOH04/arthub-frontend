@@ -1,13 +1,13 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Profile Settings",
+  title: "Arthub | Profile Settings",
 };
 
 const SettingsPage = () => {
   return (
     <main className="text-center mt-[120px] ">
-      <h2>Settings</h2>
+      <h2>Profile Settings</h2>
     </main>
   );
 };

@@ -43,7 +43,7 @@ const Brush = ({
       border-2 border-indigo-300
       rounded-md overflow-hidden
       max-w-[300px] min-h-[500px]
-      hover:scale-105 scale-100
+      hover:scale-105 hover:shadow-xl scale-100
       transition duration-100
     "
     >

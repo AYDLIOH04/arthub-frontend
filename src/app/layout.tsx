@@ -44,7 +44,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="ru">
       <body
-        className={`${damioneFont.variable} ${blenderFont.variable} bg-background text-color`}
+        className={`${damioneFont.variable} ${blenderFont.variable} bg-background text-color font-blender`}
       >
         <ReduxProvider>
           <Header />

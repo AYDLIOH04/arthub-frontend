@@ -30,9 +30,9 @@ const Authorization = () => {
         <div className="space-x-5">
           <li className="inline">
             <Link
-              href="/profile"
+              href="/profile/favorites"
               className={
-                navLinkStyles + (pathname === "/profile" ? "text-hover" : "")
+                navLinkStyles + (pathname.includes("/profile") ? " text-hover" : "")
               }
             >
               Профиль

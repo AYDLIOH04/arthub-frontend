@@ -47,7 +47,7 @@ const TutorialItem = ({
     <div
       ref={hoverRef}
       onClick={onPlayClick}
-      className="cursor-pointer w-[365px] h-[321px] bg-main_purple flex flex-col gap-2 rounded-md p-3 group hover:scale-105 duration-300"
+      className="cursor-pointer w-[365px] h-[321px] bg-main_purple flex flex-col gap-2 rounded-md p-3 group hover:scale-105 hover:shadow-xl duration-300"
     >
       <div className="rounded-t-md overflow-hidden relative">
         <div>
@@ -59,7 +59,7 @@ const TutorialItem = ({
             className="select-none pointer-events-none w-full"
           />
           <p className="group-hover:opacity-0 duration-300 absolute bottom-0 right-0 bg-main_purple pl-1 rounded-tl-md">
-            10:05
+            {tutorial.duration}
           </p>
         </div>
         {isPlaying && (

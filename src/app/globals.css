@@ -29,3 +29,22 @@
 *::-webkit-scrollbar-track {
   background-color: var(--background-scroll);
 }
+
+
+
+
+/* Swiper */
+.swiper {
+  position: static !important;
+}
+
+.swiper-pagination {
+  position: absolute !important;
+  bottom: -30px !important;
+}
+
+.swiper-pagination-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: var(--scroll-third) !important;
+}

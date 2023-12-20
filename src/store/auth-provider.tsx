@@ -29,7 +29,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (isError) {
-      dispatch(logout());
+      // dispatch(logout());
       // toast.error("Ошибка входа");
     }
   }, [isError]);

@@ -7,5 +7,5 @@ export interface ITutorial {
   link: string; 
   image: string
   favorite?: boolean;
-  time?: string;
+  duration?: string;
 }
