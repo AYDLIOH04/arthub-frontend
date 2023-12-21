@@ -9,7 +9,7 @@ const ProfileNavbar = () => {
   const [isAdmin, setIsAdmin] = useState(true);
 
   return (
-    <ul className="flex flex-row gap-5 items-center">
+    <ul className="flex flex-row gap-5 items-center md:justify-start md:ml-4 ml-0 justify-center">
       <li>
         <Link
           href="/profile/favorites"

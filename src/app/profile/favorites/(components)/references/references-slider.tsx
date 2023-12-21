@@ -1,13 +1,24 @@
 "use client";
 
 import { useGetUserReferencesQuery } from "@/store/features/user/userApi";
-import DefaultSwiper from "../swiper/default-swiper-layout";
 import ReferenceSlide from "./reference-slide";
 import { SwiperSlide } from "swiper/react";
 import { useAddToFavoriteMutation } from "@/store/features/references/referencesApi";
+import ReferenceSwiper from "../swiper/reference-swiper-layout";
+import ReferencePopup from "@/app/references/(components)/reference-popup";
+import { IReference } from "@/models";
+import { useState } from "react";
 
 const ReferencesSlider = () => {
-  const [addToFavoriteReference] = useAddToFavoriteMutation();
+  const [popupView, setPopupView] = useState(false);
+  const [selectBrush, setSelectBrush] = useState<IReference>({} as IReference);
+
+  const openViewPopup = (reference: IReference) => {
+    setSelectBrush(reference);
+    setPopupView(true);
+  };
+  
+  const [toggleFavorite] = useAddToFavoriteMutation();
   const { data, isLoading, isError, error } = useGetUserReferencesQuery();
 
   if (isLoading) return <h2>Loading...</h2>;
@@ -22,15 +33,24 @@ const ReferencesSlider = () => {
   if (!data || !data?.length) return <h2>Not Found</h2>;
 
   return (
-    <div className="mt-5 relative">
-      <DefaultSwiper>
+    <>
+      <ReferenceSwiper>
         {data.map((reference) => (
-          <SwiperSlide key={reference.id}>
-            <ReferenceSlide reference={reference} addToFavorite={addToFavoriteReference} />
+          <SwiperSlide key={reference.id} className="my-auto">
+            <ReferenceSlide
+              reference={reference}
+              toggleFavorite={toggleFavorite}
+              openViewPopup={openViewPopup}
+            />
           </SwiperSlide>
         ))}
-      </DefaultSwiper>
-    </div>
+      </ReferenceSwiper>
+      <ReferencePopup
+        reference={selectBrush}
+        popupView={popupView}
+        setPopupView={setPopupView}
+      />
+    </>
   );
 };
 

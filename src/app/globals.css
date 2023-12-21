@@ -5,9 +5,13 @@
 :root {
   --scroll-first: #906ae2;
   --scroll-second: #62469e;
-  --scroll-third: #A175FF;
-  --background-scroll: #37195E;
+  --scroll-third: #a175ff;
+  --background: #37195e;
+  --background-scroll: #2C1A4A;
 }
+
+
+
 
 /* Scroll */
 *::-webkit-scrollbar {
@@ -15,7 +19,12 @@
 }
 
 *::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, var(--scroll-first), var(--scroll-third), var(--scroll-second));
+  background: linear-gradient(
+    to bottom,
+    var(--scroll-first),
+    var(--scroll-third),
+    var(--scroll-second)
+  );
   border-radius: 12px;
   border: 2px solid var(--background-scroll);
   transition: border 1s;
@@ -25,7 +34,6 @@
   border: 0.7px solid var(--background-scroll);
 }
 
-
 *::-webkit-scrollbar-track {
   background-color: var(--background-scroll);
 }
@@ -33,7 +41,7 @@
 
 
 
-/* Swiper */
+/* Default Swiper */
 .swiper {
   position: static !important;
 }
@@ -48,3 +56,15 @@
   height: 12px !important;
   background: var(--scroll-third) !important;
 }
+
+.reference-swiper-navigation {
+  position: relative !important;
+  width: auto !important;
+  top: 0 !important;
+  display: flex !important; 
+  flex-direction: row !important;
+  gap: 3px !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+

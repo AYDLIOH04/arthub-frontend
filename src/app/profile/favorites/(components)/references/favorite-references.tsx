@@ -3,7 +3,7 @@ import ReferencesSlider from "./references-slider";
 
 const FavoriteReferences = () => {
   return (
-    <section className="mt-10">
+    <section className="mt-12">
       <SliderTitle>Избранные референсы</SliderTitle>
       <div className="mt-5 relative">
         <ReferencesSlider />

@@ -11,7 +11,7 @@ const TutorialsPage = () => {
   const [select, setSelect] = useState("");
 
   return (
-    <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender lg:min-h-[calc(100vh - 120px)]">
+    <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender lg:min-h-[78vh] md:min-h-[70vh] min-h-[66.3vh]">
       <div className="mx-5">
         <div className="flex flex-col md:flex-row md:space-x-10 justify-between items-center mx-0 mb-5 gap-5">
           <TutorialsSearch

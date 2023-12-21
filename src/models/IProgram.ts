@@ -5,7 +5,7 @@ export interface IProgram {
   link: string; 
   logo: string;
   systems: string[];
-  favorite: boolean;
+  favorite?: boolean;
 }
 
 export interface IProgramFull {

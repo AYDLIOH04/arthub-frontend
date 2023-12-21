@@ -11,7 +11,7 @@ const BrushesPage = () => {
   const [select, setSelect] = useState("");
 
   return (
-    <div className="w-full lg:max-w-[1400px] mx-auto mt-[120px] font-blender min-h-[calc(100vh - 120px)]">
+    <div className="w-full lg:max-w-[1400px] mx-auto mt-[120px] font-blender lg:min-h-[78vh] md:min-h-[70vh] min-h-[66.3vh]">
       <div className="mx-5">
         <div className="w-full lg:max-w-[1200px] flex flex-col md:flex-row md:space-x-10 justify-between items-center md:mx-auto mb-8 gap-1 md:px-5">
           <BrushesSearch

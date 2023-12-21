@@ -8,7 +8,7 @@ const TutorialsPage = () => {
   const [select, setSelect] = useState("");
 
   return (
-    <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender lg:min-h-[calc(100vh - 120px)]">
+    <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender lg:min-h-[78vh] md:min-h-[70vh] min-h-[66.3vh]">
       <div className="mx-5">
         <ReferencesSelect onSelectChange={setSelect} />
         <ReferenceList select={select}/>

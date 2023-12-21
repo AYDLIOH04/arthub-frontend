@@ -22,13 +22,13 @@ const MainFooter = () => {
         <div className="w-1/4 self-start mt-5">
           <h3>Ссылки</h3>
           <ul className="mt-3 flex flex-row justify-center sm:gap-5 gap-2 text-[25px] sm:text-[35px]">
-            <li className="hover:text-hover linear duration-200">
+            <li className="hover:text-hover linear duration-200 cursor-pointer">
               <BsDiscord />
             </li>
-            <li className="hover:text-hover linear duration-200">
+            <li className="hover:text-hover linear duration-200 cursor-pointer">
               <BsTelegram />
             </li>
-            <li className="hover:text-hover linear duration-200">
+            <li className="hover:text-hover linear duration-200 cursor-pointer">
               <BsGithub />
             </li>
           </ul>

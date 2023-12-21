@@ -3,7 +3,7 @@ import BrushesSlider from "./brushes-slider";
 
 const FavoriteBrushes = () => {
   return (
-    <section className="mt-10">
+    <section className="mt-12">
       <SliderTitle>Избранные кисти</SliderTitle>
       <div className="mt-5 relative">
         <BrushesSlider />

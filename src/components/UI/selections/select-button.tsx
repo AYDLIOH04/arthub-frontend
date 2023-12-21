@@ -45,7 +45,7 @@ const SelectButton = ({
           bg-main_purple hover:bg-hover
             h-[20px] w-[20px] rounded-full
             flex justify-center items-center
-            absolute -top-2 -right-2 z-10
+            absolute sm:-top-2 sm:-right-2 -top-1 -right-1 z-10
           "
         >
           <RxCross2 size={16} className="text-white" />
