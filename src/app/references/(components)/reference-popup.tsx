@@ -47,7 +47,7 @@ const ReferencePopup = ({
               className="
               absolute top-2 right-2
               bg-white rounded-full
-              w-[50px] h-[50px] z-10
+              sm:w-[50px] w-[40px] sm:h-[50px] h-[40px] z-10
               flex justify-center items-center
               cursor-pointer hover:opacity-75 transition hover:scale-110
               "
