@@ -5,21 +5,24 @@ import DefaultSwiper from "../swiper/default-swiper-layout";
 import { useAddToFavoriteMutation } from "@/store/features/tutorials/tutorialsApi";
 import { useGetUserTutorialsQuery } from "@/store/features/user/userApi";
 import TutorialSlide from "./tutorial-slide";
+import FavoriteTutorialsSkeleton from "@/components/UI/skeletons/favorite-tutorials-skeleton";
+import FavoriteTutorialsError from "@/components/UI/error/favorite-tutorials-error";
+import FavoriteTutorialsNotFound from "@/components/UI/not-found/favorite-tutorials-notfound";
 
 const TutorialsSlider = () => {
   const [toggleFavorite] = useAddToFavoriteMutation();
   const { data, isLoading, isError, error } = useGetUserTutorialsQuery();
 
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoading) return <FavoriteTutorialsSkeleton />;
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <h2>Not Found</h2>;
+      return <FavoriteTutorialsNotFound />;
     }
-    return <h2>Fetch Error</h2>;
+    return <FavoriteTutorialsError />;
   }
 
-  if (!data || !data?.length) return <h2>Not Found</h2>;
+  if (!data || !data?.length) return <FavoriteTutorialsNotFound />;
 
   return (
     <DefaultSwiper countSlides={3}>

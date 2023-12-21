@@ -8,6 +8,9 @@ import ReferenceSwiper from "../swiper/reference-swiper-layout";
 import ReferencePopup from "@/app/references/(components)/reference-popup";
 import { IReference } from "@/models";
 import { useState } from "react";
+import FavoriteReferencesSkeleton from "@/components/UI/skeletons/favorite-references-skeleton";
+import FavoriteReferencesNotFound from "@/components/UI/not-found/favorite-references-notfound";
+import FavoriteReferencesError from "@/components/UI/error/favorite-references-error";
 
 const ReferencesSlider = () => {
   const [popupView, setPopupView] = useState(false);
@@ -17,20 +20,20 @@ const ReferencesSlider = () => {
     setSelectBrush(reference);
     setPopupView(true);
   };
-  
+
   const [toggleFavorite] = useAddToFavoriteMutation();
   const { data, isLoading, isError, error } = useGetUserReferencesQuery();
 
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoading) return <FavoriteReferencesSkeleton />;
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <h2>Not Found</h2>;
+      return <FavoriteReferencesNotFound />;
     }
-    return <h2>Fetch Error</h2>;
+    return <FavoriteReferencesError />;
   }
 
-  if (!data || !data?.length) return <h2>Not Found</h2>;
+  if (!data || !data?.length) return <FavoriteReferencesNotFound />;
 
   return (
     <>

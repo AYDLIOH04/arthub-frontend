@@ -5,21 +5,24 @@ import { useGetUserProgramsQuery } from "@/store/features/user/userApi";
 import DefaultSwiper from "../swiper/default-swiper-layout";
 import ProgramSlide from "./program-slide";
 import { SwiperSlide } from "swiper/react";
+import FavoriteProgramsSkeleton from "@/components/UI/skeletons/favorite-programs-skeleton";
+import FavoriteProgramsNotFound from "@/components/UI/not-found/favorite-programs-notfound";
+import FavoriteProgramsError from "@/components/UI/error/favorite-programs-error";
 
 const ProgramsSlider = () => {
   const [toggleFavorite] = useAddToFavoriteMutation();
   const { data, isLoading, isError, error } = useGetUserProgramsQuery();
 
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoading) return <FavoriteProgramsSkeleton />;
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <h2>Not Found</h2>;
+      return <FavoriteProgramsNotFound />;
     }
-    return <h2>Fetch Error</h2>;
+    return <FavoriteProgramsError />;
   }
 
-  if (!data || !data?.length) return <h2>Not Found</h2>;
+  if (!data || !data?.length) return <FavoriteProgramsNotFound />;
 
   return (
     <DefaultSwiper>

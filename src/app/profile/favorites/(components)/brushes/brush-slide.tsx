@@ -7,9 +7,11 @@ import { useState } from "react";
 const BrushSlide = ({
   brush,
   toggleFavorite,
+  openViewPopup,
 }: {
   brush: IBrush;
   toggleFavorite: any;
+  openViewPopup: any;
 }) => {
   const router = useRouter();
   const [favorite, setFavorite] = useState(true);
@@ -17,7 +19,7 @@ const BrushSlide = ({
   const onToggleFavorite = (event: any) => {
     event.stopPropagation();
     toggleFavorite({ brush });
-    setFavorite(current => !current)
+    setFavorite((current) => !current);
   };
 
   const routeToProgram = (event: any, url: string) => {
@@ -29,7 +31,10 @@ const BrushSlide = ({
   const LikeIcon = favorite ? FaHeart : FaRegHeart;
 
   return (
-    <div className="rounded-md px-3 py-5 flex justify-center">
+    <div
+      onClick={() => openViewPopup(brush)}
+      className="rounded-md px-3 py-5 flex justify-center"
+    >
       <div
         className="group cursor-pointer flex flex-col gap-3 border-2 border-indigo-300 rounded-md overflow-hidden
           max-w-[300px] h-[500px] hover:scale-105 scale-100 transition duration-100
