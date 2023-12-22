@@ -14,11 +14,11 @@ export const getProgramsIcon = (program: string) => {
   switch (program) {
     case "Krita":
       return SiKrita;
-    case "Photoshop":
+    case "Adobe Photoshop":
       return SiAdobephotoshop;
     case "Inkscape":
       return SiInkscape;
-    case "Illustrator":
+    case "Adobe Illustrator":
       return SiAdobeillustrator;
     case "Figma":
       return CgFigma;

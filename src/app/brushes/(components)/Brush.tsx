@@ -21,9 +21,9 @@ const Brush = ({
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
     if (user.isAuth) {
-      addToFavorite({brush});
+      addToFavorite({ brush });
     } else {
-      router.push('/auth')
+      router.push("/auth");
     }
   };
 
@@ -57,7 +57,7 @@ const Brush = ({
           onClick={toggleFavorite}
           className={`
             cursor-pointer
-            flex ${brush.favorite ? 'sm:flex' : 'sm:hidden'}  group-hover:flex 
+            flex ${brush.favorite ? "sm:flex" : "sm:hidden"}  group-hover:flex 
             absolute right-2 top-2 w-[50px] h-[50px]  hover:bg-gray-300  hover:scale-110
             transition duration-200 bg-white rounded-full
             justify-center items-center`}
@@ -82,10 +82,7 @@ const Brush = ({
             }
             className="flex flex-row items-center gap-2 cursor-pointer group/item"
           >
-            <Icon className="text-[26px] sm:text-[20px] group-hover/item:text-indigo-200 transition" />
-            <p className="hidden sm:block text-[14px] text-indigo-200">
-              {brush.program}
-            </p>
+            <Icon className="text-[28px] hover:text-indigo-200 transition" />
           </div>
         </div>
         <p className="text-[16px]">{brush.description}</p>

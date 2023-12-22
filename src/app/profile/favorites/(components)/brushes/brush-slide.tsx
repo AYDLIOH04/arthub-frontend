@@ -72,10 +72,7 @@ const BrushSlide = ({
               }
               className="flex flex-row items-center gap-2 cursor-pointer group/item"
             >
-              <Icon className="text-[26px] sm:text-[20px] group-hover/item:text-indigo-200 transition" />
-              <p className="hidden sm:block text-[14px] text-indigo-200">
-                {brush.program}
-              </p>
+              <Icon className="text-[28px] hover:text-indigo-200 transition" />
             </div>
           </div>
           <p className="text-[16px] overflow-auto">{brush.description}</p>

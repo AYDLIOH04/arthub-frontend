@@ -26,13 +26,13 @@ const ReferenceList = ({ select }: { select: string }) => {
     like: getCookieData("auth-data").token ? true : false,
   });
 
-  if (isLoading) return <h2>Loading...</h2>;
+  if (isLoading) return <h2>Loading...</h2>; // TODO
 
   if (isError) {
     if ("status" in error && error.status === 404) {
       return <ReferencesNotFound />;
     }
-    return <h2>Fetch Error</h2>;
+    return <h2>Fetch Error</h2>; // TODO
   }
 
   if (!data || !data?.response.length) return <ReferencesNotFound />;
