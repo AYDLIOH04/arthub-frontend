@@ -20,28 +20,28 @@ export const userApi = createApi({
   endpoints: (builder) => ({
     getUserInfo: builder.query<IUser, void>({
       query: () => ({
-        url: '/users/info',
+        url: '/user/info',
       }),
       providesTags: result => result ? [{ type: 'User', id: result.id }] : [],
     }),
     getUserBrushes: builder.query<IBrush[], void>({
       query: () => ({
-        url: '/users/brushes',
+        url: '/user/brushes',
       }),
     }),
     getUserReferences: builder.query<IReference[], void>({
       query: () => ({
-        url: '/users/references',
+        url: '/user/references',
       }),
     }),
     getUserTutorials: builder.query<ITutorial[], void>({
       query: () => ({
-        url: '/users/tutorials',
+        url: '/user/tutorials',
       }),
     }),
     getUserPrograms: builder.query<IProgram[], void>({
       query: () => ({
-        url: '/users/programs',
+        url: '/user/programs',
       }),
     }),
   }),

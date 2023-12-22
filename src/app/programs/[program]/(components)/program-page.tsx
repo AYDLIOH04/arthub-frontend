@@ -52,7 +52,7 @@ const ProgramPage = ({ query }: { query: string }) => {
               transition duration-300
               sm:mx-0 mx-auto
             "
-              href={program.link}
+              href={program.site}
               target="blank"
             >
               Официальный сайт

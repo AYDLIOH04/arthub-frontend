@@ -47,7 +47,7 @@ const Brush = ({
       transition duration-100
     "
     >
-      <div className="mx-auto w-[200px] px-3 py-4 flex justify-center items-center">
+      <div className="mx-auto max-h-[200px] px-3 py-4 flex justify-center items-center">
         <img
           src={brush.image}
           alt={`Brush ${brush.image}`}

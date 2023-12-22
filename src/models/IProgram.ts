@@ -13,6 +13,7 @@ export interface IProgramFull {
   description: string;
   name: string;
   link: string; 
+  site: string;
   logo: string;
   systems: string[];
   pluses: string[];
