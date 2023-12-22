@@ -42,7 +42,7 @@ const ReferencePopup = ({
             transition={{ duration: 0.3 }}
             className="relative"
           >
-            <img src={reference.image} alt={reference.title}/>
+            <img src={reference.image} alt={reference.title} className="sm:max-h-[95vh] sm:max-w-[95vw]"/>
             <div
               className="
               absolute top-2 right-2
