@@ -11,6 +11,7 @@ import FavoriteBrushesError from "@/components/UI/error/favorite-brushes-error";
 import BrushPopup from "@/app/brushes/(components)/brush-popup";
 import { useState } from "react";
 import { IBrush } from "@/models";
+import { AnimatePresence } from "framer-motion";
 
 const BrushesSlider = () => {
   const [popupView, setPopupView] = useState(false);
@@ -48,11 +49,15 @@ const BrushesSlider = () => {
           </SwiperSlide>
         ))}
       </DefaultSwiper>
-      <BrushPopup
-        brush={selectBrush}
-        popupView={popupView}
-        setPopupView={setPopupView}
-      />
+      <AnimatePresence mode="wait">
+        {popupView && (
+          <BrushPopup
+            brush={selectBrush}
+            popupView={popupView}
+            setPopupView={setPopupView}
+          />
+        )}
+      </AnimatePresence>
     </>
   );
 };

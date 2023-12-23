@@ -11,6 +11,7 @@ import { useState } from "react";
 import FavoriteReferencesSkeleton from "@/components/UI/skeletons/favorite-references-skeleton";
 import FavoriteReferencesNotFound from "@/components/UI/not-found/favorite-references-notfound";
 import FavoriteReferencesError from "@/components/UI/error/favorite-references-error";
+import { AnimatePresence } from "framer-motion";
 
 const ReferencesSlider = () => {
   const [popupView, setPopupView] = useState(false);
@@ -48,11 +49,15 @@ const ReferencesSlider = () => {
           </SwiperSlide>
         ))}
       </ReferenceSwiper>
-      <ReferencePopup
-        reference={selectBrush}
-        popupView={popupView}
-        setPopupView={setPopupView}
-      />
+      <AnimatePresence mode="wait">
+        {popupView && (
+          <ReferencePopup
+          reference={selectBrush}
+          popupView={popupView}
+          setPopupView={setPopupView}
+        />
+        )}
+      </AnimatePresence>
     </>
   );
 };
