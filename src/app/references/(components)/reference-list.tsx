@@ -9,6 +9,7 @@ import {
 } from "@/store/features/references/referencesApi";
 import ReferencePopup from "./reference-popup";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import { AnimatePresence } from "framer-motion";
 
 const ReferenceList = ({ select }: { select: string }) => {
   const [popupView, setPopupView] = useState(false);
@@ -16,12 +17,13 @@ const ReferenceList = ({ select }: { select: string }) => {
   const matches = useMediaQuery("(max-width: 768px)");
 
   const openViewPopup = (reference: IReference) => {
+    document.body.style.overflow = "hidden";
     setSelectBrush(reference);
     setPopupView(true);
   };
 
   const [addToFavoriteReference] = useAddToFavoriteMutation();
-  const { data, isLoading, isError, error, isSuccess } = useGetReferencesQuery({
+  const { data, isLoading, isError, error } = useGetReferencesQuery({
     tag: select,
     like: getCookieData("auth-data").token ? true : false,
   });
@@ -40,7 +42,9 @@ const ReferenceList = ({ select }: { select: string }) => {
   const sliceCount = data.totalCount / (matches ? 2 : 3);
   const firstData = data?.response.slice(0, sliceCount);
   const secondData = data?.response.slice(sliceCount, sliceCount * 2);
-  const thirdData = !matches ? data?.response.slice(sliceCount * 2, sliceCount * 3) : [];
+  const thirdData = !matches
+    ? data?.response.slice(sliceCount * 2, sliceCount * 3)
+    : [];
 
   return (
     <section>
@@ -65,7 +69,7 @@ const ReferenceList = ({ select }: { select: string }) => {
             />
           ))}
         </div>
-        {!matches &&
+        {!matches && (
           <div className="flex flex-col w-1/3 md:gap-2 gap-1">
             {thirdData.map((reference) => (
               <ReferenceItem
@@ -76,13 +80,17 @@ const ReferenceList = ({ select }: { select: string }) => {
               />
             ))}
           </div>
-        }
+        )}
       </div>
-      <ReferencePopup
-        reference={selectBrush}
-        popupView={popupView}
-        setPopupView={setPopupView}
-      />
+      <AnimatePresence mode="wait">
+        {popupView && (
+          <ReferencePopup
+            reference={selectBrush}
+            popupView={popupView}
+            setPopupView={setPopupView}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };

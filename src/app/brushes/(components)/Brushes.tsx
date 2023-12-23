@@ -13,6 +13,7 @@ import BrushesSkeleton from "../../../components/UI/skeletons/brushes-skeleton";
 import BrushesNotFound from "../../../components/UI/not-found/brushes-notfound";
 import BrushesFetchError from "../../../components/UI/error/brushes-error";
 import getCookieData from "@/utils/get-cookie";
+import { AnimatePresence } from "framer-motion";
 
 const Brushes = ({
   search,
@@ -77,11 +78,15 @@ const Brushes = ({
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
-      <BrushPopup
-        brush={selectBrush}
-        popupView={popupView}
-        setPopupView={setPopupView}
-      />
+      <AnimatePresence mode="wait">
+        {popupView && (
+          <BrushPopup
+            brush={selectBrush}
+            popupView={popupView}
+            setPopupView={setPopupView}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 };
