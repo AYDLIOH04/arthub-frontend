@@ -1,13 +1,11 @@
 "use client";
 
-import useCurrentUser from "@/hooks/useCurrentUser";
 import { redirect } from "next/navigation";
+import Cookies from "js-cookie";
 
 const PrivatePageProvider = ({ children }: { children: any }) => {
-  const user = useCurrentUser();
-  
-  if (!user.isAuth) {
-    redirect("/auth");
+  if (!Cookies.get("auth-refresh")) {
+    redirect('/auth')
   }
 
   return <>{children}</>;

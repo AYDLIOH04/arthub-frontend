@@ -8,10 +8,18 @@ import TutorialSlide from "./tutorial-slide";
 import FavoriteTutorialsSkeleton from "@/components/UI/skeletons/favorite-tutorials-skeleton";
 import FavoriteTutorialsError from "@/components/UI/error/favorite-tutorials-error";
 import FavoriteTutorialsNotFound from "@/components/UI/not-found/favorite-tutorials-notfound";
+import { useEffect } from "react";
 
 const TutorialsSlider = () => {
   const [toggleFavorite] = useAddToFavoriteMutation();
-  const { data, isLoading, isError, error } = useGetUserTutorialsQuery();
+  const { data, isLoading, isError, error, isSuccess, refetch } =
+    useGetUserTutorialsQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, []);
 
   if (isLoading) return <FavoriteTutorialsSkeleton />;
 
@@ -28,7 +36,7 @@ const TutorialsSlider = () => {
     <DefaultSwiper countSlides={3}>
       {data.map((tutorial) => (
         <SwiperSlide key={tutorial.id}>
-          <TutorialSlide tutorial={tutorial} toggleFavorite={() => {}} />
+          <TutorialSlide tutorial={tutorial} toggleFavorite={toggleFavorite} />
         </SwiperSlide>
       ))}
     </DefaultSwiper>

@@ -7,7 +7,7 @@ import { useAddToFavoriteMutation } from "@/store/features/references/references
 import ReferenceSwiper from "../swiper/reference-swiper-layout";
 import ReferencePopup from "@/app/references/(components)/reference-popup";
 import { IReference } from "@/models";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FavoriteReferencesSkeleton from "@/components/UI/skeletons/favorite-references-skeleton";
 import FavoriteReferencesNotFound from "@/components/UI/not-found/favorite-references-notfound";
 import FavoriteReferencesError from "@/components/UI/error/favorite-references-error";
@@ -23,7 +23,13 @@ const ReferencesSlider = () => {
   };
 
   const [toggleFavorite] = useAddToFavoriteMutation();
-  const { data, isLoading, isError, error } = useGetUserReferencesQuery();
+  const { data, isLoading, isError, error, isSuccess, refetch } = useGetUserReferencesQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [])
 
   if (isLoading) return <FavoriteReferencesSkeleton />;
 

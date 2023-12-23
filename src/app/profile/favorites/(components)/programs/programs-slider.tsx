@@ -8,10 +8,17 @@ import { SwiperSlide } from "swiper/react";
 import FavoriteProgramsSkeleton from "@/components/UI/skeletons/favorite-programs-skeleton";
 import FavoriteProgramsNotFound from "@/components/UI/not-found/favorite-programs-notfound";
 import FavoriteProgramsError from "@/components/UI/error/favorite-programs-error";
+import { useEffect } from "react";
 
 const ProgramsSlider = () => {
   const [toggleFavorite] = useAddToFavoriteMutation();
-  const { data, isLoading, isError, error } = useGetUserProgramsQuery();
+  const { data, isLoading, isError, error, isSuccess, refetch } = useGetUserProgramsQuery();
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetch();
+    }
+  }, [])
 
   if (isLoading) return <FavoriteProgramsSkeleton />;
 

@@ -4,15 +4,16 @@ import { useState } from "react";
 import SignUpForm from "./sing-up";
 import SignInForm from "./sign-in";
 import { useAppSelector } from "@/store/hooks";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 const Auth = () => {
+  const router = useRouter();
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const [showRegister, setShowRegister] = useState(false);
 
   if (isAuth) {
-    redirect("/");
+    router.back();
   }
 
   return (

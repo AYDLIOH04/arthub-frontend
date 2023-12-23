@@ -6,13 +6,14 @@ import {
   authLinkStyles,
   navLinkStyles,
 } from "./links-data";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { toast } from "react-toastify";
 import { logout } from "@/store/features/auth/authSlice";
 import { useLogoutMutation } from "@/store/features/auth/authApi";
 
 const Authorization = () => {
+  const router = useRouter();
   const pathname = usePathname();
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useAppDispatch();
@@ -22,6 +23,7 @@ const Authorization = () => {
     await logoutApi({});
     dispatch(logout());
     toast.success("Выход успешен");
+    router.push('/');
   };
 
   return (

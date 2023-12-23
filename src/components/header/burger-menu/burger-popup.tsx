@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { logout } from "@/store/features/auth/authSlice";
 import { toast } from "react-toastify";
 import { useLogoutMutation } from "@/store/features/auth/authApi";
+import { useRouter } from "next/navigation";
 
 interface BurgerPopupProps {
   toggleMenu: () => void;
@@ -11,6 +12,7 @@ interface BurgerPopupProps {
 }
 
 const BurgerPopup = ({ isOpen, toggleMenu }: BurgerPopupProps) => {
+  const router = useRouter();
   const isAuth = useAppSelector((state) => state.auth.isAuth);
   const dispatch = useAppDispatch();
   const [logoutApi, { isSuccess }] = useLogoutMutation();
@@ -21,6 +23,7 @@ const BurgerPopup = ({ isOpen, toggleMenu }: BurgerPopupProps) => {
     if (isSuccess) {
       dispatch(logout());
       toast.success("Выход успешен");
+      router.push('/');
     }
   };
 
