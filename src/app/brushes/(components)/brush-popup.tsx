@@ -41,7 +41,7 @@ const BrushPopup = ({
             animate={{ opacity: 1, scale: 1, translateY: 0 }}
             exit={{ opacity: 0, scale: 0.5, translateY: -500 }}
             transition={{ duration: 0.3 }}
-            className="border-2 border-indigo-300 rounded-md bg-main_purple px-4 py-4 mx-1 w-full sm:w-[500px] min-h-[500px] relative"
+            className="border-2 border-indigo-300 rounded-md bg-main_purple px-4 py-4 mx-1 w-full sm:w-[500px] min-h-[450px] relative"
           >
             <div
               className="

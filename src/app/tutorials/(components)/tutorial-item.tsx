@@ -47,7 +47,7 @@ const TutorialItem = ({
     <div
       ref={hoverRef}
       onClick={onPlayClick}
-      className="cursor-pointer w-[365px] h-[321px] bg-main_purple flex flex-col gap-2 rounded-md p-3 group hover:scale-105 hover:shadow-xl duration-300"
+      className="cursor-pointer min-w-[365px] max-w-[365px] h-[321px] bg-main_purple flex flex-col gap-2 rounded-md p-3 group sm:hover:scale-105 sm:hover:shadow-xl duration-300"
     >
       <div className="rounded-t-md overflow-hidden relative">
         <div>

@@ -28,7 +28,7 @@ const ProgramItem = ({
   return (
     <li
       className="
-      group hover:scale-[1.03] hover:shadow-xl scale-100
+      group sm:hover:scale-[1.03] sm:hover:shadow-xl scale-100
       flex sm:flex-row flex-col gap-2
       border-2 border-second_purple
       rounded-md overflow-hidden

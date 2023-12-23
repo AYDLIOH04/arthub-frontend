@@ -37,7 +37,7 @@ const BrushSlide = ({
     >
       <div
         className="group cursor-pointer flex flex-col gap-3 border-2 border-indigo-300 rounded-md overflow-hidden
-          max-w-[300px] h-[550px] hover:scale-105 scale-100 transition duration-100
+          max-w-[300px] h-[550px] sm:hover:scale-105 scale-100 transition duration-100
         "
       >
         <div className="mx-auto max-h-[200px] h-1/2 px-3 py-4 flex justify-center items-center">
