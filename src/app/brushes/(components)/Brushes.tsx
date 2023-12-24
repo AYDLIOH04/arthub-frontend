@@ -39,12 +39,12 @@ const Brushes = ({
     search,
     program: select,
     page: currentPage,
-    size: 4,
+    size: 8,
     like: getCookieData("auth-data").token ? true : false,
   });
 
   const totalCountHeader = data?.totalCount;
-  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 4) : 1;
+  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 8) : 1;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

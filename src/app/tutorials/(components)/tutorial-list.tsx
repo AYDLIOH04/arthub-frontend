@@ -27,12 +27,12 @@ const TutorialList = ({
     search,
     difficulty: select,
     page: currentPage,
-    size: 3,
+    size: 6,
     like: getCookieData("auth-data").token ? true : false,
   });
 
   const totalCountHeader = data?.totalCount;
-  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 3) : 1;
+  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 6) : 1;
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

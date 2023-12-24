@@ -23,7 +23,7 @@ const ProgramsPage = ({ params: { program } }: Props) => {
   const query = program.toLowerCase();
 
   return (
-    <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender min-h-[calc(100vh - 120px)]">
+    <div className="w-full lg:max-w-[1200px] mx-auto mt-[120px] font-blender lg:min-h-[78vh] md:min-h-[70vh] min-h-[66.3vh]">
       <ProgramPage query={query} />
     </div>
   );
