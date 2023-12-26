@@ -1,7 +1,7 @@
 const ReferenceItemSkeleton = ({ height }: { height: number }) => {
   return (
     <div
-      className={`sm:h-[${height}px] w-full bg-gradient-to-br from-main_purple via-second_purple to-main_purple animate-pulse`}
+      className={`h-[${height}px] w-full bg-gradient-to-br from-main_purple via-second_purple to-main_purple animate-pulse`}
     />
   );
 };
