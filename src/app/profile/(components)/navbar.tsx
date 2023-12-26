@@ -17,7 +17,7 @@ const ProfileNavbar = () => {
             pathname === "/profile/favorites" ? "text-hover border-hover" : "border-transparent"
           }`}
         >
-          Favorites
+          Избранное
         </Link>
       </li>
       <li>
@@ -27,7 +27,7 @@ const ProfileNavbar = () => {
             pathname === "/profile/settings" ? "text-hover border-hover" : "border-transparent"
           }`}
         >
-          Settings
+          Настройки
         </Link>
       </li>
       {isAdmin && (
@@ -38,7 +38,7 @@ const ProfileNavbar = () => {
               pathname === "/profile/dashboard" ? "text-hover border-hover" : "border-transparent"
             }`}
           >
-            Dashboard
+            Админ панель
           </Link>
         </li>
       )}
