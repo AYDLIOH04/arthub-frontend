@@ -48,7 +48,7 @@ const ReferenceItem = ({
   return (
     <div
       onClick={() => openViewPopup(reference)}
-      className="md:mx-1 mx-0.5 relative group cursor-pointer sm:min-h-[150px]"
+      className="md:mx-1 mx-0.5 relative group cursor-pointer sm:min-h-[150px] min-h-[80px]"
     >
       <img
         src={reference.image}
