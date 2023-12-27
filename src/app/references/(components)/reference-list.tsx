@@ -1,10 +1,9 @@
 import { IReference } from "@/models";
 import { useState } from "react";
-import ReferenceItem from "./reference-item";
 import ReferencePopup from "./reference-popup";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { AnimatePresence } from "framer-motion";
-
+import ReferenceSlice from "./reference-slice";
 
 const ReferenceList = ({
   data,
@@ -15,7 +14,6 @@ const ReferenceList = ({
 }) => {
   const [popupView, setPopupView] = useState(false);
   const [selectBrush, setSelectBrush] = useState<IReference>({} as IReference);
-  const matches = useMediaQuery("(max-width: 768px)");
 
   const openViewPopup = (reference: IReference) => {
     document.body.style.overflow = "hidden";
@@ -23,45 +21,31 @@ const ReferenceList = ({
     setPopupView(true);
   };
 
-  const sliceCount = count / (matches ? 2 : 3);
-  const firstData = data.slice(0, sliceCount);
-  const secondData = data.slice(sliceCount, sliceCount * 2);
-  const thirdData = !matches
-    ? data.slice(sliceCount * 2, sliceCount * 3)
-    : [];
+  const MD = useMediaQuery("(max-width: 768px)");
+  const LG = useMediaQuery("(max-width: 1024px)");
+  const XL = useMediaQuery("(max-width: 1280px)");
+  const GL = useMediaQuery("(max-width: 1920px)");
+
+  const K = GL ? (XL ? (LG ? (MD ? 2 : 3) : 4) : 5) : 6;
+  const sliceCount = Math.floor(count / K);
+  const remainder = count % K;
+
+  const slices = Array.from({ length: K }, (_, index) => {
+    const start = index * sliceCount + Math.min(index, remainder);
+    const end = (index + 1) * sliceCount + Math.min(index + 1, remainder);
+    return data.slice(start, end);
+  });
 
   return (
     <section>
       <div className="flex flex-wrap flex-row justify-center mt-8 box-border">
-        <div className="flex flex-col md:w-1/3 w-1/2 md:gap-2 gap-1">
-          {firstData.map((reference) => (
-            <ReferenceItem
-              key={reference.id}
-              reference={reference}
-              openViewPopup={openViewPopup}
-            />
-          ))}
-        </div>
-        <div className="flex flex-col md:w-1/3 w-1/2 md:gap-2 gap-1">
-          {secondData.map((reference) => (
-            <ReferenceItem
-              key={reference.id}
-              reference={reference}
-              openViewPopup={openViewPopup}
-            />
-          ))}
-        </div>
-        {!matches && (
-          <div className="flex flex-col w-1/3 md:gap-2 gap-1">
-            {thirdData.map((reference) => (
-              <ReferenceItem
-                key={reference.id}
-                reference={reference}
-                openViewPopup={openViewPopup}
-              />
-            ))}
-          </div>
-        )}
+        {slices.map((slice, index) => (
+          <ReferenceSlice
+            key={index}
+            slice={slice}
+            openViewPopup={openViewPopup}
+          />
+        ))}
       </div>
       <AnimatePresence mode="wait">
         {popupView && (

@@ -18,11 +18,12 @@ const ScrollButton = () => {
           initial={{ opacity: 0, y: 200 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 200 }}
-          transition={{ duration: 0.4 }}
+          whileHover={{ scale: 1.1 }}
+          transition={{ duration: 0.4, scale: { duration: 0.2 } }}
           onClick={onScrollButtonClick}
-          className="bg-white z-[101] cursor-pointer fixed bottom-7 right-7 rounded-full duration-200 ease-out p-3 hover:bg-opacity-75"
+          className="bg-white z-[101] cursor-pointer fixed bottom-7 right-7 rounded-full duration-200 ease-out p-3 hover:bg-gray-300 "
         >
-          <FaArrowUp className="text-background sm:text-[40px] text-[30px]" />
+          <FaArrowUp className="text-background sm:text-[35px] text-[25px]" />
         </motion.div>
       )}
     </AnimatePresence>
