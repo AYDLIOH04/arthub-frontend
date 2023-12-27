@@ -13,7 +13,7 @@ const Auth = () => {
   const [showRegister, setShowRegister] = useState(false);
 
   if (isAuth) {
-    router.back();
+    router.push("/profile/favorites");
   }
 
   return (

@@ -38,7 +38,7 @@ const SignUpForm = ({ setShowRegister }: any) => {
       setPassword("");
       setLogin("");
       toast.success("Регистрация успешена");
-      router.back();
+      router.push("/profile/favorites");
     }
   }, [isRegisterSuccess]);
 

@@ -20,7 +20,7 @@ const SignInForm = ({ setShowRegister }: any) => {
     loginUser,
     {
       data: loginData,
-      isSuccess: isLoginSucces,
+      isSuccess: isLoginSuccess,
       isError: isLoginError,
       error: loginError,
     },
@@ -34,14 +34,14 @@ const SignInForm = ({ setShowRegister }: any) => {
   };
 
   useEffect(() => {
-    if (isLoginSucces) {
+    if (isLoginSuccess) {
       dispatch(setUser(loginData));
       setEmail("");
       setPassword("");
       toast.success("Вход успешен");
-      router.back();
+      router.push("/profile/favorites");
     }
-  }, [isLoginSucces]);
+  }, [isLoginSuccess]);
 
   useEffect(() => {
     if (isLoginError) {
