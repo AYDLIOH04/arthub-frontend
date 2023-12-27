@@ -1,17 +1,18 @@
-import ReferencesNotFound from "@/components/UI/not-found/references-notfound";
 import { IReference } from "@/models";
-import getCookieData from "@/utils/get-cookie";
 import { useState } from "react";
 import ReferenceItem from "./reference-item";
-import { useGetReferencesQuery } from "@/store/features/references/referencesApi";
 import ReferencePopup from "./reference-popup";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { AnimatePresence } from "framer-motion";
-import ReferencesFetchError from "@/components/UI/error/references-error";
-import ReferencesSkeleton from "@/components/UI/skeletons/references-skeleton";
-import shuffle from "@/utils/shuffle";
 
-const ReferenceList = ({ select }: { select: string }) => {
+
+const ReferenceList = ({
+  data,
+  count,
+}: {
+  data: IReference[];
+  count: number;
+}) => {
   const [popupView, setPopupView] = useState(false);
   const [selectBrush, setSelectBrush] = useState<IReference>({} as IReference);
   const matches = useMediaQuery("(max-width: 768px)");
@@ -22,29 +23,11 @@ const ReferenceList = ({ select }: { select: string }) => {
     setPopupView(true);
   };
 
-  const { data, isLoading, isError, error } = useGetReferencesQuery({
-    tag: select,
-    like: getCookieData("auth-data").token ? true : false,
-  });
-
-  if (isLoading) return <ReferencesSkeleton />;
-
-  if (isError) {
-    if ("status" in error && error.status === 404) {
-      return <ReferencesNotFound />;
-    }
-    return <ReferencesFetchError />;
-  }
-
-  if (!data || !data?.response.length) return <ReferencesNotFound />;
-
-  const tempData = shuffle(data?.response);
-
-  const sliceCount = data.totalCount / (matches ? 2 : 3);
-  const firstData = tempData.slice(0, sliceCount);
-  const secondData = tempData.slice(sliceCount, sliceCount * 2);
+  const sliceCount = count / (matches ? 2 : 3);
+  const firstData = data.slice(0, sliceCount);
+  const secondData = data.slice(sliceCount, sliceCount * 2);
   const thirdData = !matches
-    ? tempData.slice(sliceCount * 2, sliceCount * 3)
+    ? data.slice(sliceCount * 2, sliceCount * 3)
     : [];
 
   return (

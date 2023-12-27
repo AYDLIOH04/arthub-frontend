@@ -2,8 +2,8 @@
 
 import BrushesSearch from "@/app/brushes/(components)/brushes-search";
 import BrushesSelect from "@/app/brushes/(components)/brushes-select";
-import Brushes from "@/app/brushes/(components)/Brushes";
 import { useState } from "react";
+import Brushes from "./(components)/brushes-fetch";
 
 const BrushesPage = () => {
   const [currentPage, setCurrentPage] = useState(1);

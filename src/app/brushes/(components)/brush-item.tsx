@@ -6,7 +6,7 @@ import { getProgramsIcon } from "@/utils/get-icon";
 import { useRouter } from "next/navigation";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
-const Brush = ({
+const BrushItem = ({
   brush,
   openViewPopup,
   addToFavorite,
@@ -91,4 +91,4 @@ const Brush = ({
   );
 };
 
-export default Brush;
+export default BrushItem;

@@ -1,71 +1,43 @@
 "use client";
 
 import React, { useState } from "react";
-import {
-  useAddToFavoriteMutation,
-  useGetBrushesQuery,
-} from "@/store/features/brushes/brushesApi";
+import { useAddToFavoriteMutation } from "@/store/features/brushes/brushesApi";
 import { IBrush } from "@/models";
-import Brush from "./Brush";
+import BrushItem from "./brush-item";
 import BrushPopup from "./brush-popup";
 import Pagination from "../../../components/UI/pagination";
-import BrushesSkeleton from "../../../components/UI/skeletons/brushes-skeleton";
-import BrushesNotFound from "../../../components/UI/not-found/brushes-notfound";
-import BrushesFetchError from "../../../components/UI/error/brushes-error";
-import getCookieData from "@/utils/get-cookie";
+
 import { AnimatePresence } from "framer-motion";
 
-const Brushes = ({
-  search,
-  select,
+const BrushList = ({
+  data,
   currentPage,
+  totalPages,
   setCurrentPage,
 }: {
-  search: string;
-  select: string;
+  data: IBrush[];
   currentPage: number;
+  totalPages: number;
   setCurrentPage: (page: number) => void;
 }) => {
   const [popupView, setPopupView] = useState(false);
   const [selectBrush, setSelectBrush] = useState<IBrush>({} as IBrush);
+  const [addToFavoriteBrush] = useAddToFavoriteMutation();
 
   const openViewPopup = (brush: IBrush) => {
     setSelectBrush(brush);
     setPopupView(true);
   };
 
-  const [addToFavoriteBrush] = useAddToFavoriteMutation();
-  const { data, isLoading, isError, error } = useGetBrushesQuery({
-    search,
-    program: select,
-    page: currentPage,
-    size: 8,
-    like: getCookieData("auth-data").token ? true : false,
-  });
-
-  const totalCountHeader = data?.totalCount;
-  const totalPages = totalCountHeader ? Math.ceil(totalCountHeader / 8) : 1;
-
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
 
-  if (isLoading) return <BrushesSkeleton />;
-
-  if (isError) {
-    if ("status" in error && error.status === 404) {
-      return <BrushesNotFound />;
-    }
-    return <BrushesFetchError />;
-  }
-
-  if (!data || !data?.response.length) return <BrushesNotFound />;
-
   return (
     <section>
       <div className="flex flex-wrap flex-row justify-center gap-8">
-        {data.response?.map((brush, index) => (
-          <Brush
+        {data.map((brush, index) => (
+          <BrushItem
             key={index}
             brush={brush}
             openViewPopup={openViewPopup}
@@ -91,4 +63,4 @@ const Brushes = ({
   );
 };
 
-export default Brushes;
+export default BrushList;
