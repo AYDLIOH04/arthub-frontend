@@ -27,7 +27,7 @@ export const referencesApi = createApi({
           Authorization: `Bearer ${getCookieData('auth-data').token}`,
         },
       }),
-      invalidatesTags: result => ['References'],
+      // invalidatesTags: result => ['References'],
     }),
   }),
 });

@@ -1,5 +1,6 @@
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IReference } from "@/models";
+import { useAddToFavoriteMutation } from "@/store/features/references/referencesApi";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
@@ -7,20 +8,21 @@ import { LuCopy, LuCopyCheck } from "react-icons/lu";
 
 const ReferenceItem = ({
   reference,
-  addToFavorite,
   openViewPopup,
 }: {
   reference: IReference;
-  addToFavorite: any;
   openViewPopup: any;
 }) => {
+  const [addToFavorite] = useAddToFavoriteMutation();
   const [isCopy, setIsCopy] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(reference.favorite ? reference.favorite : false);
   const router = useRouter();
   const user = useCurrentUser();
 
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
     if (user.isAuth) {
+      setIsFavorite(curr => !curr);
       addToFavorite({ reference });
     } else {
       router.push("/auth");
@@ -41,7 +43,7 @@ const ReferenceItem = ({
     navigator.clipboard.writeText(reference.image);
   };
 
-  const LikeIcon = reference.favorite ? FaHeart : FaRegHeart;
+  const LikeIcon = isFavorite ? FaHeart : FaRegHeart;
   const CopyIcon = isCopy ? LuCopyCheck : LuCopy;
   return (
     <div
@@ -72,7 +74,7 @@ const ReferenceItem = ({
         className={`
             cursor-pointer
             flex ${
-              reference.favorite ? "sm:flex sm:opacity-100" : "sm:hidden"
+              isFavorite ? "sm:flex sm:opacity-100" : "sm:hidden"
             }  group-hover:flex 
             absolute sm:top-2 top-1 sm:right-2 right-1 sm:opacity-0 opacity-100 group-hover:opacity-100 duration-200 sm:w-[50px] w-[35px] sm:h-[50px] h-[35px] hover:bg-gray-300 hover:scale-110 bg-white rounded-full justify-center items-center`}
       >
