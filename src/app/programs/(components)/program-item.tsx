@@ -43,7 +43,7 @@ const ProgramItem = ({
     "
     >
       <div className="sm:w-1/6 w-full flex justify-center items-center relative">
-        <PhotoLoader isLoading={isImageLoading} />
+        <PhotoLoader isLoading={isImageLoading} backgroundClass="sm:h-auto h-[300px] w-full" />
         <img
           onLoad={onImageLoad}
           src={program.logo}
