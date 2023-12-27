@@ -10,7 +10,7 @@ export const referencesApi = createApi({
   tagTypes: ['References'],
   endpoints: (builder) => ({
     getReferences: builder.query<{ response: IReference[], totalCount: number }, { page?: number; size?: number, tag?: string, like?: boolean }>({
-      query: ({ page = 1, size = 100, tag, like }) => ({
+      query: ({ page = 1, size = 1000, tag, like }) => ({
         url: `references${like ? '/like' : ''}?page=${page}&size=${size}${tag ? `&${tag}` : ''}`,
         headers: {
           Authorization: `Bearer ${getCookieData('auth-data').token}`

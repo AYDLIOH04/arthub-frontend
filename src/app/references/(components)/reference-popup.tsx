@@ -56,7 +56,7 @@ const ReferencePopup = ({
         <img
           src={reference.image}
           alt={reference.title}
-          className="sm:max-h-[95vh] sm:max-w-[95vw]"
+          className="sm:max-h-[88vh] sm:max-w-[95vw]"
         />
         <div
           className="

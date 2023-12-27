@@ -46,12 +46,12 @@ const ReferenceItem = ({
   return (
     <div
       onClick={() => openViewPopup(reference)}
-      className="md:mx-1 mx-0.5 relative group cursor-pointer"
+      className="md:mx-1 mx-0.5 relative group cursor-pointer min-h-[150px]"
     >
       <img
         src={reference.image}
         alt={reference.title}
-        className="group-hover:opacity-30  duration-200 select-none"
+        className="group-hover:opacity-30  duration-200 select-none w-full"
       />
       <div className="absolute sm:bottom-2 bottom-0 sm:right-2 right-0 opacity-0 group-hover:opacity-100 sm:text-[16px] md:text-[20px] xl:text-[22px] text-[12px] duration-200 md:flex md:flex-row md:items-center md:gap-2">
         <div>
