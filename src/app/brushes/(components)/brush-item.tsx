@@ -4,6 +4,7 @@ import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IBrush } from "@/models";
 import { getProgramsIcon } from "@/utils/get-icon";
+import { getTruncatedText } from "@/utils/get-truncated-text";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
@@ -83,15 +84,15 @@ const BrushItem = ({
       >
         <div className="flex gap-3 items-center justify-between mb-2">
           <h2 className="text-[20px] font-bold pb-1 border-b-2 border-indigo-300">
-            {brush.title}
+            {getTruncatedText(brush.title, 20)}
           </h2>
           <div
             onClick={(event) =>
               routeToProgram(event, `/programs/${brush.program.toLowerCase()}`)
             }
-            className="flex flex-row items-center gap-2 cursor-pointer group/item"
+            className="flex flex-row items-center gap-2 cursor-pointer transition duration-200 hover:opacity-60"
           >
-            <Icon className="text-[28px] hover:text-indigo-200 transition" />
+            <Icon className="text-[28px]" />
           </div>
         </div>
         <p className="text-[16px]">{brush.description}</p>

@@ -43,7 +43,10 @@ const ProgramItem = ({
     "
     >
       <div className="sm:w-1/6 w-full flex justify-center items-center relative">
-        <PhotoLoader isLoading={isImageLoading} backgroundClass="sm:h-auto h-[300px] w-full" />
+        <PhotoLoader
+          isLoading={isImageLoading}
+          backgroundClass="sm:h-auto h-[300px] w-full"
+        />
         <img
           onLoad={onImageLoad}
           src={program.logo}
@@ -84,7 +87,10 @@ const ProgramItem = ({
               {program.systems.map((os, index) => {
                 const Icon = getSystemsIcon(os);
                 return (
-                  <div key={index} className="hover:opacity-80">
+                  <div
+                    key={index}
+                    className="hover:opacity-60 duration-200 transition"
+                  >
                     <Icon />
                   </div>
                 );

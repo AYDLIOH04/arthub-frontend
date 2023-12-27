@@ -43,15 +43,13 @@ const ProgramSlide = ({
         "
       >
         <div className="mx-auto max-h-[200px] h-1/2 px-3 py-4 flex justify-center items-center">
-          <PhotoLoader isLoading={isImageLoading} backgroundClass="h-full"/>
+          <PhotoLoader isLoading={isImageLoading} backgroundClass="h-full" />
           <img
             onLoad={onImageLoad}
             src={program.logo}
             alt={`Brush ${program.logo}`}
-            className={`${
-              isImageLoading ? "hidden" : "flex"
-            } h-full`}
-          />  
+            className={`${isImageLoading ? "hidden" : "flex"} h-full`}
+          />
           <div
             onClick={onToggleFavorite}
             className={`cursor-pointer flex ${
@@ -71,7 +69,9 @@ const ProgramSlide = ({
             </h2>
             <div className="flex flex-row items-center gap-2 cursor-pointer">
               {icons.map((Icon) => (
-                <Icon className="text-[26px] sm:text-[20px] hover:text-indigo-200 transition" />
+                <div className="hover:opacity-60 transition duration-200">
+                  <Icon className="text-[26px] sm:text-[20px]" />
+                </div>
               ))}
             </div>
           </div>

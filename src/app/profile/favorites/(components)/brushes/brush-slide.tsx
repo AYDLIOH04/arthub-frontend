@@ -4,6 +4,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IBrush } from "@/models";
 import { useState } from "react";
 import PhotoLoader from "@/components/UI/skeletons/photo-loader";
+import { getTruncatedText } from "@/utils/get-truncated-text";
 
 const BrushSlide = ({
   brush,
@@ -43,19 +44,17 @@ const BrushSlide = ({
     >
       <div
         className="group cursor-pointer flex flex-col gap-3 border-2 border-indigo-300 rounded-md overflow-hidden
-          max-w-[300px] h-[550px] sm:hover:scale-105 scale-100 transition duration-100
+          w-full h-[550px] sm:hover:scale-105 scale-100 transition duration-100
         "
       >
         <div className="mx-auto max-h-[200px] h-1/2 px-3 py-4 flex justify-center items-center">
-          <PhotoLoader isLoading={isImageLoading} backgroundClass="h-full"/>
+          <PhotoLoader isLoading={isImageLoading} backgroundClass="h-full" />
           <img
             onLoad={onImageLoad}
             src={brush.image}
             alt={`Brush ${brush.image}`}
-            className={`${
-              isImageLoading ? "hidden" : "flex"
-            } h-full`}
-          />  
+            className={`${isImageLoading ? "hidden" : "flex"} h-full`}
+          />
           <div
             onClick={onToggleFavorite}
             className={`cursor-pointer flex ${
@@ -71,7 +70,7 @@ const BrushSlide = ({
         <div className="bg-main_purple px-4 py-4 h-full flex flex-col gap-2">
           <div className="flex gap-3 items-center justify-between mb-2">
             <h2 className="text-[20px] font-bold pb-1 border-b-2 border-indigo-300">
-              {brush.title}
+              {getTruncatedText(brush.title, 18)}
             </h2>
             <div
               onClick={(event) =>
@@ -80,9 +79,9 @@ const BrushSlide = ({
                   `/programs/${brush.program.toLowerCase()}`
                 )
               }
-              className="flex flex-row items-center gap-2 cursor-pointer group/item"
+              className="flex flex-row items-center gap-2 cursor-pointer transition duration-200 hover:opacity-60"
             >
-              <Icon className="text-[28px] hover:text-indigo-200 transition" />
+              <Icon className="text-[28px]" />
             </div>
           </div>
           <p className="text-[16px] overflow-auto">{brush.description}</p>

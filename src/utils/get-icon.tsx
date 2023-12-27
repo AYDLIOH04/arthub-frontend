@@ -6,7 +6,14 @@ import {
 } from "react-icons/si";
 import { FaLinux, FaQuestion, FaWindows } from "react-icons/fa";
 import { CgFigma } from "react-icons/cg";
-import { MacosIcon } from "@/components/UI/icons";
+import {
+  ArthweaverIcon,
+  ClipStudioPaintIcon,
+  GimpIcon,
+  MacosIcon,
+  SaiIcon,
+  SmoothdrawIcon,
+} from "@/components/UI/icons";
 
 import { TbStar, TbStarFilled, TbStarHalfFilled } from "react-icons/tb";
 
@@ -22,6 +29,16 @@ export const getProgramsIcon = (program: string) => {
       return SiAdobeillustrator;
     case "Figma":
       return CgFigma;
+    case "SAI Paint Tool":
+      return SaiIcon;
+    case "Gimp":
+      return GimpIcon;
+    case "Clip Studio Paint":
+      return ClipStudioPaintIcon;
+    case "Artweaver":
+      return ArthweaverIcon;
+    case "Smoothdraw":
+      return SmoothdrawIcon;
     default:
       return FaQuestion;
   }
