@@ -1,3 +1,4 @@
+import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import { IProgram } from "@/models";
 import { getSystemsIcon } from "@/utils/get-icon";
 import { useRouter } from "next/navigation";
@@ -11,6 +12,7 @@ const ProgramSlide = ({
   program: IProgram;
   toggleFavorite: any;
 }) => {
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const router = useRouter();
   const [favorite, setFavorite] = useState(true);
 
@@ -22,6 +24,10 @@ const ProgramSlide = ({
 
   const onProgramClick = () => {
     router.push(`/programs/${program.name.toLowerCase()}`);
+  };
+
+  const onImageLoad = (event: any) => {
+    setIsImageLoading(false);
   };
 
   const icons = program.systems.map((system) => getSystemsIcon(system));
@@ -37,11 +43,15 @@ const ProgramSlide = ({
         "
       >
         <div className="mx-auto max-h-[200px] h-1/2 px-3 py-4 flex justify-center items-center">
+          <PhotoLoader isLoading={isImageLoading} backgroundClass="h-full"/>
           <img
+            onLoad={onImageLoad}
             src={program.logo}
             alt={`Brush ${program.logo}`}
-            className="h-full"
-          />
+            className={`${
+              isImageLoading ? "hidden" : "flex"
+            } h-full`}
+          />  
           <div
             onClick={onToggleFavorite}
             className={`cursor-pointer flex ${

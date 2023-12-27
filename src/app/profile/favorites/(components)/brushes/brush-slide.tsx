@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IBrush } from "@/models";
 import { useState } from "react";
+import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 
 const BrushSlide = ({
   brush,
@@ -13,6 +14,7 @@ const BrushSlide = ({
   toggleFavorite: any;
   openViewPopup: any;
 }) => {
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const router = useRouter();
   const [favorite, setFavorite] = useState(true);
 
@@ -30,6 +32,10 @@ const BrushSlide = ({
   const Icon = getProgramsIcon(brush.program);
   const LikeIcon = favorite ? FaHeart : FaRegHeart;
 
+  const onImageLoad = (event: any) => {
+    setIsImageLoading(false);
+  };
+
   return (
     <div
       onClick={() => openViewPopup(brush)}
@@ -41,11 +47,15 @@ const BrushSlide = ({
         "
       >
         <div className="mx-auto max-h-[200px] h-1/2 px-3 py-4 flex justify-center items-center">
+          <PhotoLoader isLoading={isImageLoading} backgroundClass="h-full"/>
           <img
+            onLoad={onImageLoad}
             src={brush.image}
             alt={`Brush ${brush.image}`}
-            className="h-full"
-          />
+            className={`${
+              isImageLoading ? "hidden" : "flex"
+            } h-full`}
+          />  
           <div
             onClick={onToggleFavorite}
             className={`cursor-pointer flex ${

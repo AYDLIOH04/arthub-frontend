@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ITutorial } from "@/models";
 import useHover from "@/hooks/useHover";
 import { getTruncatedText } from "@/utils/get-truncated-text";
+import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 
 const TutorialSlide = ({
   tutorial,
@@ -13,6 +14,7 @@ const TutorialSlide = ({
   tutorial: ITutorial;
   toggleFavorite: any;
 }) => {
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const router = useRouter();
   const [favorite, setFavorite] = useState(true);
 
@@ -39,6 +41,10 @@ const TutorialSlide = ({
     router.push(`/tutorials/${tutorial.id}`);
   };
 
+  const onImageLoad = (event: any) => {
+    setIsImageLoading(false);
+  };
+
   return (
     <div className="px-3 py-5 flex justify-center">
       <div
@@ -48,12 +54,19 @@ const TutorialSlide = ({
       >
         <div className="rounded-t-md overflow-hidden relative">
           <div>
+            <PhotoLoader
+              isLoading={isImageLoading}
+              backgroundClass="w-full h-[200px]"
+            />
             <img
+              onLoad={onImageLoad}
               src={tutorial.image}
               width={200}
               height={200}
               alt={tutorial.author}
-              className="select-none pointer-events-none w-full"
+              className={`${
+                isImageLoading ? "hidden" : "flex"
+              } select-none pointer-events-none w-full`}
             />
             <p className="group-hover:opacity-0 duration-300 absolute bottom-0 right-0 bg-main_purple pl-1 rounded-tl-md">
               {tutorial.duration}
@@ -80,9 +93,7 @@ const TutorialSlide = ({
             onClick={onToggleFavorite}
             className={`
               cursor-pointer
-              flex ${
-                favorite ? "sm:flex" : "sm:hidden"
-              }  group-hover:flex 
+              flex ${favorite ? "sm:flex" : "sm:hidden"}  group-hover:flex 
               absolute right-0 bottom-0 w-[45px] h-[45px] hover:bg-gray-300 hover:scale-110
               transition duration-200 bg-white rounded-full
               justify-center items-center`}

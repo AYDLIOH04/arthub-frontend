@@ -1,9 +1,11 @@
 "use client";
 
+import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IBrush } from "@/models";
 import { getProgramsIcon } from "@/utils/get-icon";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const BrushItem = ({
@@ -15,6 +17,7 @@ const BrushItem = ({
   openViewPopup: any;
   addToFavorite: any;
 }) => {
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const router = useRouter();
   const user = useCurrentUser();
 
@@ -30,6 +33,10 @@ const BrushItem = ({
   const routeToProgram = (event: any, url: string) => {
     event.stopPropagation();
     router.push(url);
+  };
+
+  const onImageLoad = (event: any) => {
+    setIsImageLoading(false);
   };
 
   const Icon = getProgramsIcon(brush.program);
@@ -48,10 +55,12 @@ const BrushItem = ({
     "
     >
       <div className="mx-auto max-h-[200px] px-3 py-4 flex justify-center items-center">
+        <PhotoLoader isLoading={isImageLoading} backgroundClass="h-[200px]"/>
         <img
+          onLoad={onImageLoad}
           src={brush.image}
           alt={`Brush ${brush.image}`}
-          className="h-full"
+          className={`${isImageLoading ? "hidden" : "flex"} h-full`}
         />
         <div
           onClick={toggleFavorite}

@@ -1,3 +1,4 @@
+import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IReference } from "@/models";
 import { useAddToFavoriteMutation } from "@/store/features/references/referencesApi";
@@ -15,14 +16,18 @@ const ReferenceItem = ({
 }) => {
   const [addToFavorite] = useAddToFavoriteMutation();
   const [isCopy, setIsCopy] = useState(false);
-  const [isFavorite, setIsFavorite] = useState(reference.favorite ? reference.favorite : false);
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
+  const [isFavorite, setIsFavorite] = useState(
+    reference.favorite ? reference.favorite : false
+  );
+
   const router = useRouter();
   const user = useCurrentUser();
 
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
     if (user.isAuth) {
-      setIsFavorite(curr => !curr);
+      setIsFavorite((curr) => !curr);
       addToFavorite({ reference });
     } else {
       router.push("/auth");
@@ -37,6 +42,10 @@ const ReferenceItem = ({
     return () => clearTimeout(timerId);
   }, [isCopy]);
 
+  const onImageLoad = (event: any) => {
+    setIsImageLoading(false);
+  };
+
   const onImageCopy = (event: any) => {
     setIsCopy(true);
     event.stopPropagation();
@@ -48,13 +57,21 @@ const ReferenceItem = ({
   return (
     <div
       onClick={() => openViewPopup(reference)}
-      className="md:mx-1 mx-0.5 relative group cursor-pointer sm:min-h-[150px] min-h-[80px]"
+      className="md:mx-1 mx-0.5 relative group cursor-pointer sm:min-h-[150px]"
     >
+      <PhotoLoader
+        isLoading={isImageLoading}
+        backgroundClass="h-[400px] bg-gradient-to-br from-main_purple via-second_purple to-main_purple animate-pulse"
+      />
       <img
+        onLoad={onImageLoad}
         src={reference.image}
         alt={reference.title}
-        className="group-hover:opacity-30  duration-200 select-none w-full"
+        className={`${
+          isImageLoading ? "hidden" : "flex"
+        } group-hover:opacity-30 duration-200 select-none w-full`}
       />
+
       <div className="absolute sm:bottom-2 bottom-0 sm:right-2 right-0 opacity-0 group-hover:opacity-100 sm:text-[16px] md:text-[20px] xl:text-[22px] text-[12px] duration-200 md:flex md:flex-row md:items-center md:gap-2">
         <div>
           {reference.hashtag

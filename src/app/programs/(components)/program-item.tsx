@@ -1,8 +1,10 @@
+import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IProgram } from "@/models";
 import { getSystemsIcon } from "@/utils/get-icon";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const ProgramItem = ({
@@ -12,6 +14,7 @@ const ProgramItem = ({
   program: IProgram;
   addToFavorite: any;
 }) => {
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const user = useCurrentUser();
   const router = useRouter();
   const LikeIcon = program.favorite ? FaHeart : FaRegHeart;
@@ -19,10 +22,14 @@ const ProgramItem = ({
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
     if (user.isAuth) {
-      addToFavorite({program});
+      addToFavorite({ program });
     } else {
-      router.push('/auth')
+      router.push("/auth");
     }
+  };
+
+  const onImageLoad = (event: any) => {
+    setIsImageLoading(false);
   };
 
   return (
@@ -36,18 +43,22 @@ const ProgramItem = ({
     "
     >
       <div className="sm:w-1/6 w-full flex justify-center items-center relative">
+        <PhotoLoader isLoading={isImageLoading} />
         <img
+          onLoad={onImageLoad}
           src={program.logo}
           width={200}
           height={200}
           alt={program.name}
-          className="select-none pointer-events-none p-3 w-full"
+          className={`${
+            isImageLoading ? "hidden" : "flex"
+          } select-none pointer-events-none p-3 w-full`}
         />
         <div
           onClick={toggleFavorite}
           className={`
             cursor-pointer
-            flex ${program.favorite ? 'sm:flex' : 'sm:hidden'} group-hover:flex
+            flex ${program.favorite ? "sm:flex" : "sm:hidden"} group-hover:flex
             sm:left-2 absolute right-2 top-2 w-[50px] h-[50px]
             transition duration-200 hover:bg-gray-200 hover:scale-110
             bg-white rounded-full

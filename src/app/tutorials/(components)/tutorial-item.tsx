@@ -1,3 +1,4 @@
+import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useHover from "@/hooks/useHover";
 import { ITutorial } from "@/models";
@@ -14,6 +15,7 @@ const TutorialItem = ({
   tutorial: ITutorial;
   addToFavorite: any;
 }) => {
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true);
   const user = useCurrentUser();
   const router = useRouter();
 
@@ -43,6 +45,10 @@ const TutorialItem = ({
     router.push(`/tutorials/${tutorial.id}`);
   };
 
+  const onImageLoad = (event: any) => {
+    setIsImageLoading(false);
+  };
+
   return (
     <div
       ref={hoverRef}
@@ -51,13 +57,17 @@ const TutorialItem = ({
     >
       <div className="rounded-t-md overflow-hidden relative">
         <div>
+          <PhotoLoader isLoading={isImageLoading} backgroundClass="w-full h-[200px]"/>
           <img
+            onLoad={onImageLoad}
             src={tutorial.image}
             width={200}
             height={200}
             alt={tutorial.author}
-            className="select-none pointer-events-none w-full"
-          />
+            className={`${
+              isImageLoading ? "hidden" : "flex"
+            } select-none pointer-events-none w-full`}
+          />  
           <p className="group-hover:opacity-0 duration-300 absolute bottom-0 right-0 bg-main_purple pl-1 rounded-tl-md">
             {tutorial.duration}
           </p>
