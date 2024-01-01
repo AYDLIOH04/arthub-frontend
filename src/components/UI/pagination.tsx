@@ -3,6 +3,7 @@ import getPaginationList, {
 } from "@/utils/get-pagination-list";
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
+import { LuArrowLeftToLine, LuArrowRightToLine } from "react-icons/lu";
 
 const Pagination = ({
   currentPage,
@@ -14,11 +15,11 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(1)}
         disabled={currentPage === 1}
-        className={`border-indigo-300 sm:static absolute sm:self-auto self-end left-4 cursor-pointer px-3 py-1 bg-second_purple hover:opacity-80 transition rounded-md ${
+        className={`border-indigo-300 cursor-pointer px-3 py-1 bg-second_purple hover:opacity-80 transition rounded-md sm:self-center self-start ${
           currentPage === 1 && "disabled:opacity-25"
         }`}
       >
-        В начало
+        <LuArrowLeftToLine size={20} />
       </button>
       <button
         onClick={() => onPageChange(currentPage - 1)}
@@ -48,11 +49,11 @@ const Pagination = ({
       <button
         onClick={() => onPageChange(totalPages)}
         disabled={currentPage === totalPages}
-        className={`border-indigo-300 sm:static absolute  sm:self-auto self-end right-4  cursor-pointer px-3 py-1 bg-second_purple hover:opacity-80 transition rounded-md ${
+        className={`border-indigo-300 cursor-pointer px-3 py-1 bg-second_purple hover:opacity-80 transition rounded-md sm:self-center self-start ${
           currentPage === totalPages && "disabled:opacity-25"
         }`}
       >
-        В конец
+        <LuArrowRightToLine size={20} />
       </button>
     </div>
   );
