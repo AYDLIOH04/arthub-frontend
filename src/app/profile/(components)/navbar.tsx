@@ -13,8 +13,10 @@ const ProfileNavbar = () => {
       <li>
         <Link
           href="/profile/favorites"
-          className={`text-[22px] border-b-4 pb-1 duration-200 hover:text-hover ${
-            pathname === "/profile/favorites" ? "text-hover border-hover" : "border-transparent"
+          className={`text-[22px] relative after:h-[3px] after:absolute after:-bottom-1.5  after:transition-all duration-300 after:duration-300 hover:text-hover hover:after:bg-hover ${
+            pathname === "/profile/favorites"
+              ? "text-hover after:bg-hover after:w-full after:left-0"
+              : "after:w-[36px] after:bg-white after:left-[calc(50%-18px)]"
           }`}
         >
           Избранное
@@ -23,8 +25,10 @@ const ProfileNavbar = () => {
       <li>
         <Link
           href="/profile/settings"
-          className={`text-[22px] border-b-4 pb-1 duration-200  hover:text-hover ${
-            pathname === "/profile/settings" ? "text-hover border-hover" : "border-transparent"
+          className={`text-[22px] relative after:h-[3px] after:absolute after:-bottom-1.5  after:transition-all duration-300 after:duration-300 hover:text-hover hover:after:bg-hover ${
+            pathname === "/profile/settings"
+              ? "text-hover after:bg-hover after:w-full after:left-0"
+              : "after:w-[36px] after:bg-white after:left-[calc(50%-18px)]"
           }`}
         >
           Настройки
@@ -34,8 +38,10 @@ const ProfileNavbar = () => {
         <li>
           <Link
             href="/profile/dashboard"
-            className={`text-[22px] border-b-4 pb-1 duration-200 hover:text-hover ${
-              pathname === "/profile/dashboard" ? "text-hover border-hover" : "border-transparent"
+            className={`text-[22px] relative  after:h-[3px]  after:absolute after:-bottom-1.5  after:transition-all duration-300 after:duration-300 hover:text-hover hover:after:bg-hover ${
+              pathname === "/profile/dashboard"
+                ? "text-hover after:bg-hover after:w-full after:left-0"
+                : "after:w-[36px] after:bg-white after:left-[calc(50%-18px)]"
             }`}
           >
             Админ панель

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-const usePageEnded = () => {
+const usePageEnded = (offset: number = 100) => {
   const [isPageEnded, setIsPageEnded] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const pageHeight =
         document.documentElement.scrollHeight - window.innerHeight;
-      if (pageHeight - window.scrollY <= 100) {
+      if (pageHeight - window.scrollY <= offset) {
         setIsPageEnded(true);
       } else {
         setIsPageEnded(false);
@@ -16,7 +16,7 @@ const usePageEnded = () => {
 
     const pageHeight =
       document.documentElement.scrollHeight - window.innerHeight;
-    if (pageHeight - window.scrollY <= 100) {
+    if (pageHeight - window.scrollY <= offset) {
       setIsPageEnded(true);
     }
 
