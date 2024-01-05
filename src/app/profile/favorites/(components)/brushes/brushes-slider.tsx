@@ -6,12 +6,13 @@ import { useAddToFavoriteMutation } from "@/store/features/brushes/brushesApi";
 import { useGetUserBrushesQuery } from "@/store/features/user/userApi";
 import BrushSlide from "./brush-slide";
 import FavoriteBrushesSkeleton from "@/components/UI/skeletons/favorite-brushes-skeleton";
-import FavoriteBrushesNotFound from "@/components/UI/not-found/favorite-brushes-notfound";
-import FavoriteBrushesError from "@/components/UI/error/favorite-brushes-error";
 import BrushPopup from "@/app/brushes/(components)/brush-popup";
 import { useEffect, useState } from "react";
 import { IBrush } from "@/models";
 import { AnimatePresence } from "framer-motion";
+import FavoriteFetchError from "@/components/UI/error/favorite-fetch-error";
+import { HiMiniPaintBrush } from "react-icons/hi2";
+import FavoriteNotFound from "@/components/UI/not-found/favorite-not-found";
 
 const BrushesSlider = () => {
   const [popupView, setPopupView] = useState(false);
@@ -23,24 +24,40 @@ const BrushesSlider = () => {
   };
 
   const [toggleFavorite] = useAddToFavoriteMutation();
-  const { data, isLoading, isError, error, refetch, isSuccess } = useGetUserBrushesQuery();
+  const { data, isLoading, isError, error, refetch, isSuccess } =
+    useGetUserBrushesQuery();
 
   useEffect(() => {
     if (isSuccess) {
       refetch();
     }
-  }, [])
+  }, []);
 
   if (isLoading) return <FavoriteBrushesSkeleton />;
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <FavoriteBrushesNotFound />;
+      return (
+        <FavoriteNotFound
+          Icon={HiMiniPaintBrush}
+          message="Кисти не найдены"
+          add="кисть"
+          link="/brushes"
+        />
+      );
     }
-    return <FavoriteBrushesError />;
+    return <FavoriteFetchError message="Ошибка запроса к кистям" />;
   }
 
-  if (!data || !data?.length) return <FavoriteBrushesNotFound />;
+  if (!data || !data?.length)
+    return (
+      <FavoriteNotFound
+        Icon={HiMiniPaintBrush}
+        message="Кисти не найдены"
+        add="кисть"
+        link="/brushes"
+      />
+    );
 
   return (
     <>

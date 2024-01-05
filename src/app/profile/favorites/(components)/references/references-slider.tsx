@@ -9,9 +9,10 @@ import ReferencePopup from "@/app/references/(components)/reference-popup";
 import { IReference } from "@/models";
 import { useEffect, useState } from "react";
 import FavoriteReferencesSkeleton from "@/components/UI/skeletons/favorite-references-skeleton";
-import FavoriteReferencesNotFound from "@/components/UI/not-found/favorite-references-notfound";
-import FavoriteReferencesError from "@/components/UI/error/favorite-references-error";
 import { AnimatePresence } from "framer-motion";
+import FavoriteFetchError from "@/components/UI/error/favorite-fetch-error";
+import { TbPhotoSquareRounded } from "react-icons/tb";
+import FavoriteNotFound from "@/components/UI/not-found/favorite-not-found";
 
 const ReferencesSlider = () => {
   const [popupView, setPopupView] = useState(false);
@@ -23,24 +24,40 @@ const ReferencesSlider = () => {
   };
 
   const [toggleFavorite] = useAddToFavoriteMutation();
-  const { data, isLoading, isError, error, isSuccess, refetch } = useGetUserReferencesQuery();
+  const { data, isLoading, isError, error, isSuccess, refetch } =
+    useGetUserReferencesQuery();
 
   useEffect(() => {
     if (isSuccess) {
       refetch();
     }
-  }, [])
+  }, []);
 
   if (isLoading) return <FavoriteReferencesSkeleton />;
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <FavoriteReferencesNotFound />;
+      return (
+        <FavoriteNotFound
+          Icon={TbPhotoSquareRounded}
+          message="Референсы не найдены"
+          add="референс"
+          link="/references"
+        />
+      );
     }
-    return <FavoriteReferencesError />;
+    return <FavoriteFetchError message="Ошибка запроса к референсам" />;
   }
 
-  if (!data || !data?.length) return <FavoriteReferencesNotFound />;
+  if (!data || !data?.length)
+    return (
+      <FavoriteNotFound
+        Icon={TbPhotoSquareRounded}
+        message="Референсы не найдены"
+        add="референс"
+        link="/references"
+      />
+    );
 
   return (
     <>
@@ -58,10 +75,10 @@ const ReferencesSlider = () => {
       <AnimatePresence mode="wait">
         {popupView && (
           <ReferencePopup
-          reference={selectBrush}
-          popupView={popupView}
-          setPopupView={setPopupView}
-        />
+            reference={selectBrush}
+            popupView={popupView}
+            setPopupView={setPopupView}
+          />
         )}
       </AnimatePresence>
     </>

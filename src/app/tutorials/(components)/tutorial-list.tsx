@@ -7,9 +7,10 @@ import {
 } from "@/store/features/tutorials/tutorialsApi";
 import Pagination from "@/components/UI/pagination";
 import getCookieData from "@/utils/get-cookie";
-import TutorialsNotFound from "@/components/UI/not-found/tutorials-notfound";
-import TutorialsFetchError from "@/components/UI/error/tutorials-error";
 import TutorialsSkeleton from "@/components/UI/skeletons/tutorials-skeleton";
+import FetchError from "@/components/UI/error/fetch-error";
+import { PiVideoFill } from "react-icons/pi";
+import NotFoundError from "@/components/UI/not-found/not-found";
 
 const TutorialList = ({
   search,
@@ -42,12 +43,15 @@ const TutorialList = ({
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <TutorialsNotFound />;
+      return (
+        <NotFoundError Icon={PiVideoFill} message="Туториалы не найдены" />
+      );
     }
-    return <TutorialsFetchError />;
+    return <FetchError message="Ошибка запроса к туториалам" />;
   }
 
-  if (!data || !data?.response.length) return <TutorialsNotFound />;
+  if (!data || !data?.response.length)
+    return <NotFoundError Icon={PiVideoFill} message="Туториалы не найдены" />;
 
   return (
     <section>

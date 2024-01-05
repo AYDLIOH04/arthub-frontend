@@ -5,10 +5,11 @@ import {
   useGetProgramsQuery,
 } from "@/store/features/programs/programsApi";
 import ProgramItem from "./program-item";
-import ProgramsNotFound from "@/components/UI/not-found/programs-notfound";
-import ProgramsFetchError from "@/components/UI/error/programs-error";
 import ProgramsSkeleton from "@/components/UI/skeletons/programs-skeleton";
 import getCookieData from "@/utils/get-cookie";
+import FetchError from "@/components/UI/error/fetch-error";
+import { IoLogoAppleAr } from "react-icons/io5";
+import NotFoundError from "@/components/UI/not-found/not-found";
 
 const ProgramsList = ({
   search,
@@ -28,12 +29,12 @@ const ProgramsList = ({
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <ProgramsNotFound />;
+      return <NotFoundError Icon={IoLogoAppleAr} message="Программы не найдены"/>;
     }
-    return <ProgramsFetchError />;
+    return <FetchError message="Ошибка запроса к программам" />;
   }
 
-  if (!data || !data?.length) return <ProgramsNotFound />;
+  if (!data || !data?.length) return <NotFoundError Icon={IoLogoAppleAr} message="Программы не найдены"/>;
 
   return (
     <ul className="space-y-4">

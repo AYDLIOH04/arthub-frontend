@@ -6,9 +6,10 @@ import { useAddToFavoriteMutation } from "@/store/features/tutorials/tutorialsAp
 import { useGetUserTutorialsQuery } from "@/store/features/user/userApi";
 import TutorialSlide from "./tutorial-slide";
 import FavoriteTutorialsSkeleton from "@/components/UI/skeletons/favorite-tutorials-skeleton";
-import FavoriteTutorialsError from "@/components/UI/error/favorite-tutorials-error";
-import FavoriteTutorialsNotFound from "@/components/UI/not-found/favorite-tutorials-notfound";
 import { useEffect } from "react";
+import FavoriteFetchError from "@/components/UI/error/favorite-fetch-error";
+import { PiVideoFill } from "react-icons/pi";
+import FavoriteNotFound from "@/components/UI/not-found/favorite-not-found";
 
 const TutorialsSlider = () => {
   const [toggleFavorite] = useAddToFavoriteMutation();
@@ -25,12 +26,27 @@ const TutorialsSlider = () => {
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <FavoriteTutorialsNotFound />;
+      return (
+        <FavoriteNotFound
+          Icon={PiVideoFill}
+          message="Туториалы не найдены"
+          add="туториал"
+          link="/tutorials"
+        />
+      );
     }
-    return <FavoriteTutorialsError />;
+    return <FavoriteFetchError message="Ошибка запроса к туториалам" />;
   }
 
-  if (!data || !data?.length) return <FavoriteTutorialsNotFound />;
+  if (!data || !data?.length)
+    return (
+      <FavoriteNotFound
+        Icon={PiVideoFill}
+        message="Туториалы не найдены"
+        add="туториал"
+        link="/tutorials"
+      />
+    );
 
   return (
     <DefaultSwiper countSlides={3}>

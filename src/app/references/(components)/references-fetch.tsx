@@ -1,10 +1,11 @@
 import { useGetReferencesQuery } from "@/store/features/references/referencesApi";
 import getCookieData from "@/utils/get-cookie";
-import ReferencesNotFound from "@/components/UI/not-found/references-notfound";
-import ReferencesFetchError from "@/components/UI/error/references-error";
 import ReferencesSkeleton from "@/components/UI/skeletons/references-skeleton";
 import ReferenceList from "./reference-list";
 import shuffle from "@/utils/shuffle";
+import FetchError from "@/components/UI/error/fetch-error";
+import NotFoundError from "@/components/UI/not-found/not-found";
+import { TbPhotoSquareRounded } from "react-icons/tb";
 
 const References = ({ select }: { select: string }) => {
   const { data, isLoading, isError, error } = useGetReferencesQuery({
@@ -16,12 +17,23 @@ const References = ({ select }: { select: string }) => {
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <ReferencesNotFound />;
+      return (
+        <NotFoundError
+          Icon={TbPhotoSquareRounded}
+          message="Референсы не найдены"
+        />
+      );
     }
-    return <ReferencesFetchError />;
+    return <FetchError message="Ошибка запроса к референсам" />;
   }
 
-  if (!data || !data?.response.length) return <ReferencesNotFound />;
+  if (!data || !data?.response.length)
+    return (
+      <NotFoundError
+        Icon={TbPhotoSquareRounded}
+        message="Референсы не найдены"
+      />
+    );
   const tempData = shuffle(data?.response);
 
   return <ReferenceList data={tempData} count={data?.totalCount} />;

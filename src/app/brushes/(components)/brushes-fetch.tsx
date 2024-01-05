@@ -1,9 +1,10 @@
 import BrushesSkeleton from "../../../components/UI/skeletons/brushes-skeleton";
-import BrushesNotFound from "../../../components/UI/not-found/brushes-notfound";
-import BrushesFetchError from "../../../components/UI/error/brushes-error";
 import getCookieData from "@/utils/get-cookie";
 import { useGetBrushesQuery } from "@/store/features/brushes/brushesApi";
 import BrushList from "./brush-list";
+import FetchError from "@/components/UI/error/fetch-error";
+import { HiMiniPaintBrush } from "react-icons/hi2";
+import NotFoundError from "@/components/UI/not-found/not-found";
 
 const Brushes = ({
   search,
@@ -31,12 +32,15 @@ const Brushes = ({
 
   if (isError) {
     if ("status" in error && error.status === 404) {
-      return <BrushesNotFound />;
+      return (
+        <NotFoundError Icon={HiMiniPaintBrush} message="Кисти не найдены" />
+      );
     }
-    return <BrushesFetchError />;
+    return <FetchError message="Ошибка запроса к кистям" />;
   }
 
-  if (!data || !data?.response.length) return <BrushesNotFound />;
+  if (!data || !data?.response.length)
+    return <NotFoundError Icon={HiMiniPaintBrush} message="Кисти не найдены" />;
 
   return (
     <BrushList
