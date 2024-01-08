@@ -4,13 +4,16 @@ import ReferencePopup from "./reference-popup";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { AnimatePresence } from "framer-motion";
 import ReferenceSlice from "./reference-slice";
+import Loader from "./loader";
 
 const ReferenceList = ({
   data,
   count,
+  onLoadMore,
 }: {
   data: IReference[];
   count: number;
+  onLoadMore: any;
 }) => {
   const [popupView, setPopupView] = useState(false);
   const [selectBrush, setSelectBrush] = useState<IReference>({} as IReference);
@@ -27,14 +30,10 @@ const ReferenceList = ({
   const GL = useMediaQuery("(max-width: 1920px)");
 
   const K = GL ? (XL ? (LG ? (MD ? 2 : 3) : 4) : 5) : 6;
-  const sliceCount = Math.floor(count / K);
-  const remainder = count % K;
 
-  const slices = Array.from({ length: K }, (_, index) => {
-    const start = index * sliceCount + Math.min(index, remainder);
-    const end = (index + 1) * sliceCount + Math.min(index + 1, remainder);
-    return data.slice(start, end);
-  });
+  const slices: Array<IReference>[] = Array.from({ length: K }, () => []);
+
+  data.forEach((r, index) => slices[index % K].push(r));
 
   return (
     <section>
@@ -56,6 +55,7 @@ const ReferenceList = ({
           />
         )}
       </AnimatePresence>
+      <Loader cb={onLoadMore} />
     </section>
   );
 };
