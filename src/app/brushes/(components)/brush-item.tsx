@@ -52,11 +52,11 @@ const BrushItem = ({
       rounded-md overflow-hidden
       max-w-[300px] min-h-[500px]
       sm:hover:scale-105 sm:hover:shadow-xl scale-100
-      transition duration-100
+      transition duration-100 w-full
     "
     >
       <div className="mx-auto max-h-[200px] px-3 py-4 flex justify-center items-center">
-        <PhotoLoader isLoading={isImageLoading} backgroundClass="h-[200px]"/>
+        <PhotoLoader isLoading={isImageLoading} backgroundClass="h-[200px] w-full"/>
         <img
           onLoad={onImageLoad}
           src={brush.image}
