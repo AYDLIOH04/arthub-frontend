@@ -1,15 +1,15 @@
 import { ReactElement } from "react";
 
-export type PaginationProps = {
+type PaginationProps = {
   currentPage: number;
   totalPages: number;
-  onPageChange: (page: number) => void;
+  onPaginationClick: (page: number) => void;
 };
 
 const addPaginationItem = (
   pageNumbers: ReactElement[],
   currentPage: number,
-  onPageChange: (page: number) => void,
+  onPaginationClick: (page: number) => void,
   index: number
 ) => {
   pageNumbers.push(
@@ -21,7 +21,7 @@ const addPaginationItem = (
     >
       <button
         className={`${index === currentPage ? '' : 'hover:text-hover'} transition`}
-        onClick={() => onPageChange(index)}
+        onClick={() => onPaginationClick(index)}
       >
         {index}
       </button>
@@ -32,23 +32,23 @@ const addPaginationItem = (
 const getPaginationList = ({
   currentPage,
   totalPages,
-  onPageChange,
+  onPaginationClick,
 }: PaginationProps) => {
   const pageNumbers: ReactElement[] = [];
 
   if (totalPages <= 6) {
     for (let index = 1; index <= totalPages; index++) {
-      addPaginationItem(pageNumbers, currentPage, onPageChange, index);
+      addPaginationItem(pageNumbers, currentPage, onPaginationClick, index);
     }
   } else {
     if (currentPage + 4 < totalPages) {
       if (currentPage !== 1) {
         for (let index = currentPage - 1; index <= currentPage + 2; index++) {
-          addPaginationItem(pageNumbers, currentPage, onPageChange, index);
+          addPaginationItem(pageNumbers, currentPage, onPaginationClick, index);
         }
       } else {
         for (let index = currentPage; index <= currentPage + 3; index++) {
-          addPaginationItem(pageNumbers, currentPage, onPageChange, index);
+          addPaginationItem(pageNumbers, currentPage, onPaginationClick, index);
         }
       }
 
@@ -57,11 +57,11 @@ const getPaginationList = ({
       }
 
       for (let index = totalPages - 1; index <= totalPages; index++) {
-        addPaginationItem(pageNumbers, currentPage, onPageChange, index);
+        addPaginationItem(pageNumbers, currentPage, onPaginationClick, index);
       }
     } else {
       for (let index = totalPages - 6; index <= totalPages; index++) {
-        addPaginationItem(pageNumbers, currentPage, onPageChange, index);
+        addPaginationItem(pageNumbers, currentPage, onPaginationClick, index);
       }
     }
   }

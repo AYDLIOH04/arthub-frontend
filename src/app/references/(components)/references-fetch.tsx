@@ -31,13 +31,7 @@ const References = ({ select }: { select: string }) => {
       />
     );
 
-  return (
-    <ReferenceList
-      data={currentData}
-      count={currentData.length}
-      onLoadMore={onLoadMore}
-    />
-  );
+  return <ReferenceList data={currentData} onLoadMore={onLoadMore} />;
 };
 
 export default References;

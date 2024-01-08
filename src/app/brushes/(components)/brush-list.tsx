@@ -29,7 +29,7 @@ const BrushList = ({
     setPopupView(true);
   };
 
-  const handlePageChange = (page: number) => {
+  const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
 
@@ -48,7 +48,7 @@ const BrushList = ({
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
-        onPageChange={handlePageChange}
+        onPageChange={onPageChange}
       />
       <AnimatePresence mode="wait">
         {popupView && (

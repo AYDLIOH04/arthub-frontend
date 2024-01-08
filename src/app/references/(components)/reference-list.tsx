@@ -4,19 +4,18 @@ import ReferencePopup from "./reference-popup";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { AnimatePresence } from "framer-motion";
 import ReferenceSlice from "./reference-slice";
-import Loader from "./loader";
+import useObserver from "@/hooks/useObserver";
 
 const ReferenceList = ({
   data,
-  count,
   onLoadMore,
 }: {
   data: IReference[];
-  count: number;
   onLoadMore: any;
 }) => {
   const [popupView, setPopupView] = useState(false);
   const [selectBrush, setSelectBrush] = useState<IReference>({} as IReference);
+  const observerRef = useObserver(onLoadMore);
 
   const openViewPopup = (reference: IReference) => {
     document.body.style.overflow = "hidden";
@@ -55,7 +54,7 @@ const ReferenceList = ({
           />
         )}
       </AnimatePresence>
-      <Loader cb={onLoadMore} />
+      <div ref={observerRef} />
     </section>
   );
 };

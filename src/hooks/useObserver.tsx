@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-const Loader = ({ cb }: { cb: any }) => {
+const useObserver = (cb: any) => {
   const [isLoading, setIsLoading] = useState(false);
   const [ref, inView] = useInView();
 
@@ -13,7 +13,7 @@ const Loader = ({ cb }: { cb: any }) => {
     }
   }, [inView, cb]);
 
-  return <div ref={ref} />;
+  return ref;
 };
 
-export default Loader;
+export default useObserver;
