@@ -1,4 +1,4 @@
-import PhotoLoader from "@/components/UI/skeletons/photo-loader";
+import PhotoLoader from "@/components/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useHover from "@/hooks/useHover";
 import { ITutorial } from "@/models";

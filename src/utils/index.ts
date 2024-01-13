@@ -1,4 +1,4 @@
-import ISelect from "@/components/UI/selections/select.type";
+import ISelect from "@/components/selections/select.type";
 import Cookies from 'js-cookie';
 
 export const isEscapeKey = (event: KeyboardEvent) => event.key === 'Escape';

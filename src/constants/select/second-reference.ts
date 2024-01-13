@@ -1,4 +1,4 @@
-import SelectType from "@/components/UI/selections/select.type";
+import SelectType from "@/components/selections/select.type";
 
 const selection: SelectType[] = [
   { id: 1, label: "Лицо", query: "лицо", category: 'человек' },

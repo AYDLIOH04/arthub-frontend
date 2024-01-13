@@ -1,7 +1,7 @@
 "use client";
 
 import { IoIosArrowUp } from "react-icons/io";
-import TutorialSkeleton from "@/components/UI/skeletons/tutorial-skeleton";
+import TutorialSkeleton from "@/components/skeletons/tutorial-skeleton";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import {
   useAddToFavoriteMutation,
@@ -12,7 +12,7 @@ import { notFound, useRouter } from "next/navigation";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { getCookieData } from '@/utils';
+import { getCookieData } from "@/utils";
 
 const TutorialPage = ({ tutorialId }: { tutorialId: string }) => {
   const [isOpenDesc, setIsOpenDesc] = useState(false);

@@ -1,7 +1,7 @@
-import ReferencesSkeleton from "@/components/UI/skeletons/references-skeleton";
+import ReferencesSkeleton from "@/components/skeletons/references-skeleton";
 import ReferenceList from "./reference-list";
-import FetchError from "@/components/UI/error/fetch-error";
-import NotFoundError from "@/components/UI/not-found/not-found";
+import FetchError from "@/components/error/fetch-error";
+import NotFoundError from "@/components/not-found/not-found";
 import { TbPhotoSquareRounded } from "react-icons/tb";
 import useLazyInfiniteReferences from "@/hooks/useLazyInfiniteReferences";
 

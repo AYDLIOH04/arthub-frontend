@@ -5,14 +5,14 @@ import DefaultSwiper from "../swiper/default-swiper-layout";
 import { useAddToFavoriteMutation } from "@/store/features/brushes/brushesApi";
 import { useGetUserBrushesQuery } from "@/store/features/user/userApi";
 import BrushSlide from "./brush-slide";
-import FavoriteBrushesSkeleton from "@/components/UI/skeletons/favorite-brushes-skeleton";
+import FavoriteBrushesSkeleton from "@/components/skeletons/favorite-brushes-skeleton";
 import BrushPopup from "@/app/brushes/(components)/brush-popup";
 import { useEffect, useState } from "react";
 import { IBrush } from "@/models";
 import { AnimatePresence } from "framer-motion";
-import FavoriteFetchError from "@/components/UI/error/favorite-fetch-error";
+import FavoriteFetchError from "@/components/error/favorite-fetch-error";
 import { HiMiniPaintBrush } from "react-icons/hi2";
-import FavoriteNotFound from "@/components/UI/not-found/favorite-not-found";
+import FavoriteNotFound from "@/components/not-found/favorite-not-found";
 
 const BrushesSlider = () => {
   const [popupView, setPopupView] = useState(false);

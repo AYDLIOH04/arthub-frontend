@@ -1,6 +1,6 @@
 "use client";
 
-import PhotoLoader from "@/components/UI/skeletons/photo-loader";
+import PhotoLoader from "@/components/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IBrush } from "@/models";
 import { getProgramsIcon } from "@/utils/icon-utils";

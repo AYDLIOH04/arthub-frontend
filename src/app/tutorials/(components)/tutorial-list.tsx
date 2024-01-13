@@ -6,11 +6,11 @@ import {
   useGetTutorialsQuery,
 } from "@/store/features/tutorials/tutorialsApi";
 import Pagination from "@/components/UI/pagination";
-import { getCookieData } from '@/utils';
-import TutorialsSkeleton from "@/components/UI/skeletons/tutorials-skeleton";
-import FetchError from "@/components/UI/error/fetch-error";
+import { getCookieData } from "@/utils";
+import TutorialsSkeleton from "@/components/skeletons/tutorials-skeleton";
+import FetchError from "@/components/error/fetch-error";
 import { PiVideoFill } from "react-icons/pi";
-import NotFoundError from "@/components/UI/not-found/not-found";
+import NotFoundError from "@/components/not-found/not-found";
 
 const TutorialList = ({
   search,

@@ -5,11 +5,11 @@ import { useGetUserProgramsQuery } from "@/store/features/user/userApi";
 import DefaultSwiper from "../swiper/default-swiper-layout";
 import ProgramSlide from "./program-slide";
 import { SwiperSlide } from "swiper/react";
-import FavoriteProgramsSkeleton from "@/components/UI/skeletons/favorite-programs-skeleton";
+import FavoriteProgramsSkeleton from "@/components/skeletons/favorite-programs-skeleton";
 import { useEffect } from "react";
-import FavoriteFetchError from "@/components/UI/error/favorite-fetch-error";
+import FavoriteFetchError from "@/components/error/favorite-fetch-error";
 import { IoLogoAppleAr } from "react-icons/io5";
-import FavoriteNotFound from "@/components/UI/not-found/favorite-not-found";
+import FavoriteNotFound from "@/components/not-found/favorite-not-found";
 
 const ProgramsSlider = () => {
   const [toggleFavorite] = useAddToFavoriteMutation();

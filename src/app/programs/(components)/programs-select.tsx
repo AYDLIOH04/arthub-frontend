@@ -1,7 +1,7 @@
 "use client";
 
 import selectIcons from "@/constants/select/programs-select-icons";
-import SelectButton from "../../../components/UI/selections/select-button";
+import SelectButton from "../../../components/selections/select-button";
 import { useState } from "react";
 
 const ProgramsSelect = ({

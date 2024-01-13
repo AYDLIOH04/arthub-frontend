@@ -1,10 +1,10 @@
-import BrushesSkeleton from "../../../components/UI/skeletons/brushes-skeleton";
-import { getCookieData } from '@/utils';
+import BrushesSkeleton from "../../../components/skeletons/brushes-skeleton";
+import { getCookieData } from "@/utils";
 import { useGetBrushesQuery } from "@/store/features/brushes/brushesApi";
 import BrushList from "./brush-list";
-import FetchError from "@/components/UI/error/fetch-error";
+import FetchError from "@/components/error/fetch-error";
 import { HiMiniPaintBrush } from "react-icons/hi2";
-import NotFoundError from "@/components/UI/not-found/not-found";
+import NotFoundError from "@/components/not-found/not-found";
 
 const Brushes = ({
   search,

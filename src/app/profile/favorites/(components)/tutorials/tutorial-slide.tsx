@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ITutorial } from "@/models";
 import useHover from "@/hooks/useHover";
 import { getTruncatedText } from "@/utils";
-import PhotoLoader from "@/components/UI/skeletons/photo-loader";
+import PhotoLoader from "@/components/skeletons/photo-loader";
 
 const TutorialSlide = ({
   tutorial,

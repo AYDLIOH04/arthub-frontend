@@ -8,11 +8,11 @@ import ReferenceSwiper from "../swiper/reference-swiper-layout";
 import ReferencePopup from "@/app/references/(components)/reference-popup";
 import { IReference } from "@/models";
 import { useEffect, useState } from "react";
-import FavoriteReferencesSkeleton from "@/components/UI/skeletons/favorite-references-skeleton";
+import FavoriteReferencesSkeleton from "@/components/skeletons/favorite-references-skeleton";
 import { AnimatePresence } from "framer-motion";
-import FavoriteFetchError from "@/components/UI/error/favorite-fetch-error";
+import FavoriteFetchError from "@/components/error/favorite-fetch-error";
 import { TbPhotoSquareRounded } from "react-icons/tb";
-import FavoriteNotFound from "@/components/UI/not-found/favorite-not-found";
+import FavoriteNotFound from "@/components/not-found/favorite-not-found";
 
 const ReferencesSlider = () => {
   const [popupView, setPopupView] = useState(false);

@@ -1,6 +1,6 @@
 "use client";
 
-import ProgramSkeleton from "@/components/UI/skeletons/program-skeleton";
+import ProgramSkeleton from "@/components/skeletons/program-skeleton";
 import { useGetProgramQuery } from "@/store/features/programs/programsApi";
 import Image from "next/image";
 import { notFound } from "next/navigation";

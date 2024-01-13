@@ -14,7 +14,7 @@ import {
   MacosIcon,
   SaiIcon,
   SmoothdrawIcon,
-} from "@/components/UI/icons";
+} from "@/constants/icons";
 
 import { TbStar, TbStarFilled, TbStarHalfFilled } from "react-icons/tb";
 
@@ -71,7 +71,6 @@ export const getDifficultyIcon = (d: string) => {
   }
 };
 
-
 type CustomIconProps = {
   src: string;
   alt: string;
@@ -97,4 +96,3 @@ export const CustomIcon = ({
     />
   );
 };
-

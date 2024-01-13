@@ -5,11 +5,11 @@ import DefaultSwiper from "../swiper/default-swiper-layout";
 import { useAddToFavoriteMutation } from "@/store/features/tutorials/tutorialsApi";
 import { useGetUserTutorialsQuery } from "@/store/features/user/userApi";
 import TutorialSlide from "./tutorial-slide";
-import FavoriteTutorialsSkeleton from "@/components/UI/skeletons/favorite-tutorials-skeleton";
+import FavoriteTutorialsSkeleton from "@/components/skeletons/favorite-tutorials-skeleton";
 import { useEffect } from "react";
-import FavoriteFetchError from "@/components/UI/error/favorite-fetch-error";
+import FavoriteFetchError from "@/components/error/favorite-fetch-error";
 import { PiVideoFill } from "react-icons/pi";
-import FavoriteNotFound from "@/components/UI/not-found/favorite-not-found";
+import FavoriteNotFound from "@/components/not-found/favorite-not-found";
 
 const TutorialsSlider = () => {
   const [toggleFavorite] = useAddToFavoriteMutation();

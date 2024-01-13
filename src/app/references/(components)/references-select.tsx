@@ -1,9 +1,9 @@
 "use client";
 import mainSelection from "@/constants/select/main-reference";
 import secondSelection from "@/constants/select/second-reference";
-import LargeSelect from "@/components/UI/selections/large-select";
+import LargeSelect from "@/components/selections/large-select";
 import { useEffect, useState } from "react";
-import SelectType from "@/components/UI/selections/select.type";
+import SelectType from "@/components/selections/select.type";
 
 const ReferencesSelect = ({
   onSelectChange,
