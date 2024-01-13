@@ -3,7 +3,7 @@
 import useTimerRedirect from "@/hooks/useTimerRedirect";
 import { MdError } from "react-icons/md";
 
-const Error = () => {
+const Error = ({ error }: { error: Error }) => {
   const redirectSeconds = useTimerRedirect("/", 3);
 
   return (
@@ -13,6 +13,7 @@ const Error = () => {
           <MdError size={90} className="text-rose-400" />
         </div>
         <h2 className="font-bold text-4xl uppercase">Error</h2>
+        <p className="text-2xl">{error.message}</p>
         <p className="text-xl mt-1">
           Перенаправление через {redirectSeconds}...
         </p>
