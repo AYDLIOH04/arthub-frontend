@@ -1,7 +1,7 @@
 import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IProgram } from "@/models";
-import { getSystemsIcon } from "@/utils/get-icon";
+import { getSystemsIcon } from "@/utils/icon-utils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

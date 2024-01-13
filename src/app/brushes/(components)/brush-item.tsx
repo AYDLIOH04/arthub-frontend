@@ -3,8 +3,8 @@
 import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import { IBrush } from "@/models";
-import { getProgramsIcon } from "@/utils/get-icon";
-import { getTruncatedText } from "@/utils/get-truncated-text";
+import { getProgramsIcon } from "@/utils/icon-utils";
+import { getTruncatedText } from "@/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
@@ -56,7 +56,10 @@ const BrushItem = ({
     "
     >
       <div className="mx-auto max-h-[200px] px-3 py-4 flex justify-center items-center">
-        <PhotoLoader isLoading={isImageLoading} backgroundClass="h-[200px] w-full"/>
+        <PhotoLoader
+          isLoading={isImageLoading}
+          backgroundClass="h-[200px] w-full"
+        />
         <img
           onLoad={onImageLoad}
           src={brush.image}

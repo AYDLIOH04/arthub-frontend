@@ -1,10 +1,10 @@
-import { getDifficultyIcon, getProgramsIcon } from "@/utils/get-icon";
+import { getDifficultyIcon, getProgramsIcon } from "@/utils/icon-utils";
 import { useRouter } from "next/navigation";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { useState } from "react";
 import { ITutorial } from "@/models";
 import useHover from "@/hooks/useHover";
-import { getTruncatedText } from "@/utils/get-truncated-text";
+import { getTruncatedText } from "@/utils";
 import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 
 const TutorialSlide = ({

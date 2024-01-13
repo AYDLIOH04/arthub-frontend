@@ -1,6 +1,6 @@
 "use client";
 
-import selectIcons from "@/data/select/programs-select-icons";
+import selectIcons from "@/constants/select/programs-select-icons";
 import SelectButton from "../../../components/UI/selections/select-button";
 import { useState } from "react";
 

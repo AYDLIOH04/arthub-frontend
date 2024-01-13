@@ -3,19 +3,22 @@
 import { IoIosArrowUp } from "react-icons/io";
 import TutorialSkeleton from "@/components/UI/skeletons/tutorial-skeleton";
 import useCurrentUser from "@/hooks/useCurrentUser";
-import { useAddToFavoriteMutation, useGetTutorialQuery } from "@/store/features/tutorials/tutorialsApi";
-import { getDifficultyIcon } from "@/utils/get-icon";
+import {
+  useAddToFavoriteMutation,
+  useGetTutorialQuery,
+} from "@/store/features/tutorials/tutorialsApi";
+import { getDifficultyIcon } from "@/utils/icon-utils";
 import { notFound, useRouter } from "next/navigation";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import getCookieData from "@/utils/get-cookie";
+import { getCookieData } from '@/utils';
 
 const TutorialPage = ({ tutorialId }: { tutorialId: string }) => {
   const [isOpenDesc, setIsOpenDesc] = useState(false);
   const router = useRouter();
   const user = useCurrentUser();
-  const [addToFavoriteProgram] = useAddToFavoriteMutation(); 
+  const [addToFavoriteProgram] = useAddToFavoriteMutation();
   const {
     data: tutorial,
     isLoading,
@@ -35,7 +38,7 @@ const TutorialPage = ({ tutorialId }: { tutorialId: string }) => {
   const toggleFavorite = (event: any) => {
     event.stopPropagation();
     if (user.isAuth) {
-      addToFavoriteProgram({tutorial})
+      addToFavoriteProgram({ tutorial });
     } else {
       router.push("/auth");
     }

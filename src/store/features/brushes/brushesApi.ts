@@ -1,5 +1,5 @@
 import { IBrush } from '@/models';
-import getCookieData from '@/utils/get-cookie';
+import { getCookieData } from '@/utils';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const baseUrl = process.env.NEXT_PUBLIC_BACKEND_URL;

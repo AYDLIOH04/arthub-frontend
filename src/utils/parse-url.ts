@@ -1,1 +1,0 @@
-export const parseUrlString = (urlString: string) => urlString.replace("%20", " ").split(" ").join(" ");

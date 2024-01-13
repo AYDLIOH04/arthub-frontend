@@ -1,6 +1,6 @@
 "use client";
-import mainSelection from "@/data/select/main-reference";
-import secondSelection from "@/data/select/second-reference";
+import mainSelection from "@/constants/select/main-reference";
+import secondSelection from "@/constants/select/second-reference";
 import LargeSelect from "@/components/UI/selections/large-select";
 import { useEffect, useState } from "react";
 import SelectType from "@/components/UI/selections/select.type";

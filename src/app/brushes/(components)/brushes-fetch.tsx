@@ -1,5 +1,5 @@
 import BrushesSkeleton from "../../../components/UI/skeletons/brushes-skeleton";
-import getCookieData from "@/utils/get-cookie";
+import { getCookieData } from '@/utils';
 import { useGetBrushesQuery } from "@/store/features/brushes/brushesApi";
 import BrushList from "./brush-list";
 import FetchError from "@/components/UI/error/fetch-error";

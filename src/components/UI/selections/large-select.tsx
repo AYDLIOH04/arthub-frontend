@@ -1,4 +1,4 @@
-import { selectSearch } from "@/utils/select-searct";
+import { selectSearch } from "@/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { IoIosArrowUp } from "react-icons/io";

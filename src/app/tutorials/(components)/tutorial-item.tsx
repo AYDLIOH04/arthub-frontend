@@ -2,8 +2,8 @@ import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import useCurrentUser from "@/hooks/useCurrentUser";
 import useHover from "@/hooks/useHover";
 import { ITutorial } from "@/models";
-import { getDifficultyIcon } from "@/utils/get-icon";
-import { getTruncatedText } from "@/utils/get-truncated-text";
+import { getDifficultyIcon } from "@/utils/icon-utils";
+import { getTruncatedText } from "@/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa6";
@@ -57,7 +57,10 @@ const TutorialItem = ({
     >
       <div className="rounded-t-md overflow-hidden relative">
         <div>
-          <PhotoLoader isLoading={isImageLoading} backgroundClass="w-full h-[200px]"/>
+          <PhotoLoader
+            isLoading={isImageLoading}
+            backgroundClass="w-full h-[200px]"
+          />
           <img
             onLoad={onImageLoad}
             src={tutorial.image}
@@ -67,7 +70,7 @@ const TutorialItem = ({
             className={`${
               isImageLoading ? "hidden" : "flex"
             } select-none pointer-events-none w-full`}
-          />  
+          />
           <p className="group-hover:opacity-0 duration-300 absolute bottom-0 right-0 bg-main_purple pl-1 rounded-tl-md">
             {tutorial.duration}
           </p>

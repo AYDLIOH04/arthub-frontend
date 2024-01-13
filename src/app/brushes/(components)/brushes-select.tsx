@@ -1,7 +1,7 @@
 "use client";
 
 import LargeSelect from "@/components/UI/selections/large-select";
-import selectIcons from "@/data/select/brushes-select";
+import selectIcons from "@/constants/select/brushes-select";
 
 const BrushesSelect = ({
   onSelectChange,

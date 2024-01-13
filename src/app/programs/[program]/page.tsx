@@ -1,5 +1,5 @@
 import ProgramPage from "@/app/programs/[program]/(components)/program-page";
-import { parseUrlString } from "@/utils/parse-url";
+import { parseUrlString } from "@/utils";
 
 export async function generateMetadata({ params: { program } }: Props) {
   const title = parseUrlString(program)

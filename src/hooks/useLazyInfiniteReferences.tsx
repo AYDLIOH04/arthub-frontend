@@ -1,7 +1,6 @@
 import { IReference } from "@/models";
-import getCookieData from "@/utils/get-cookie";
+import { getCookieData, shuffle } from '@/utils';
 import { useEffect, useState } from "react";
-import shuffle from "@/utils/shuffle";
 
 const URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 const PAGE_SIZE = 20;

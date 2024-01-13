@@ -1,4 +1,4 @@
-import getPaginationList from "@/utils/get-pagination-list";
+import getPaginationList from "@/utils/pagination-utils";
 import React from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 import { LuArrowLeftToLine, LuArrowRightToLine } from "react-icons/lu";

@@ -1,10 +1,10 @@
-import { getProgramsIcon } from "@/utils/get-icon";
+import { getProgramsIcon } from "@/utils/icon-utils";
 import { useRouter } from "next/navigation";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import { IBrush } from "@/models";
 import { useState } from "react";
 import PhotoLoader from "@/components/UI/skeletons/photo-loader";
-import { getTruncatedText } from "@/utils/get-truncated-text";
+import { getTruncatedText } from "@/utils";
 
 const BrushSlide = ({
   brush,

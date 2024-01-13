@@ -1,4 +1,4 @@
-import { isEscapeKey } from "@/utils/keyboard-utils";
+import { isEscapeKey } from "@/utils";
 import { useEffect } from "react";
 
 const useEscapeKeydown = (callback: () => void, isOpen: boolean) => {

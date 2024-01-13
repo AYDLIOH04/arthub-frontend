@@ -6,7 +6,7 @@ import {
 } from "@/store/features/programs/programsApi";
 import ProgramItem from "./program-item";
 import ProgramsSkeleton from "@/components/UI/skeletons/programs-skeleton";
-import getCookieData from "@/utils/get-cookie";
+import { getCookieData } from '@/utils';
 import FetchError from "@/components/UI/error/fetch-error";
 import { IoLogoAppleAr } from "react-icons/io5";
 import NotFoundError from "@/components/UI/not-found/not-found";

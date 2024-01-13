@@ -6,7 +6,7 @@ import {
   useGetTutorialsQuery,
 } from "@/store/features/tutorials/tutorialsApi";
 import Pagination from "@/components/UI/pagination";
-import getCookieData from "@/utils/get-cookie";
+import { getCookieData } from '@/utils';
 import TutorialsSkeleton from "@/components/UI/skeletons/tutorials-skeleton";
 import FetchError from "@/components/UI/error/fetch-error";
 import { PiVideoFill } from "react-icons/pi";

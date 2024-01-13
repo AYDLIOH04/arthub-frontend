@@ -1,6 +1,6 @@
 import PhotoLoader from "@/components/UI/skeletons/photo-loader";
 import { IProgram } from "@/models";
-import { getSystemsIcon } from "@/utils/get-icon";
+import { getSystemsIcon } from "@/utils/icon-utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";

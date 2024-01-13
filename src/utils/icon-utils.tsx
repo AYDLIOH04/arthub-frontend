@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   SiAdobephotoshop,
   SiKrita,
@@ -69,3 +70,31 @@ export const getDifficultyIcon = (d: string) => {
       return FaQuestion;
   }
 };
+
+
+type CustomIconProps = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  className?: string;
+};
+
+export const CustomIcon = ({
+  src,
+  alt,
+  width,
+  height,
+  className,
+}: CustomIconProps) => {
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      width={width}
+      height={height}
+      className={className}
+    />
+  );
+};
+
